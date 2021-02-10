@@ -1,0 +1,359 @@
+/* 版心 */
+.layout{
+  margin: 0 auto;
+  max-width: 1920px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+html, body{
+    width: 100%;
+    margin: 0px;
+    font-family: "Microsoft YaHei",sans-serif;
+    color: #515151;
+}
+/*样式重置*/
+div,ul,p,h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+img{
+    display: block;
+}
+
+h6{
+    font-size: 0.9rem;
+    font-weight: lighter;
+}
+
+strong{
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    text-shadow: 2px 2px 2px #000;
+}
+.f-right{
+    float: right;
+}
+img{
+    display: block;
+}
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    height: 0;
+    display: block;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.bcolor{
+    color: #ff6e5d;
+}
+/* pc自适应  兼容 1920-800px */
+@media screen and (max-width:1920px){
+    html {
+    font-size: 16px;
+    }
+}
+@media screen and (max-width:1440px){
+    html {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:1025px){
+    html {
+        font-size: 10px;
+    }
+}
+/* index<1024+>自适应 */
+@media screen and (min-width:1024px){
+    /*pc端*/
+    .wrap-container{
+      width: 100%;
+      background: #f5f5f5;
+      overflow: hidden;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: row;
+      -moz-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+    }
+    .containerbox{
+      position: relative;
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -moz-box-flex: 1;
+      -moz-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+    .containerbox:hover{
+      -webkit-box-flex: 2;
+      -webkit-flex: 2;
+      -moz-box-flex: 2;
+      -moz-flex: 2;
+      -ms-flex: 2;
+      flex: 2;
+    }
+  
+    .container-pic{
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%,0);
+      -moz-transform: translate(-50%,0);
+      -ms-transform: translate(-50%,0);
+      -o-transform: translate(-50%,0);
+      transform: translate(-50%,0);
+      overflow: hidden;
+      /* animation: none; */
+    }
+    /* .containerbox:hover .container-pic{
+      -webkit-animation: pic 1s 0.3s steps(2,end) infinite;
+      -moz-animation: pic 1s 0.3s steps(2,end) infinite;
+      -ms-animation: pic 1s 0.3s steps(2,end) infinite;
+      -o-animation: pic 1s 0.3s steps(2,end) infinite;
+      animation: pic 1s 0.3s steps(2,end) infinite;
+    } */
+    .container-1 .container-pic{
+      background: url("../images/info.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    .container-2 .container-pic{
+      background: url("../images/nav.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    .container-3 .container-pic{
+      background: url("../images/note.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    .container-4 .container-pic{
+      background: url("../images/cloud.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    .container-info{
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+      -webkit-transform: translate(0,0);
+      -moz-transform: translate(0,0);
+      -ms-transform: translate(0,0);
+      -o-transform: translate(0,0);
+      transform: translate(0,0);
+    }
+    .container-title{
+      font-size: 50px;
+      font-family: "Microsoft Yahei";
+  
+    }
+    .container-subtitle{
+      font-size: 34px;
+      line-height: 1.0;
+      font-family: Arial;
+    }
+    @-webkit-keyframes pic{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -702px 0;
+      }
+    }
+    @-moz-keyframes pic{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -702px 0;
+      }
+    }
+    @-ms-keyframes pic{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -702px 0;
+      }
+    }
+    @-o-keyframes pic{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -702px 0;
+      }
+    }
+    @keyframes pic{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -702px 0;
+      }
+    }
+  }
+
+/* index<360-1024>自适应 */
+@media screen and (min-width:360px) and (max-width:1024px){
+    html {
+      font-size: 8px; 
+    }
+    /*index页面移动端*/
+    .wrap-container{
+      width: 100%;
+      background: #f5f5f5;
+      overflow: hidden;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+    .containerbox{
+      position: relative;
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -moz-box-flex: 1;
+      -moz-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+    }
+    
+    .container-info{
+      position: absolute;
+      top: 50%;
+      left: 55%;
+      width: 100%;
+      -webkit-transform: translate(0,-50%);
+      -moz-transform: translate(0,-50%);
+      -ms-transform: translate(0,-50%);
+      -o-transform: translate(0,-50%);
+      transform: translate(0,-50%);
+      text-align: left;
+      font-weight: 600;
+    }
+    .container-title{
+      font-size: 30px;
+      font-family: "Microsoft Yahei";
+    }
+    .container-subtitle{
+      font-size: 24px;
+      line-height: 1.0;
+      font-family: Arial;
+    }
+    .container-pic{
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      -webkit-transform-origin: left center;
+      transform-origin: left center;
+      -webkit-transform: translate(-50%,50%) scale(0.5);
+      transform: translate(-50%,50%) scale(0.5);
+      overflow: hidden;
+      animation: none;
+      -webkit-animation: picMobile 1s steps(2,end) infinite;
+      animation: picMobile 1s steps(2,end) infinite;
+    }
+    .container-1 .container-pic{
+      background: url("../images/info.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    .container-2 .container-pic{
+      background: url("../images/nav.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    .container-3 .container-pic{
+      background: url("../images/note.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    .container-4 .container-pic{
+      background: url("../images/cloud.svg") no-repeat;
+      width: 315px;
+      height: 219px;
+      background-size: contain;
+      background-position: center;
+    }
+    /* @-webkit-keyframes picMobile{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -702px 0;
+      }
+    }
+    @keyframes picMobile{
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -702px 0;
+      }
+    } */
+    /* 标签云页面 */
+    svg{
+        position: relative;
+        transform: translateX(-20%);
+    }
+  }
+  
+
+  
+
+
+
+
