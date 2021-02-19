@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="nav" @click.stop="showSearcherList = false">
     <div id="home" class="inner-center main">
       <div class="content-inside">
         <!-- slogan start -->
@@ -15,68 +15,42 @@
         </div>
         <!-- slogan end -->
         <!-- 搜索框 start -->
-        <div id="search_form" class="search-section">
-          <div class="search-left">
-            <div id="search_logo" data-type="baidu" class="search-logo"></div>
-            <div class="input-wrap">
-              <input
-                id="search_keyword"
-                class="search-input"
-                name="keyword"
-                maxlength="100"
-                autocomplete="off"
-                type="text"
-                placeholder
-              />
-              <div class="clear-keyword" id="clear_keyword" title="清空">x</div>
-            </div>
-            <!--  搜索引擎 start  -->
-            <ul id="search_methods" class="search-methods">
-              <li data-type="baidu" class="search-item baidu">百度</li>
-              <li data-type="google" class="search-item google">谷歌</li>
-              <li data-type="bing" class="search-item bing">必应</li>
-              <li data-type="so" class="search-item so">360搜索</li>
-              <li data-type="sogou" class="search-item sogou">搜狗</li>
-              <li data-type="wangpan" class="search-item wangpan">网盘搜索</li>
-            </ul>
-            <!--  搜索引擎 end  -->
-            <!--  搜索结果 start -->
-            <ul id="search_result" class="search-result">
-              <!--<li class="result-item"></li>-->
-            </ul>
-            <!--  搜索结果 end -->
-          </div>
-          <!--<input class="search-submit" value="" id="search_submit" type="submit">-->
+        <div class="searchBox">
+          <input type="text" :class="showSearcherList ? 'selectSearcher' : 'searchInput'" v-model="searchValue" @keyup.enter="search" placeholder="请输入内容">
+          <img class="searchIcon" :src="searcher.img" alt="" @click.stop="showSearcherList = true">
+          <ul class="searcherList" v-show="showSearcherList">
+            <li v-for="(item,index) in searcherList" :key="index" @click="selectSearcher(item)"><img :src="item.img" alt=""></li>
+          </ul>
         </div>
         <!-- 搜索框 end -->
         <!-- 导航地址 start -->
         <div class="nav-content">
           <div id="item" class="jj-list">
-              <ul class="jj-list-con">
-                <li>
-                  <a href="https://jaqi.gitee.io/page/#/" target="_blank">
-                    <img src />page
-                  </a>
-                </li>
-                <li>
-                  <a href="http://jaqi.synology.me:5000/" target="_blank">
-                    <img src />cloud
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://shimo.im/docs/f0cce16a6b1f45b3/read"
-                    target="_blank"
-                  >
-                    <img src />note（旧）
-                  </a>
-                </li>
-                <li>
-                  <a href="https://jaqi.gitee.io/jaqi.note" target="_blank">
-                    <img src />note（新）
-                  </a>
-                </li>
-              </ul>
+            <ul class="jj-list-con">
+              <li>
+                <a href="https://jaqi.gitee.io/page/#/" target="_blank">
+                  <img src />page
+                </a>
+              </li>
+              <li>
+                <a href="http://jaqi.synology.me:5000/" target="_blank">
+                  <img src />cloud
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://shimo.im/docs/f0cce16a6b1f45b3/read"
+                  target="_blank"
+                >
+                  <img src />note（旧）
+                </a>
+              </li>
+              <li>
+                <a href="https://jaqi.gitee.io/jaqi.note" target="_blank">
+                  <img src />note（新）
+                </a>
+              </li>
+            </ul>
           </div>
           <div id="often" class="jj-list">
             <ul class="jj-list-con">
@@ -136,6 +110,22 @@
                 </a>
               </li>
               <li>
+                <a href="https://flow.aliyun.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
+                  />
+                  新云效
+                </a>
+              </li>
+              <li>
+                <a href="https://cs.console.aliyun.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
+                  />
+                  阿里云控制台
+                </a>
+              </li>
+              <li>
                 <a href="http://www.fengniao.com/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=www.fengniao.com"
@@ -147,15 +137,6 @@
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=tuchong.com"
                   />图虫
-                </a>
-              </li>
-
-              <li>
-                <a href="https://www.runoob.com/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=runoob.com"
-                  />
-                  菜鸟教程
                 </a>
               </li>
               <li>
@@ -901,6 +882,14 @@
                 </a>
               </li>
               <li>
+                <a href="http://wp.soshoulu.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=/wp.soshoulu.com"
+                  />
+                  网盘搜索
+                </a>
+              </li>
+              <li>
                 <a href="http://www.ju1.cn/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=www.ju1.cn"
@@ -1177,18 +1166,37 @@
 </template>
 <script>
 import "../assets/css/base.css";
-import axios from 'axios'
+import baidu from "@/assets/images/baidu.png"
+import google from "@/assets/images/google.png"
+import so from "@/assets/images/360so.png"
+import sogou from "@/assets/images/sogou.png"
+import axios from "axios";
 export default {
   name: "jaqi.nav",
   data() {
     return {
       msg: "个人导航",
       weatherdata: [],
+      showSearcherList:false,
+      searcherList: [
+        { name: "百度", key: "baidu",url:"https://www.baidu.com/s?wd=", img: baidu },
+        { name: "谷歌", key: "google",url:"https://www.google.com/search?q=",img: google },
+         { name: "360搜索", key: "360so",url:"https://www.so.com/s?q=",img: so },
+        { name: "搜狗", key: "google",url:"https://www.sogou.com/web?query=",img: sogou },
+      ],
+      searcher:'',
+      searchValue:''
     };
   },
   components: {},
   methods: {
-    weather: function () {
+      selectSearcher(item){
+        this.searcher = item
+    },
+    search(){
+      window.open (this.searcher.url+this.searchValue);
+    },
+    weather() {
       var that = this;
       axios
         .get(
@@ -1199,12 +1207,13 @@ export default {
           that.weatherdata = response.data.lives[0];
         })
         .catch(function (error) {
-          console.log("天气信息调取失败",error);
+          console.log("天气信息调取失败", error);
         });
     },
   },
   mounted() {
     this.weather();
+    this.searcher = this.searcherList[0];
   },
 };
 </script>
@@ -1283,201 +1292,72 @@ a:active {
 
 /* logo end  */
 /* 搜索框 start */
-.search-section {
-  /* 
-    margin-top: 14px;
-    margin-bottom: 40px;
-    */
-  padding-top: 14px;
-  padding-bottom: 40px;
-}
-
-.search-section {
+.searchBox {
+  display: flex;
+  width: 70%;
+  margin: 20px auto;
   position: relative;
-  display: flex;
-  width: 31%;
-  margin: 0 auto;
 }
-
-.search-left {
-  display: flex;
+.searchInput{
   width: 100%;
-  height: 44px;
-  line-height: 20px;
-  border: 1px solid rgba(217, 217, 217, 0.96);
-  border-radius: 25px;
-  -moz-border-radius: 25px;
-  /* Old Firefox */
+  height: 40px;
+  padding-left: 40px;
+  font-size: 15px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+  color: #606266;
 }
-
-.search-logo {
-  width: 40px;
-  align-items: center;
-  justify-content: center;
-  background: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scgoogle.png")
-    center center no-repeat;
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: alpha(opacity=20);
-  -moz-opacity: 0.2;
-  -khtml-opacity: 0.2;
-  opacity: 0.2;
-  cursor: pointer;
+.selectSearcher{
+  width: 100%;
+  height: 40px;
+  padding-left: 40px;
+  font-size: 15px;
+  box-sizing: border-box;
+  border-radius: 4px 4px 4px 0px;
+  border: 1px solid #dcdfe6;
+  color: #606266;
 }
-
-.search-logo:hover {
-  filter: grayscale(0%);
-  -webkit-filter: grayscale(0%);
-  -moz-filter: grayscale(0%);
-  -o-filter: grayscale(0%);
-  filter: alpha(opacity=100);
-  -moz-opacity: 1;
-  -khtml-opacity: 1;
-  opacity: 1;
+.searchInput:focus {
+    outline: none;
+    border-color: #409eff;
 }
-
-.search-methods {
-  display: none;
+.searchIcon {
   position: absolute;
-  left: 0;
-  top: 44px;
-  width: 155px;
-  max-width: 155px;
-  border: 1px solid rgba(217, 217, 217, 0.96);
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.searcherList{
+  position: absolute;
+  top: 40px;
+  border-radius: 0px 0px  4px 4px  ;
+  border: 1px solid #dcdfe6;
+  border-top: none;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
   background-color: #fff;
 }
-
-.search-methods li {
-  padding-left: 39px;
-  background: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scgoogle.png")
-    10px no-repeat;
-  overflow: hidden;
-  height: 34px;
-  line-height: 34px;
-  color: #545454;
-  cursor: pointer;
-}
-
-.search-logo.baidu,
-li.baidu {
-  background-image: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scbaidu.png");
-}
-
-.search-logo.bing,
-li.bing {
-  background-image: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scbing.png");
-}
-
-.search-logo.sogou,
-li.sogou {
-  background-image: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scsogou.png");
-}
-
-.search-logo.wangpan,
-li.wangpan {
-  background-image: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scwangpan.png");
-}
-
-.search-logo.so,
-li.so {
-  background-image: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scso.png");
-}
-
-.search-logo.google,
-li.google {
-  background-image: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/scgoogle.png");
-}
-
-.search-methods .search-item:hover {
-  background-color: #f0f0f0;
-}
-
-.search-result {
-  display: none;
-  position: absolute;
-  max-width: 300px;
-  top: 55px;
-  left: 40px;
-  border: 1px solid rgba(187, 187, 187, 1);
-  background-color: #fff;
-}
-
-.result-item {
-  height: 34px;
-  line-height: 34px;
-  padding: 0 15px;
-}
-
-.result-item.active {
-  background: #f0f0f0;
-}
-
-.result-item:hover {
-  background-color: #eee;
-  cursor: pointer;
-}
-
-.input-wrap {
-  position: relative;
-  flex: 1;
-}
-
-.input-wrap .search-input {
-  height: 2.5rem;
-  width: 91%;
-  outline: 0;
-  border: 0;
-  font-size: 16px;
-  padding-left: 15px;
-}
-
-/* .input-wrap .search-input:focus{
-	border-style:solid;
-	border-color: #FDA31E 96%;
-	box-shadow: 0 0 10px #FDA31E;
-    } */
-/* .search-left:focus{
-    border-style:solid;
-    border-color: #FDA31E 96%;
-    box-shadow: 0 0 10px #FDA31E;
-    } */
-.input-wrap .clear-keyword {
-  display: none;
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #d2d2d2;
-  font-size: 30px;
-}
-
-.search-submit {
-  width: 20%;
-  max-width: 125px;
-  min-width: 44px;
-  height: 44px;
-  line-height: 26px;
-  background: url("https://cdn.jsdelivr.net/gh/eallion/favorite@master/static/css/img/search.png")
-    #1890ff center no-repeat;
-  -webkit-background-size: 30px 30px;
-  background-size: 30px 30px;
-  color: #fff;
-  font-size: 18px;
+.searcherList li{
+  width: 100%;
+  display: block;
   text-align: center;
-  font-family: "Noto Sans SC", sans-serif;
-  border: 1px solid #1890ff;
-  cursor: pointer;
 }
-
+.searcherList li img{
+  display: block;
+  text-align: center;
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+}
 /* 搜索框 end */
 /*  导航内容 start  */
 .nav-content {
   overflow: hidden;
 }
-
 /*  导航内容 end  */
 /*内容区域*/
 /*-----------------------------简洁版样式定义- 开始---------------------------------------------------*/
@@ -1639,33 +1519,6 @@ li.google {
 
   .jj-list-con li a {
     padding-left: 0.7em;
-  }
-
-  .search-left {
-    height: 39px;
-  }
-
-  .search-methods {
-    top: 39px;
-  }
-
-  .search-submit {
-    min-width: 39px;
-    height: 39px;
-  }
-
-  .input-wrap .search-input {
-    height: 37px;
-  }
-
-  .show_header,
-  .result-item {
-    display: none;
-  }
-
-  .search-section {
-    padding-bottom: 10px;
-    width: 78%;
   }
 
   .eallion-nav {
