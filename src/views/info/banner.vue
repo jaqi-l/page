@@ -3,16 +3,16 @@
     <nav>
       <ul class="clearfix">
         <li>
-        <a class="fastlink" href="#basicinfo">基本信息</a>
+        <a class="fastlink">基本信息</a>
         </li>
         <li>
-           <a class="fastlink" href="#skillsexp">技能特长</a>
+           <a class="fastlink">技能特长</a>
         </li>
         <li>
-           <a class="fastlink" href="#workexp">工作经历</a>
+           <a class="fastlink">工作经历</a>
         </li>
         <li>
-         <a class="fastlink" href="#projectexp">项目经验</a>
+         <a class="fastlink">项目经验</a>
         </li>
       </ul>
     </nav>

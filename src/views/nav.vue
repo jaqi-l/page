@@ -28,7 +28,7 @@
           <div id="item" class="jj-list">
             <ul class="jj-list-con">
               <li>
-                <a href="https://jaqi.gitee.io/page/#/" target="_blank">
+                <a href="https://jaqi.gitee.io" target="_blank">
                   <img src />page
                 </a>
               </li>
