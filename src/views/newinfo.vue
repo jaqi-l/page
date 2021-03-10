@@ -1,10 +1,10 @@
 <template>
   <div class="layout">
     <ul class="viewList" :style="{ transform: `translateY(${distance}px)` }">
-      <li style="background: pink">1</li>
-      <li style="background: blue">2</li>
-      <li style="background: pink">3</li>
-      <li style="background: blue">4</li>
+      <li class="banner" :id="index+1 == 1 ? 'blowUp':''"> {{index + 1 == 1 }}1</li>
+      <li style="background: blue">{{index + 1 == 2 }}2</li>
+      <li style="background: pink">{{index + 1 == 3 }}3</li>
+      <li style="background: blue">{{index + 1 == 4 }}4</li>
     </ul>
   </div>
 </template>
@@ -90,23 +90,16 @@ export default {
           this.index--;
           this.distance = -this.layoutHeight * this.index;
           console.log("up", this.distance, this.index);
-        } else {
-          clearTimeout(timer);
         }
       } else if (type == "down") {
         if (this.index < this.maxIndex) {
           this.index++;
           this.distance = -this.layoutHeight * this.index;
           console.log("down", this.distance, this.index);
-        } else {
-          clearTimeout(timer);
         }
       } else {
         console.log("无效");
       }
-      var timer = setTimeout(() => {
-        // this.addListener();
-      }, 500);
     },
   },
   mounted() {
@@ -137,11 +130,24 @@ export default {
   width: 100%;
   margin: 0px;
   padding: 0px;
-  transition: transform 1s;
+  transition: transform 2s;
 }
 .viewList > li {
   height: 100vh;
   font-size: 100px;
   color: aliceblue;
+  animation-duration:2s;
+  animation-timing-function:ease-in-out;
+  animation-delay:0.5s;
+  animation-fill-mode:forwards;
+  transition: background-size 3s  1s ease-in-out;
+}
+.banner{
+  background: url('~@/assets/images/banner.jpg') no-repeat;
+  background-size: 120%;
+  background-position: center;
+}
+#blowUp{
+  background-size: 100%;
 }
 </style>
