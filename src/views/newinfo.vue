@@ -1,10 +1,26 @@
 <template>
   <div class="layout">
     <ul class="viewList" :style="{ transform: `translateY(${distance}px)` }">
-      <li class="banner" :id="index+1 == 1 ? 'blowUp':''">1</li>
-      <li class="banner" :id="index+1 == 2 ? 'blowUp':''">2</li>
-      <li class="banner" :id="index+1 == 3 ? 'blowUp':''">3</li>
-      <li class="banner" :id="index+1 == 4 ? 'blowUp':''">4</li>
+      <li class="banner">
+        <div class="homeInfo" :id="index + 1 == 1 ? 'blowUp' : ''">
+          <h1>PERSONAL RESUNME</h1>
+          <p>
+            <span>个</span>|
+            <span>人</span>|
+            <span>简</span>|
+            <span>历</span>
+          </p>
+        </div>
+      </li>
+      <li class="">
+        <div class="info" :id="index + 1 == 2 ? 'blowIn' : ''">222</div>
+      </li>
+      <li class="">
+        <div class="info" :id="index + 1 == 3 ? 'blowIn' : ''">333</div>
+      </li>
+      <li class="">
+        <div class="info" :id="index + 1 == 4 ? 'blowIn' : ''">444</div>
+      </li>
     </ul>
   </div>
 </template>
@@ -18,8 +34,8 @@ export default {
       distance: 0, // 滚动距离
       index: 0, //页码
       maxIndex: "", //总页数
-      startY: "",// touchstart初始距离
-      endY: "",// touchend初始距离
+      startY: "", // touchstart初始距离
+      endY: "", // touchend初始距离
     };
   },
   methods: {
@@ -125,9 +141,23 @@ export default {
 };
 </script>
 <style scoped>
+p{
+  margin: 0px;
+  padding: 0px;
+}
 .layout {
   overflow: hidden;
   box-sizing: border-box;
+  background-color: #000;
+  animation: openwindow 4s ease-in-out 0s;
+}
+@keyframes openwindow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .viewList {
   width: 100%;
@@ -138,19 +168,47 @@ export default {
 .viewList > li {
   height: 100vh;
   font-size: 100px;
-  color: aliceblue;
-  animation-duration:2s;
-  animation-timing-function:ease-in-out;
-  animation-delay:0.5s;
-  animation-fill-mode:forwards;
-  transition: background-size 3s  1s ease-in-out;
+  background-color: #fff;
+  overflow: hidden;
 }
-.banner{
-  background: url('~@/assets/images/banner.jpg') no-repeat;
+.banner {
+  /* background: url("~@/assets/images/banner.jpg") no-repeat;
   background-size: 120% 120%;
-  background-position: center;
+  background-position: center; */
+  margin: 0px;
+  padding: 0px;
 }
-#blowUp{
+.homeInfo{
+  width: 100%;
+  height: 100%;
+  background: url("~@/assets/images/banner.jpg") no-repeat;
   background-size: 100% 100%;
+  transform: scale(1.1);
+  background-position: center;
+  transition: transform 3s 1s ease-in-out;
+  color: #fff;
+}
+#blowUp {
+  transform: scale(1)
+}
+h1{
+  margin: 0px;
+}
+.info {
+  width: 90%;
+  height: 80%;
+  margin: 0 auto;
+  transform: translateY(40%);
+  border: 2px solid #ff6e5d;
+  color: #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  opacity: 0;
+  transition: all 3s 1s ease-in-out;
+}
+#blowIn {
+  opacity: 1;
+  transform: translateY(10%);
 }
 </style>
