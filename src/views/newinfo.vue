@@ -1,10 +1,10 @@
 <template>
   <div class="layout">
     <ul class="viewList" :style="{ transform: `translateY(${distance}px)` }">
-      <li class="banner" :id="index+1 == 1 ? 'blowUp':''"> {{index + 1 == 1 }}1</li>
-      <li style="background: blue">{{index + 1 == 2 }}2</li>
-      <li style="background: pink">{{index + 1 == 3 }}3</li>
-      <li style="background: blue">{{index + 1 == 4 }}4</li>
+      <li class="banner" :id="index+1 == 1 ? 'blowUp':''">1</li>
+      <li class="banner" :id="index+1 == 2 ? 'blowUp':''">2</li>
+      <li class="banner" :id="index+1 == 3 ? 'blowUp':''">3</li>
+      <li class="banner" :id="index+1 == 4 ? 'blowUp':''">4</li>
     </ul>
   </div>
 </template>
@@ -24,8 +24,11 @@ export default {
   },
   methods: {
     addListener() {
+      //监听鼠标滚轮
       document.body.addEventListener("wheel", this.scrollBarWheel);
+      //监听键盘
       document.body.addEventListener("keydown", this.scrollBarWheel);
+      //监听移动端触摸
       document.body.addEventListener(
         "touchstart",
         (e) => {
@@ -75,10 +78,10 @@ export default {
         // 移动端touch事件
       } else if (e == "touch") {
         this.removeListener();
-        if (this.startY - this.endY > 100) {
+        if (this.startY - this.endY > 80) {
           console.log("下一页");
           this.turnPage("down");
-        } else if (this.startY - this.endY < -100) {
+        } else if (this.startY - this.endY < -80) {
           console.log("上一页");
           this.turnPage("up");
         }
@@ -144,10 +147,10 @@ export default {
 }
 .banner{
   background: url('~@/assets/images/banner.jpg') no-repeat;
-  background-size: 120%;
+  background-size: 120% 120%;
   background-position: center;
 }
 #blowUp{
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 </style>
