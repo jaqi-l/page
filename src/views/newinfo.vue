@@ -2,14 +2,28 @@
   <div class="layout">
     <ul class="viewList" :style="{ transform: `translateY(${distance}px)` }">
       <li class="banner">
-        <div class="homeInfo" :id="index + 1 == 1 ? 'blowUp' : ''">
-          <h1>PERSONAL RESUNME</h1>
-          <p>
-            <span>个</span>|
-            <span>人</span>|
-            <span>简</span>|
-            <span>历</span>
-          </p>
+        <div class="home" :id="index + 1 == 1 ? 'blowUp' : ''">
+          <div
+            @mouseover="showQrcode = true"
+            @mouseout="showQrcode = false"
+            class="weiChat"
+          ></div>
+          <transition name="qrcodetransit">
+            <img
+              class="qrcode"
+              v-if="showQrcode"
+              src="../assets/images/qrcode.gif"
+            />
+          </transition>
+          <div class="homeInfo">
+            <h1>PERSONAL<br />RESUNME</h1>
+            <h4>
+              <span>个</span>| <span>人</span>| <span>简</span>|
+              <span>历</span>
+            </h4>
+            <h3>WEB前端</h3>
+            <h2>Jaqi<span style="color: #ff6e5d">.</span>L</h2>
+          </div>
         </div>
       </li>
       <li class="">
@@ -36,9 +50,11 @@ export default {
       maxIndex: "", //总页数
       startY: "", // touchstart初始距离
       endY: "", // touchend初始距离
+      showQrcode: false,
     };
   },
   methods: {
+    // 监听事件
     addListener() {
       //监听鼠标滚轮
       document.body.addEventListener("wheel", this.scrollBarWheel);
@@ -69,6 +85,7 @@ export default {
         false
       );
     },
+    // 移除监听事件
     removeListener() {
       document.body.removeEventListener("wheel", () => {});
       document.body.removeEventListener("keydown", () => {});
@@ -76,6 +93,7 @@ export default {
       document.body.removeEventListener("touchmove", () => {});
       document.body.removeEventListener("touchend", () => {});
     },
+    // 判断上下翻页
     scrollBarWheel(e) {
       // 鼠标滚轮
       if (e.wheelDelta) {
@@ -103,6 +121,7 @@ export default {
         }
       }
     },
+    // 翻页动作
     turnPage(type) {
       if (type == "up") {
         if (this.index > 0) {
@@ -141,7 +160,30 @@ export default {
 };
 </script>
 <style scoped>
-p{
+h1 {
+  font-size: 7rem;
+  margin: 0px;
+  padding: 0px;
+  line-height: 1.5;
+}
+h2 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 5rem;
+}
+h3 {
+  margin: 0px;
+  padding: 0px;
+  font-weight: normal;
+  font-size: 4rem;
+}
+h4 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 2rem;
+  font-weight: lighter;
+}
+p {
   margin: 0px;
   padding: 0px;
 }
@@ -149,7 +191,7 @@ p{
   overflow: hidden;
   box-sizing: border-box;
   background-color: #000;
-  animation: openwindow 4s ease-in-out 0s;
+  animation: openwindow 3s ease-in-out 0s;
 }
 @keyframes openwindow {
   from {
@@ -172,27 +214,80 @@ p{
   overflow: hidden;
 }
 .banner {
-  /* background: url("~@/assets/images/banner.jpg") no-repeat;
-  background-size: 120% 120%;
-  background-position: center; */
   margin: 0px;
   padding: 0px;
 }
-.homeInfo{
+.home {
   width: 100%;
   height: 100%;
   background: url("~@/assets/images/banner.jpg") no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   transform: scale(1.1);
   background-position: center;
   transition: transform 3s 1s ease-in-out;
   color: #fff;
 }
-#blowUp {
-  transform: scale(1)
+.homeInfo {
+  width: 80%;
+  height: 85%;
+  transform: translateY(10%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-h1{
-  margin: 0px;
+@media screen and (min-width: 1024px) {
+  .weiChat {
+    background: url(~@/assets/images/weichat-w.png) no-repeat;
+    display: block;
+    background-size: cover;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+  }
+  .weiChat:hover,
+  .weiChat:active {
+    display: block;
+    background: url(~@/assets/images/weichat.png) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+  }
+  .qrcode {
+    position: absolute;
+    right: 6%;
+    top: 10%;
+    width: 400px;
+    border-radius: 0.5rem;
+  }
+  .qrcodetransit-enter-active,
+  .qrcodetransit-leave-active {
+    transition: opacity 0.5s ease-in-out;
+  }
+  .qrcodetransit-enter-from,
+  .qrcodetransit-leave-to {
+    opacity: 0;
+  }
+}
+.homeInfo h1 {
+  margin-top: -6rem;
+}
+.homeInfo h4 > span {
+  display: inline-block;
+  margin: 0 3rem;
+}
+.homeInfo h4 {
+  margin-left: -3rem;
+}
+.homeInfo h2 {
+  margin-top: 4rem;
+}
+.homeInfo h3 {
+  margin-top: 5rem;
+}
+#blowUp {
+  transform: scale(1);
 }
 .info {
   width: 90%;
@@ -205,7 +300,7 @@ h1{
   flex-direction: row;
   justify-content: center;
   opacity: 0;
-  transition: all 3s 1s ease-in-out;
+  transition: all 2s 1s ease-in-out;
 }
 #blowIn {
   opacity: 1;
