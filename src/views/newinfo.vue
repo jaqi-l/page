@@ -16,13 +16,17 @@
             />
           </transition>
           <div class="homeInfo">
-            <h1>PERSONAL<br />RESUNME</h1>
-            <h4>
-              <span>个</span>| <span>人</span>| <span>简</span>|
-              <span>历</span>
-            </h4>
-            <h3>WEB前端</h3>
-            <h2>Jaqi<span style="color: #ff6e5d">.</span>L</h2>
+            <div class="titile">
+              <h1>PERSONAL<br />RESUNME</h1>
+              <h4>
+                <span>个</span>| <span>人</span>| <span>简</span>|
+                <span>历</span>
+              </h4>
+            </div>
+            <div class="nickname">
+              <h3>WEB前端</h3>
+              <h2>Jaqi<span style="color: #ff6e5d">.</span>L</h2>
+            </div>
           </div>
         </div>
       </li>
@@ -159,132 +163,114 @@ export default {
   },
 };
 </script>
-<style scoped>
-h1 {
-  font-size: 7rem;
-  margin: 0px;
-  padding: 0px;
-  line-height: 1.5;
-}
-h2 {
-  margin: 0px;
-  padding: 0px;
-  font-size: 5rem;
-}
-h3 {
-  margin: 0px;
-  padding: 0px;
-  font-weight: normal;
-  font-size: 4rem;
-}
-h4 {
-  margin: 0px;
-  padding: 0px;
-  font-size: 2rem;
-  font-weight: lighter;
-}
-p {
-  margin: 0px;
-  padding: 0px;
-}
+<style scoped lang="scss">
+// 视口
 .layout {
   overflow: hidden;
   box-sizing: border-box;
   background-color: #000;
   animation: openwindow 3s ease-in-out 0s;
-}
-@keyframes openwindow {
-  from {
-    opacity: 0;
+  .viewList {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    transition: transform 2s;
+    li {
+      height: 100vh;
+      font-size: 100px;
+      background-color: #fff;
+      overflow: hidden;
+    }
   }
-  to {
-    opacity: 1;
+  @keyframes openwindow {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
-.viewList {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  transition: transform 2s;
-}
-.viewList > li {
-  height: 100vh;
-  font-size: 100px;
-  background-color: #fff;
-  overflow: hidden;
-}
+// 第一屏 banner
 .banner {
   margin: 0px;
   padding: 0px;
-}
-.home {
-  width: 100%;
-  height: 100%;
-  background: url("~@/assets/images/banner.jpg") no-repeat;
-  background-size: cover;
-  transform: scale(1.1);
-  background-position: center;
-  transition: transform 3s 1s ease-in-out;
-  color: #fff;
-}
-.homeInfo {
-  width: 80%;
-  height: 85%;
-  transform: translateY(10%);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-@media screen and (min-width: 1024px) {
-  .weiChat {
-    background: url(~@/assets/images/weichat-w.png) no-repeat;
-    display: block;
+  .home {
+    width: 100%;
+    height: 100%;
+    background: url("~@/assets/images/banner.jpg") no-repeat;
     background-size: cover;
-    width: 3rem;
-    height: 3rem;
-    position: absolute;
-    right: 5%;
-    top: 5%;
+    transform: scale(1.1);
+    background-position: center;
+    transition: transform 3s 1s ease-in-out;
+    color: #fff;
+    @media screen and (min-width: 1024px) {
+      .weiChat {
+        background: url(~@/assets/images/weichat-w.png) no-repeat;
+        display: block;
+        background-size: cover;
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        right: 5%;
+        top: 5%;
+      }
+      .weiChat:hover,
+      .weiChat:active {
+        display: block;
+        background: url(~@/assets/images/weichat.png) no-repeat;
+        background-size: cover;
+        cursor: pointer;
+      }
+      .qrcode {
+        position: absolute;
+        right: 6%;
+        top: 10%;
+        width: 400px;
+        border-radius: 0.5rem;
+      }
+      .qrcodetransit-enter-active,
+      .qrcodetransit-leave-active {
+        transition: opacity 0.5s ease-in-out;
+      }
+      .qrcodetransit-enter-from,
+      .qrcodetransit-leave-to {
+        opacity: 0;
+      }
+    }
+
+    .homeInfo {
+      width: 80%;
+      height: 90%;
+      transform: translateY(10%);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      .titile {
+        flex: 2;
+        h1 {
+          // margin-top: 6rem;
+        }
+        h4 {
+          margin-left: -3rem;
+          span {
+            display: inline-block;
+            margin: 0 3rem;
+          }
+        }
+      }
+      .nickname {
+        flex: 1;
+        h2 {
+          margin-top: 2rem;
+        }
+        h3 {
+          margin-top: 5rem;
+        }
+      }
+    }
   }
-  .weiChat:hover,
-  .weiChat:active {
-    display: block;
-    background: url(~@/assets/images/weichat.png) no-repeat;
-    background-size: cover;
-    cursor: pointer;
-  }
-  .qrcode {
-    position: absolute;
-    right: 6%;
-    top: 10%;
-    width: 400px;
-    border-radius: 0.5rem;
-  }
-  .qrcodetransit-enter-active,
-  .qrcodetransit-leave-active {
-    transition: opacity 0.5s ease-in-out;
-  }
-  .qrcodetransit-enter-from,
-  .qrcodetransit-leave-to {
-    opacity: 0;
-  }
-}
-.homeInfo h1 {
-  margin-top: -6rem;
-}
-.homeInfo h4 > span {
-  display: inline-block;
-  margin: 0 3rem;
-}
-.homeInfo h4 {
-  margin-left: -3rem;
-}
-.homeInfo h2 {
-  margin-top: 4rem;
-}
-.homeInfo h3 {
-  margin-top: 5rem;
 }
 #blowUp {
   transform: scale(1);
