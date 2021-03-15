@@ -31,20 +31,29 @@
         </div>
       </li>
       <li class="">
-        <div class="info" :id="index + 1 == 2 ? 'blowIn' : ''">222</div>
+        <div class="info" :id="index + 1 == 2 ? 'blowIn' : ''">基本信息</div>
+      </li>
+      <li class="skillsexp">
+        <div class="info" :id="index + 1 == 3 ? 'blowIn' : ''">
+          <tagcloud class="tagcloud"> </tagcloud>
+        </div>
       </li>
       <li class="">
-        <div class="info" :id="index + 1 == 3 ? 'blowIn' : ''">333</div>
+        <div class="info" :id="index + 1 == 4 ? 'blowIn' : ''">工作经历</div>
       </li>
-      <li class="">
-        <div class="info" :id="index + 1 == 4 ? 'blowIn' : ''">444</div>
+        <li class="">
+        <div class="info" :id="index + 1 == 5 ? 'blowIn' : ''">项目经验</div>
       </li>
     </ul>
   </div>
 </template>
 <script>
+import tagcloud from "@/components/tagcloud";
 export default {
   name: "newinfo",
+    components: {
+    tagcloud
+  },
   data() {
     return {
       msg: "个人信息",
@@ -175,6 +184,7 @@ export default {
     margin: 0px;
     padding: 0px;
     transition: transform 2s;
+    background-color: #fff;
     li {
       height: 100vh;
       font-size: 100px;
@@ -291,5 +301,25 @@ export default {
 #blowIn {
   opacity: 1;
   transform: translateY(10%);
+}
+.skillsexp{
+  .tagcloud{
+    margin: 0 auto;
+    flex-direction:row;
+    justify-content:center;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .skillsexp{
+    .info{
+      width: 100%;
+      height: 100vh;
+      border: none;
+      transform: translateY(0);
+    }
+    #blowIn{
+      transform: translateY(0);
+    }
+  }
 }
 </style>
