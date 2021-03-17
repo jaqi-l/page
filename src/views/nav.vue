@@ -357,6 +357,22 @@
                   懒人图
                 </a>
               </li>
+              <li>
+                <a href="https://lbs.qq.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=lbs.qq.com"
+                  />
+                  腾讯位置服务
+                </a>
+              </li>
+              <li>
+                <a href="https://qydev.weixin.qq.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=qydev.weixin.qq.com"
+                  />
+                  微信JS-SDK文档
+                </a>
+              </li>
             </ul>
           </div>
           <div id="design" class="jj-list">
@@ -634,6 +650,13 @@
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=www.xinpianchang.com"
                   />新片场社区
+                </a>
+              </li>
+              <li>
+                <a href="https://www.laihua.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=www.laihua.com"
+                  />来画
                 </a>
               </li>
             </ul>
@@ -942,7 +965,14 @@
                   嗨文库
                 </a>
               </li>
-              <li></li>
+              <li>
+                <a href="https://work.weixin.qq.com/api/jsapidemo#menu-location" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=work.weixin.qq.com/"
+                  />
+                  微信JS-SDK DEMO
+                </a>
+              </li>
             </ul>
           </div>
           <div id="fine" class="jj-list">
