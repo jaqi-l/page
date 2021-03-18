@@ -35,7 +35,6 @@
       </li>
       <li class="skillsexp">
         <div class="info" :id="index + 1 == 3 ? 'blowIn' : ''">
-          <tagcloud class="tagcloud"> </tagcloud>
         </div>
       </li>
       <li class="">
@@ -48,11 +47,9 @@
   </div>
 </template>
 <script>
-import tagcloud from "@/components/tagcloud";
 export default {
   name: "newinfo",
     components: {
-    tagcloud
   },
   data() {
     return {
@@ -100,11 +97,33 @@ export default {
     },
     // 移除监听事件
     removeListener() {
-      document.body.removeEventListener("wheel", () => {});
-      document.body.removeEventListener("keydown", () => {});
-      document.body.removeEventListener("touchstart", () => {});
-      document.body.removeEventListener("touchmove", () => {});
-      document.body.removeEventListener("touchend", () => {});
+      console.log('移除');
+         //监听鼠标滚轮
+      document.body.removeEventListener("wheel", this.scrollBarWheel);
+      //监听键盘
+      document.body.removeEventListener("keydown", this.scrollBarWheel);
+      //监听移动端触摸
+      document.body.removeEventListener(
+        "touchstart",
+        (e) => {
+          this.startY = e.touches[0].clientY;
+        },
+        false
+      );
+      document.body.removeEventListener(
+        "touchmove",
+        (e) => {
+          this.endY = e.touches[0].clientY;
+        },
+        false
+      );
+      document.body.removeEventListener(
+        "touchend",
+        () => {
+          this.scrollBarWheel("touch");
+        },
+        false
+      );
     },
     // 判断上下翻页
     scrollBarWheel(e) {
@@ -133,6 +152,9 @@ export default {
           this.turnPage("up");
         }
       }
+      setTimeout(() => {
+        this.addListener()
+      }, 2000);
     },
     // 翻页动作
     turnPage(type) {
@@ -162,7 +184,9 @@ export default {
       },
       { passive: false }
     );
-    this.addListener();
+     setTimeout(() => {
+        this.addListener()
+      }, 2000);
     this.layoutHeight = document.getElementsByClassName(
       "layout"
     )[0].clientHeight;
@@ -178,12 +202,12 @@ export default {
   overflow: hidden;
   box-sizing: border-box;
   background-color: #000;
-  animation: openwindow 3s ease-in-out 0s;
+  animation: openwindow 1.5s ease-in-out 0s;
   .viewList {
     width: 100%;
     margin: 0px;
     padding: 0px;
-    transition: transform 2s;
+    transition: transform 1.5s;
     background-color: #fff;
     li {
       height: 100vh;
@@ -276,7 +300,7 @@ export default {
           margin-top: 2rem;
         }
         h3 {
-          margin-top: 5rem;
+          margin-top: 0rem;
         }
       }
     }
@@ -296,30 +320,10 @@ export default {
   flex-direction: row;
   justify-content: center;
   opacity: 0;
-  transition: all 2s 1s ease-in-out;
+  transition: all 1s 1s ease-in-out;
 }
 #blowIn {
   opacity: 1;
   transform: translateY(10%);
-}
-.skillsexp{
-  .tagcloud{
-    margin: 0 auto;
-    flex-direction:row;
-    justify-content:center;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .skillsexp{
-    .info{
-      width: 100%;
-      height: 100vh;
-      border: none;
-      transform: translateY(0);
-    }
-    #blowIn{
-      transform: translateY(0);
-    }
-  }
 }
 </style>
