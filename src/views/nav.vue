@@ -905,6 +905,14 @@
                 </a>
               </li>
               <li>
+                <a href="https://www.aliyundrive.com/drive" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=www.aliyundrive.com"
+                  />
+                  阿里云盘
+                </a>
+              </li>
+              <li>
                 <a href="http://wp.soshoulu.com/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=/wp.soshoulu.com"
