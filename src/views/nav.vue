@@ -981,6 +981,22 @@
                   微信JS-SDK DEMO
                 </a>
               </li>
+              <li>
+                <a href="http://33.agilestudio.cn/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=33.agilestudio.cn/"
+                  />
+                  33台词
+                </a>
+              </li>
+              <li>
+                <a href="http://www.zhaotaici.cn/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=www.zhaotaici.cn/"
+                  />
+                  找台词
+                </a>
+              </li>
             </ul>
           </div>
           <div id="fine" class="jj-list">
@@ -1097,6 +1113,50 @@
                     src="https://www.google.cn/s2/favicons?domain_url=scholar.google.com"
                   />
                   adobe插件
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://xclient.info/"
+                  target="_blank"
+                >
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=xclient.info"
+                  />
+                  Xclient
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://macwk.com/"
+                  target="_blank"
+                >
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=macwk.com"
+                  />
+                  MacWk
+                </a>
+              </li>
+               <li>
+                <a
+                  href="https://www.macbl.com/"
+                  target="_blank"
+                >
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=macbl.com"
+                  />
+                 马可波罗
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.macdo.cn/"
+                  target="_blank"
+                >
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=macdo.cn"
+                  />
+                 Mac毒
                 </a>
               </li>
             </ul>
