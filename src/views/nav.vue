@@ -16,139 +16,222 @@
         <!-- slogan end -->
         <!-- 搜索框 start -->
         <div class="searchBox">
-          <input type="text" :class="showSearcherList ? 'selectSearcher' : 'searchInput'" v-model="searchValue" @keyup.enter="search" placeholder="请输入内容">
-          <img class="searchIcon" :src="searcher.img" alt="" @click.stop="showSearcherList = true">
+          <input
+            type="text"
+            :class="showSearcherList ? 'selectSearcher' : 'searchInput'"
+            v-model="searchValue"
+            @keyup.enter="search"
+            placeholder="请输入内容"
+          />
+          <img
+            class="searchIcon"
+            :src="searcher.img"
+            alt=""
+            @click.stop="showSearcherList = true"
+          />
           <ul class="searcherList" v-show="showSearcherList">
-            <li v-for="(item,index) in searcherList" :key="index" @click="selectSearcher(item)"><img :src="item.img" alt=""></li>
+            <li
+              v-for="(item, index) in searcherList"
+              :key="index"
+              @click="selectSearcher(item)"
+            >
+              <img :src="item.img" alt="" />
+            </li>
           </ul>
         </div>
         <!-- 搜索框 end -->
         <!-- 导航地址 start -->
         <div class="nav-content">
-          <div id="item" class="jj-list">
-            <ul class="jj-list-con">
-              <li>
-                <a href="https://jaqi.gitee.io" target="_blank">
-                  <img src />page
-                </a>
-              </li>
-              <li>
-                <a href="http://jaqi.synology.me:5000/" target="_blank">
-                  <img src />cloud
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://shimo.im/docs/f0cce16a6b1f45b3/read"
-                  target="_blank"
-                >
-                  <img src />note（旧）
-                </a>
-              </li>
-              <li>
-                <a href="https://jaqi.gitee.io/jaqi.note" target="_blank">
-                  <img src />note（新）
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div id="often" class="jj-list">
-            <ul class="jj-list-con">
-              <li>
-                <a href="https://www.xuexi.cn/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=www.xuexi.cn"
-                  />学习强国
-                </a>
-              </li>
-              <li>
-                <a href="https://www.zhihu.com/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=www.zhihu.com"
-                  />知 乎
-                </a>
-              </li>
-              <li>
-                <a href="https://cn.vuejs.org/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=cn.vuejs.org"
-                  />
-                  vue
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://developers.weixin.qq.com/miniprogram/dev/framework/"
-                  target="_blank"
-                >
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=mp.weixin.qq.com"
-                  />
-                  小程序开发文档
-                </a>
-              </li>
-              <li>
-                <a href="https://uniapp.dcloud.io/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=uniapp.dcloud.io"
-                  />
-                  uni-app
-                </a>
-              </li>
-              <li>
-                <a href="http://uviewui.com/" target="_blank">
-                  <img src="http://uviewui.com/favicon.ico" />
-                  uview
-                </a>
-              </li>
-              <li>
-                <a href="https://my.rdc.aliyun.com/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
-                  />
-                  云效
-                </a>
-              </li>
-              <li>
-                <a href="https://flow.aliyun.com/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
-                  />
-                  新云效
-                </a>
-              </li>
-              <li>
-                <a href="https://cs.console.aliyun.com/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
-                  />
-                  阿里云控制台
-                </a>
-              </li>
-              <li>
-                <a href="http://www.fengniao.com/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=www.fengniao.com"
-                  />蜂鸟网
-                </a>
-              </li>
-              <li>
-                <a href="https://tuchong.com/" target="_blank">
-                  <img
-                    src="https://www.google.cn/s2/favicons?domain_url=tuchong.com"
-                  />图虫
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://baidule.yuansupic.com/index.html"
-                  target="_blank"
-                >
-                  <img src />素材下载器
-                </a>
-              </li>
-            </ul>
-          </div>
+          <template v-if="$route.name == 'byxNav'">
+            <div id="item" class="jj-list">
+              <ul class="jj-list-con">
+                <li>
+                  <a href="https://mp.weixin.qq.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=mp.weixin.qq.com"
+                    />
+                    微信公众平台
+                  </a>
+                </li>
+                <li>
+                  <a href="https://rrx.cn/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=rrx.cn"
+                    />
+                    人人秀
+                  </a>
+                </li>
+                <li>
+                  <a href="https://818ps.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=818ps.com"
+                    />
+                    图怪兽
+                  </a>
+                </li>
+                <li>
+                  <a href="https://xiumi.us/#/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=818ps.com"
+                    />
+                    秀米编辑器
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.58pic.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=www.58pic.com"
+                    />千图网
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="http://baidule.yuansupic.com/index.html"
+                    target="_blank"
+                  >
+                    <img src />素材下载器
+                  </a>
+                </li>
+                <li>
+                  <a href="http://ppt.koutu.vip/" target="_blank">
+                    <img src />素材下载器（快设计）
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </template>
+          <template v-else>
+            <div id="item" class="jj-list">
+              <ul class="jj-list-con">
+                <li>
+                  <a href="https://jaqi.gitee.io" target="_blank">
+                    <img src />page
+                  </a>
+                </li>
+                <li>
+                  <a href="http://jaqi.synology.me:5000/" target="_blank">
+                    <img src />cloud
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://shimo.im/docs/f0cce16a6b1f45b3/read"
+                    target="_blank"
+                  >
+                    <img src />note（旧）
+                  </a>
+                </li>
+                <li>
+                  <a href="https://jaqi.gitee.io/jaqi.note" target="_blank">
+                    <img src />note（新）
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div id="often" class="jj-list">
+              <ul class="jj-list-con">
+                <li>
+                  <a href="https://www.xuexi.cn/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=www.xuexi.cn"
+                    />学习强国
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.zhihu.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=www.zhihu.com"
+                    />知 乎
+                  </a>
+                </li>
+                <li>
+                  <a href="https://cn.vuejs.org/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=cn.vuejs.org"
+                    />
+                    vue
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://developers.weixin.qq.com/miniprogram/dev/framework/"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=mp.weixin.qq.com"
+                    />
+                    小程序开发文档
+                  </a>
+                </li>
+                <li>
+                  <a href="https://uniapp.dcloud.io/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=uniapp.dcloud.io"
+                    />
+                    uni-app
+                  </a>
+                </li>
+                <li>
+                  <a href="http://uviewui.com/" target="_blank">
+                    <img src="http://uviewui.com/favicon.ico" />
+                    uview
+                  </a>
+                </li>
+                <li>
+                  <a href="https://my.rdc.aliyun.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
+                    />
+                    云效
+                  </a>
+                </li>
+                <li>
+                  <a href="https://flow.aliyun.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
+                    />
+                    新云效
+                  </a>
+                </li>
+                <li>
+                  <a href="https://cs.console.aliyun.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=www.aliyun.com"
+                    />
+                    阿里云控制台
+                  </a>
+                </li>
+                <li>
+                  <a href="http://www.fengniao.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=www.fengniao.com"
+                    />蜂鸟网
+                  </a>
+                </li>
+                <li>
+                  <a href="https://tuchong.com/" target="_blank">
+                    <img
+                      src="https://www.google.cn/s2/favicons?domain_url=tuchong.com"
+                    />图虫
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="http://baidule.yuansupic.com/index.html"
+                    target="_blank"
+                  >
+                    <img src />素材下载器
+                  </a>
+                </li>
+                <li>
+                  <a href="http://ppt.koutu.vip/" target="_blank">
+                    <img src />素材下载器（快设计）
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </template>
+
           <div id="web" class="jj-list">
             <div class="jj-list-tit">
               &bullet; web前端
@@ -974,7 +1057,10 @@
                 </a>
               </li>
               <li>
-                <a href="https://work.weixin.qq.com/api/jsapidemo#menu-location" target="_blank">
+                <a
+                  href="https://work.weixin.qq.com/api/jsapidemo#menu-location"
+                  target="_blank"
+                >
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=work.weixin.qq.com/"
                   />
@@ -995,6 +1081,30 @@
                     src="https://www.google.cn/s2/favicons?domain_url=www.zhaotaici.cn/"
                   />
                   找台词
+                </a>
+              </li>
+              <li>
+                <a href="https://rrx.cn/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=rrx.cn"
+                  />
+                  人人秀
+                </a>
+              </li>
+              <li>
+                <a href="https://818ps.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=818ps.com"
+                  />
+                  图怪兽
+                </a>
+              </li>
+              <li>
+                <a href="https://xiumi.us/#/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=818ps.com"
+                  />
+                  秀米编辑器
                 </a>
               </li>
             </ul>
@@ -1116,10 +1226,7 @@
                 </a>
               </li>
               <li>
-                <a
-                  href="https://xclient.info/"
-                  target="_blank"
-                >
+                <a href="https://xclient.info/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=xclient.info"
                   />
@@ -1127,36 +1234,27 @@
                 </a>
               </li>
               <li>
-                <a
-                  href="https://macwk.com/"
-                  target="_blank"
-                >
+                <a href="https://macwk.com/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=macwk.com"
                   />
                   MacWk
                 </a>
               </li>
-               <li>
-                <a
-                  href="https://www.macbl.com/"
-                  target="_blank"
-                >
+              <li>
+                <a href="https://www.macbl.com/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=macbl.com"
                   />
-                 马可波罗
+                  马可波罗
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.macdo.cn/"
-                  target="_blank"
-                >
+                <a href="https://www.macdo.cn/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=macdo.cn"
                   />
-                 Mac毒
+                  Mac毒
                 </a>
               </li>
             </ul>
@@ -1264,10 +1362,10 @@
 </template>
 <script>
 import "../assets/css/base.css";
-import baidu from "@/assets/images/baidu.png"
-import google from "@/assets/images/google.png"
-import so from "@/assets/images/360so.png"
-import sogou from "@/assets/images/sogou.png"
+import baidu from "@/assets/images/baidu.png";
+import google from "@/assets/images/google.png";
+import so from "@/assets/images/360so.png";
+import sogou from "@/assets/images/sogou.png";
 import axios from "axios";
 export default {
   name: "jaqi.nav",
@@ -1275,24 +1373,44 @@ export default {
     return {
       msg: "个人导航",
       weatherdata: [],
-      showSearcherList:false,
+      showSearcherList: false,
       searcherList: [
-        { name: "百度", key: "baidu",url:"https://www.baidu.com/s?wd=", img: baidu },
-        { name: "谷歌", key: "google",url:"https://www.google.com/search?q=",img: google },
-         { name: "360搜索", key: "360so",url:"https://www.so.com/s?q=",img: so },
-        { name: "搜狗", key: "google",url:"https://www.sogou.com/web?query=",img: sogou },
+        {
+          name: "百度",
+          key: "baidu",
+          url: "https://www.baidu.com/s?wd=",
+          img: baidu,
+        },
+        {
+          name: "谷歌",
+          key: "google",
+          url: "https://www.google.com/search?q=",
+          img: google,
+        },
+        {
+          name: "360搜索",
+          key: "360so",
+          url: "https://www.so.com/s?q=",
+          img: so,
+        },
+        {
+          name: "搜狗",
+          key: "google",
+          url: "https://www.sogou.com/web?query=",
+          img: sogou,
+        },
       ],
-      searcher:'',
-      searchValue:''
+      searcher: "",
+      searchValue: "",
     };
   },
   components: {},
   methods: {
-      selectSearcher(item){
-        this.searcher = item
+    selectSearcher(item) {
+      this.searcher = item;
     },
-    search(){
-      window.open (this.searcher.url+this.searchValue);
+    search() {
+      window.open(this.searcher.url + this.searchValue);
     },
     weather() {
       var that = this;
@@ -1396,7 +1514,7 @@ a:active {
   margin: 20px auto;
   position: relative;
 }
-.searchInput{
+.searchInput {
   width: 100%;
   height: 40px;
   padding-left: 40px;
@@ -1406,7 +1524,7 @@ a:active {
   border: 1px solid #dcdfe6;
   color: #606266;
 }
-.selectSearcher{
+.selectSearcher {
   width: 100%;
   height: 40px;
   padding-left: 40px;
@@ -1417,8 +1535,8 @@ a:active {
   color: #606266;
 }
 .searchInput:focus {
-    outline: none;
-    border-color: #409eff;
+  outline: none;
+  border-color: #409eff;
 }
 .searchIcon {
   position: absolute;
@@ -1428,10 +1546,10 @@ a:active {
   height: 20px;
 }
 
-.searcherList{
+.searcherList {
   position: absolute;
   top: 40px;
-  border-radius: 0px 0px  4px 4px  ;
+  border-radius: 0px 0px 4px 4px;
   border: 1px solid #dcdfe6;
   border-top: none;
   margin: 0px;
@@ -1439,12 +1557,12 @@ a:active {
   box-sizing: border-box;
   background-color: #fff;
 }
-.searcherList li{
+.searcherList li {
   width: 100%;
   display: block;
   text-align: center;
 }
-.searcherList li img{
+.searcherList li img {
   display: block;
   text-align: center;
   padding: 10px;

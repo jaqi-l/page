@@ -20,6 +20,11 @@ const routes =  [
       name: 'nav',
       component: () => import('@/views/nav')
     },
+    {
+      path: '/byxNav',
+      name: 'byxNav',
+      component: () => import('@/views/nav')
+    },
   ]
 
 const router = createRouter({
