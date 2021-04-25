@@ -1,6 +1,6 @@
 <template>
   <div class="wrap-container" :style="{ height: conheight }">
-    <router-link class="containerbox container-1" href to="/#">
+    <!-- <router-link class="containerbox container-1" href to="/#">
       <div class="container-pic"></div>
       <div class="container-info">
         <h3 class="container-title">简历</h3>
@@ -9,7 +9,7 @@
           正在升级，敬请期待...
         </h5>
       </div>
-    </router-link>
+    </router-link> -->
     <router-link class="containerbox container-2" href to="/nav">
       <div class="container-pic"></div>
       <div class="container-info">
