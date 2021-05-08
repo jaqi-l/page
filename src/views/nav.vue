@@ -815,11 +815,19 @@
                 </a>
               </li>
               <li>
-                <a href="https://www.sq688.com/" target="_blank">
+                <a href="https://www.sq688.com/share.html" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=www.sq688.com"
                   />
                   超高无损音乐
+                </a>
+              </li>
+              <li>
+                <a href="https://www.hifini.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=www.hifini.com"
+                  />
+                  HiFiNi 音乐磁场
                 </a>
               </li>
               <li>
