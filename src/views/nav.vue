@@ -122,7 +122,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="https://jaqi.gitee.io/jaqi.note" target="_blank">
+                  <a href="https://jaqi-l.github.io/jaqi.note/" target="_blank">
                     <img src />note（新）
                   </a>
                 </li>

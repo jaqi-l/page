@@ -17,7 +17,10 @@
         <h4 class="container-subtitle">jaqi.nav</h4>
       </div>
     </router-link>
-    <a class="containerbox container-3" href="https://jaqi.gitee.io/jaqi.note/">
+    <a
+      class="containerbox container-3"
+      href="https://jaqi-l.github.io/jaqi.note/"
+    >
       <div class="container-pic"></div>
       <div class="container-info">
         <h3 class="container-title">笔记</h3>
