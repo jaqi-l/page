@@ -19,7 +19,7 @@
     </router-link>
     <a
       class="containerbox container-3"
-      href="https://jaqi-l.github.io/jaqi.note/"
+      href="https://jaqi.gitee.io/jaqi.note/"
     >
       <div class="container-pic"></div>
       <div class="container-info">

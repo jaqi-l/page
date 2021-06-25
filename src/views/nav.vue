@@ -114,16 +114,13 @@
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://shimo.im/docs/f0cce16a6b1f45b3/read"
-                    target="_blank"
-                  >
-                    <img src />note（旧）
+                  <a href="https://jaqi-l.github.io/jaqi.note/" target="_blank">
+                    <img src />note（备份）
                   </a>
                 </li>
                 <li>
-                  <a href="https://jaqi-l.github.io/jaqi.note/" target="_blank">
-                    <img src />note（新）
+                  <a href="https://jaqi.gitee.io/jaqi.note/" target="_blank">
+                    <img src />note
                   </a>
                 </li>
               </ul>
