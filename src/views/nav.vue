@@ -1112,6 +1112,14 @@
                   秀米编辑器
                 </a>
               </li>
+              <li>
+                <a href="http://www.sanluan.com/freemarker_test.html" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=818ps.com"
+                  />
+                  freemarker在线测试
+                </a>
+              </li>
             </ul>
           </div>
           <div id="fine" class="jj-list">
