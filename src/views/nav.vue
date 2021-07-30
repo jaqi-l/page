@@ -1120,6 +1120,30 @@
                   freemarker在线测试
                 </a>
               </li>
+              <li>
+                <a href="http://npm.taobao.org/mirrors/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=npm.taobao.org"
+                  />
+                  淘宝镜像
+                </a>
+              </li>
+              <li>
+                <a href="https://gsnedders.html5.org/outliner/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=gsnedders.html5.org"
+                  />
+                  HTML5大纲查看工具
+                </a>
+              </li>
+              <li>
+                <a href="https://www.yimenapp.com" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=yimenapp.com"
+                  />
+                  一门APP
+                </a>
+              </li>
             </ul>
           </div>
           <div id="fine" class="jj-list">
