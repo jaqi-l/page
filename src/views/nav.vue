@@ -384,6 +384,14 @@
                 </a>
               </li>
               <li>
+                <a href="https://www.jq22.com/" target="_blank">
+                  <img
+                    src="https://www.google.cn/s2/favicons?domain_url=jq22.com"
+                  />
+                  jquery插件库
+                </a>
+              </li>
+              <li>
                 <a href="https://www.bootcss.com/" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=bootcss.com"
