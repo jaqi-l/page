@@ -933,12 +933,6 @@
                 </a>
               </li>
               <li>
-                <a href="http://index.baidu.com/" target="_blank">
-                  <img src="https://www.baidu.com/favicon.ico" />
-                  百度指数
-                </a>
-              </li>
-              <li>
                 <a href="https://caniuse.com/#" target="_blank">
                   <img
                     src="https://www.google.cn/s2/favicons?domain_url=caniuse.com"
@@ -958,6 +952,30 @@
                 <a href="https://tongji.baidu.com/" target="_blank">
                   <img src="https://tongji.baidu.com/favicon.ico" />
                   百度统计
+                </a>
+              </li>
+              <li>
+                <a href="http://index.baidu.com/" target="_blank">
+                  <img src="https://www.baidu.com/favicon.ico" />
+                  百度指数
+                </a>
+              </li>
+              <li>
+                <a href="https://ziyuan.baidu.com/dashboard/index" target="_blank">
+                  <img src="https://ziyuan.baidu.com/favicon.ico" />
+                  百度搜索资源平台
+                </a>
+              </li>
+              <li>
+                <a href="https://zhanzhang.so.com/" target="_blank">
+                  <img src="https://zhanzhang.so.com/favicon.ico" />
+                  360站长平台
+                </a>
+              </li>
+              <li>
+                <a href="https://zhanzhang.sogou.com/" target="_blank">
+                  <img src="https://dlweb.sogoucdn.com/translate/favicon.ico" />
+                  搜狗资源平台
                 </a>
               </li>
               <li>
