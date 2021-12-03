@@ -45,7 +45,7 @@
           <template v-for="(data, index) in commonNav.byx" :key="index"
             ><ul class="list">
               <li v-for="(child, index) in data" :key="index">
-                <a :href="child.link" target="_blank">
+                <a :href="child.link" target="_blank" :title="child.link">
                   <img :src="getFavicons(child.link)" />
                   <span> {{ child.title }}</span>
                 </a>
@@ -57,7 +57,7 @@
           <template v-for="(data, index) in commonNav.jaqi" :key="index"
             ><ul class="list">
               <li v-for="(child, index) in data" :key="index">
-                <a :href="child.link" target="_blank">
+                <a :href="child.link" target="_blank" :title="child.link">
                   <img :src="getFavicons(child.link)" />
                   <span> {{ child.title }}</span>
                 </a>
@@ -73,7 +73,7 @@
             </div>
             <ul class="list">
               <li v-for="(child, index) in data.child" :key="index">
-                <a :href="child.link" target="_blank">
+                <a :href="child.link" target="_blank" :title="child.link">
                   <img :src="getFavicons(child.link)" />
                   <span> {{ child.title }}</span>
                 </a>

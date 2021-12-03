@@ -42,12 +42,12 @@
                 "link": "http://jaqi.synology.me:5000/"
             },
             {
-                "title": "jaqi.note（备份）",
-                "link": "https://jaqi-l.github.io/jaqi.note/"
-            },
-            {
                 "title": "jaqi.note",
                 "link": "https://jaqi.gitee.io/jaqi.note/"
+            },
+            {
+                "title": "jaqi.note（备用）",
+                "link": "https://jaqi-l.github.io/jaqi.note/"
             }
         ],
         [
