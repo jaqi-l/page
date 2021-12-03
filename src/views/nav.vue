@@ -40,14 +40,14 @@
       </div>
       <!-- 搜索框 end -->
       <!-- 导航地址 start -->
-      <div class="nav-content">
+      <div class="category">
         <template v-if="$route.name == 'byxNav'">
           <template v-for="(data, index) in commonNav.byx" :key="index"
             ><ul class="list">
               <li v-for="(child, index) in data" :key="index">
                 <a :href="child.link" target="_blank">
                   <img :src="getFavicons(child.link)" />
-                  {{ child.title }}
+                  <span> {{ child.title }}</span>
                 </a>
               </li>
             </ul></template
@@ -59,7 +59,7 @@
               <li v-for="(child, index) in data" :key="index">
                 <a :href="child.link" target="_blank">
                   <img :src="getFavicons(child.link)" />
-                  {{ child.title }}
+                  <span> {{ child.title }}</span>
                 </a>
               </li>
             </ul></template
@@ -75,7 +75,7 @@
               <li v-for="(child, index) in data.child" :key="index">
                 <a :href="child.link" target="_blank">
                   <img :src="getFavicons(child.link)" />
-                  {{ child.title }}
+                  <span> {{ child.title }}</span>
                 </a>
               </li>
             </ul>
@@ -131,7 +131,7 @@ export default {
       searcher: "",
       searchValue: "",
       baseNav,
-      commonNav,
+      commonNav
     };
   },
   components: {},
@@ -169,7 +169,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 a {
   text-decoration: none;
 }
@@ -191,163 +191,208 @@ input[type="reset"] {
   padding: 5% 2%;
   min-width: 900px;
   max-width: 1400px;
-  margin: 0 auto;
-}
+  margin: 0 auto; /* slogan start  */
+  .slogan {
+    overflow: hidden;
+    align-items: center;
+    font-size: 2.4em;
+    color: #333;
+    font-family: "Noto Sans SC", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 3em;
+  }
 
-/* logo start  */
-.slogan {
-  overflow: hidden;
-  align-items: center;
-  font-size: 36px;
-  color: #333;
-  font-family: "Noto Sans SC", sans-serif;
-  text-align: center;
-  font-weight: bold;
-  padding-bottom: 31px;
-}
+  /* slogan end  */
 
-/* logo end  */
-/* 搜索框 start */
-.searchBox {
-  display: flex;
-  width: 70%;
-  margin: 20px auto;
-  position: relative;
-}
-.searchInput {
-  width: 100%;
-  height: 40px;
-  padding-left: 40px;
-  font-size: 15px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  border: 1px solid #dcdfe6;
-  color: #606266;
-}
-.selectSearcher {
-  width: 100%;
-  height: 40px;
-  padding-left: 40px;
-  font-size: 15px;
-  box-sizing: border-box;
-  border-radius: 4px 4px 4px 0px;
-  border: 1px solid #dcdfe6;
-  color: #606266;
-}
-.searchInput:focus {
-  outline: none;
-  border-color: #409eff;
-}
-.searchIcon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 20px;
-  height: 20px;
-}
+  /* 搜索框 start */
+  .searchBox {
+    display: flex;
+    width: 70%;
+    margin: 2em auto;
+    position: relative;
+    .searchInput {
+      width: 100%;
+      height: 3em;
+      line-height: 3em;
+      font-size: 1em;
+      padding-left: 3em;
+      box-sizing: border-box;
+      border-radius: 0.5em;
+      border: 1px solid #dcdfe6;
+      color: #606266;
+      &:focus {
+        outline: none;
+        border-color: #409eff;
+      }
+    }
+    .searchIcon {
+      position: absolute;
+      top: 0.75em;
+      left: 0.75em;
+      width: 1.5em;
+      height: 1.5em;
+    }
+    .selectSearcher {
+      width: 100%;
+      height: 3em;
+      line-height: 3em;
+      font-size: 1em;
+      padding-left: 3em;
+      box-sizing: border-box;
+      border-radius: 4px 4px 4px 0px;
+      border: 1px solid #dcdfe6;
+      color: #606266;
+    }
+    .searcherList {
+      position: absolute;
+      top: 3em;
+      border-radius: 0px 0px 4px 4px;
+      border: 1px solid #dcdfe6;
+      border-top: none;
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      background-color: #fff;
+      li {
+        width: 100%;
+        display: block;
+        text-align: center;
+        img {
+          display: block;
+          text-align: center;
+          padding: 0.75em;
+          width: 1.5em;
+          height: 1.5em;
+        }
+      }
+    }
+  }
+  /* 搜索框 end */
 
-.searcherList {
-  position: absolute;
-  top: 40px;
-  border-radius: 0px 0px 4px 4px;
-  border: 1px solid #dcdfe6;
-  border-top: none;
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  background-color: #fff;
-}
-.searcherList li {
-  width: 100%;
-  display: block;
-  text-align: center;
-}
-.searcherList li img {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  width: 20px;
-  height: 20px;
-}
-/* 搜索框 end */
-/*  导航内容 start  */
+  /*  导航内容 start  */
 
-.category {
-  width: 100%;
-  float: left;
-  margin-top: 30px;
-  padding-right: 16px;
-}
+  .category {
+    width: 100%;
+    margin-top: 2.5em;
+    padding-right: 1em;
+    .category-title {
+      box-sizing: border-box;
+      font-size: 1em;
+      line-height: 1.25em;
+      color: rgba(49, 70, 89, 1);
+      font-weight: bold;
+      width: 100%;
+      margin: 0 0 0.75em 2em;
+      span {
+        font-weight: normal;
+      }
+      .decorate {
+        padding: 0 0.3em;
+      }
+    }
+  }
 
-.category-title {
-  box-sizing: border-box;
-  /*以IE盒子模型的width为标准*/
-  font-size: 16px;
-  line-height: 25px;
-  color: rgba(49, 70, 89, 1);
-  font-weight: bold;
-  width: 100%;
-  /*div等分*/
-  margin: 0 0 10px 31px;
-}
-
-.category-title span {
-  font-weight: normal;
-}
-.category-title .decorate {
-  padding: 0 4px;
-}
-
-.list {
-  margin: 20px auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.list li {
-  flex-basis: calc(100% / 6);
-  margin: 2px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.list li a {
-  display: block;
-  background: rgba(230, 247, 255, 0.96);
-  color: rgba(49, 70, 89, 1);
-  font-size: 0.9rem;
-  text-align: left;
-  padding-left: 1.7em;
-  line-height: 44px;
-  transition: all 0.2s;
-  border-radius: 4px;
-}
-
-.list li a img {
-  height: 0.8rem;
-  margin-right: 0.5rem;
-}
-
-.list li a:hover {
-  background: #1890ff 100%;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-}
-
-.list li a:hover img {
-  height: 1rem;
-  margin-right: 8px;
+  .list {
+    margin: 0.85em auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    li {
+      flex-basis: calc(100% / 6 - 0.6em);
+      margin: 0.3em;
+      overflow: hidden;
+      a {
+        overflow: hidden;
+        display: block;
+        background: rgba(230, 247, 255, 0.96);
+        color: rgba(49, 70, 89, 1);
+        font-size: 0.9em;
+        text-align: left;
+        padding-left: 0.5em;
+        line-height: 2.5em;
+        transition: all 0.2s;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+        border-radius: 0.3em;
+        img {
+          height: 0.8em;
+          margin-right: 0.5em;
+        }
+        &:hover {
+          background: #1890ff 100%;
+          font-size: 1em;
+          font-weight: bold;
+          color: #fff;
+          img {
+            height: 1em;
+            margin-right: 0.6em;
+          }
+        }
+      }
+    }
+  }
+  /*  导航内容 end  */
 }
 
 /*-----------------------------手机自适应---------------------------------------------------*/
 @media screen and (max-device-width: 768px) {
   .main {
-    padding: 5% 0;
     width: 100%;
-    margin: 0 auto;
+    min-width: 320px;
+    max-width: 100%;
+    padding: 5% 0px;
+    margin: 0px;
+    font-size: 16px;
+    .slogan {
+      width: calc(100% - 4em);
+      font-size: 2em;
+      padding: 0px;
+      margin: 2em;
+    }
+    .weather {
+      padding-left: 1em;
+    }
+    /* slogan end  */
+
+    /* 搜索框 start */
+    .searchBox {
+      width: 90%;
+      .searchInput {
+        font-size: 1em;
+      }
+      .selectSearcher {
+        font-size: 1em;
+      }
+    }
+    /* 搜索框 end */
+
+    /*  导航内容 start  */
+
+    .category {
+      margin-top: 2.5em;
+      width: calc(100% - 16px);
+      padding: 0 8px;
+      .category-title {
+        margin: 0 0 0.75em 0em;
+        span {
+          font-weight: normal;
+        }
+        .decorate {
+          padding: 0 0.3em;
+        }
+      }
+      .list {
+        padding: 0px;
+        li {
+          flex-basis: calc(100% / 3 - 0.6em);
+        }
+      }
+    }
+
+    /*  导航内容 end  */
   }
 }
-/*  导航内容 end  */
 </style>
