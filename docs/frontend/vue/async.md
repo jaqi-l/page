@@ -27,5 +27,5 @@ Vue在更新DOM时是异步执行的。当数据发生变化，Vue将开启一�
 在Vue生命周期的`created()`钩子函数进行的DOM操作一定要放在`Vue.nextTick()`的回调函数中.
 :::
 
-## 7.9.2 Promise详见[3.14.2](/jaqi.note/frontend/javascript/sync_asyn/#_3-14-2promise)
-## 7.9.3 async/await详见[3.14.3](/jaqi.note/frontend/javascript/sync_asyn/#_3-14-3async-await)
+## 7.9.2 Promise详见[3.14.2](/frontend/javascript/sync_asyn#_3-14-2promise)
+## 7.9.3 async/await详见[3.14.3](/frontend/javascript/sync_asyn#_3-14-3async-await)

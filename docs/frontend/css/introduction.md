@@ -74,7 +74,7 @@ CSS3是CSS（层叠样式表）技术的升级版本，于1999年开始制订，
 ```
 
 ::: tip 
-1. 未来 `Vue` 将使用 `CSS` 原生的 [@scope](/jaqi.note/frontend/css/function/#作用域-scope-css-2023新增) 方法优化该策略。
+1. 未来 `Vue` 将使用 `CSS` 原生的 [@scope](/frontend/css/function#作用域-scope-css-2023新增) 方法优化该策略。
 新策略下，`Vue` 内部只需要在每个组件的根部元素上加上 `scope` 属性即可。（再也不需要一个一个元素遍历去加了）
 2. 微信小程序样式隔策略`styleIsolation`详见[组件样式隔离](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html#%E7%BB%84%E4%BB%B6%E6%A0%B7%E5%BC%8F%E9%9A%94%E7%A6%BB)
 :::
@@ -230,4 +230,4 @@ p {
 </style>
 ```
 
-同`css`的`var`方法,详见：[css函数](/jaqi.note/frontend/css/function/#css函数)
+同`css`的`var`方法,详见：[css函数](/frontend/css/function#css函数)

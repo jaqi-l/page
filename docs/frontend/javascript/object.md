@@ -35,7 +35,7 @@ age:40
 let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
 let { bar, foo } = { foo: 'aaa', bar: 'bbb' };
 ```
-[详见ES6专题]()
+<!-- [详见ES6专题]() -->
 ### 对象的访问
 * 可以用点符号访问对象属性值也可以通过数组的方式，即用["属性名称"] 
 ```js
@@ -79,7 +79,7 @@ var arr=[];
 let [a, b, c] = [1, 2, 3];
 let [foo, [[bar], baz]] = [1, [[2], 3]];
 ```
-[详见ES6专题]()
+<!-- [详见ES6专题]() -->
 
 ### 数组的访问
 * 可以使用索引查询获取数组元素和添加数组元素
@@ -251,11 +251,11 @@ function myFunction() {
     ages.filter(checkAdult);
 }
 ```
-* `forEach`用于调用数组的每个元素，并将元素传递给回调函数,详见[3.4.7](/jaqi.note/frontend/javascript/control/#_3-4-7其他控制语句)
+* `forEach`用于调用数组的每个元素，并将元素传递给回调函数,详见[3.4.7](/frontend/javascript/control#_3-4-7其他控制语句)
 ```js
 arr.forEach(function () {})
 ```
-* `map`返回一个新数组，数组中的元素为原始数组元素调用函数处理后的，详见[3.4.7](/jaqi.note/frontend/javascript/control/#_3-4-7其他控制语句)
+* `map`返回一个新数组，数组中的元素为原始数组元素调用函数处理后的，详见[3.4.7](/frontend/javascript/control#_3-4-7其他控制语句)
 ```js
 arr.map(function () {})
 ```

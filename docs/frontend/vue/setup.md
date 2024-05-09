@@ -517,7 +517,7 @@ onMounted(()=>{
 ```
 ### `useCssModule`
 `setup()`和`<script setup>`中访问注入的`class`
-详见：[vue中的特殊选择器、方法](/jaqi.note/frontend/css/introduction/#vue中的特殊选择器、方法)
+详见：[vue中的特殊选择器、方法](/frontend/css/introduction#vue中的特殊选择器、方法)
 
 
 ## 6.12.4 `<script setup>`API

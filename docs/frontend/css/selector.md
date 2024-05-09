@@ -223,4 +223,4 @@ p:nth-child(2 of .highlight) {
 
 ## 2.2.7 深度选择器
 
-详见：[样式私有化-深度选择器](/jaqi.note/frontend/css/introduction/#深度选择器)
+详见：[样式私有化-深度选择器](/frontend/css/introduction#深度选择器)

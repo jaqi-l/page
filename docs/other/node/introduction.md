@@ -395,7 +395,7 @@ nrm del <registry>
 
 一个js文件就是一个模块，通常放在node_modules文件夹中。
 
-node.js使用`CommonJS`模块规范，`CommonJS`加载的是一个对象该对象只有在脚本运行完才会生成。（自 `Node.js` v12 起支持ESM规范[3.16.20 Module](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-20-es6-module) ）
+node.js使用`CommonJS`模块规范，`CommonJS`加载的是一个对象该对象只有在脚本运行完才会生成。（自 `Node.js` v12 起支持ESM规范[3.16.20 Module](/frontend/javascript/ECMAScript#_3-16-20-es6-module) ）
 
 * 模块分类：
 1. 系统核心模块（`http`、`fs`、`url`...）

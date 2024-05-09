@@ -55,7 +55,7 @@ element.removeEventListener(event, function, {
 
 :::warning
 1. IE8及其以下需要使用IE事件处理程序attachEvent/detachEvent
-2. 捕获与冒泡详见[3.12.6](/jaqi.note/frontend/javascript/event/#_3-12-6事件的冒泡和捕获)
+2. 捕获与冒泡详见[3.12.6](/frontend/javascript/event#_3-12-6事件的冒泡和捕获)
 3. 如果要阻止默认行为，需设置`passive`，否则可能会失败
 4. 要移除事件时，移除时绑定的事件必须监听时绑定的是同一个事件。
 > ```js
@@ -116,7 +116,7 @@ DOM3级事件在DOM2级事件的基础上添加了更多的事件类型，全部
 
 * `keyCode`
 > * 键盘事件的event对象中包含一个keyCode属性，onkeydown和onkeyup表示你按下的具体的键，而onkeypress表示你按下的字符。        
-> `keyCode`详见[3.12.4](/jaqi.note/frontend/javascript/event/#3.12.4事件的对象获)
+> `keyCode`详见[3.12.4](/frontend/javascript/event#3.12.4事件的对象获)
 
 ### 其他事件
 
@@ -248,7 +248,7 @@ var scrollTop=document.documentElement.scrollTop||doucument.body.scrollTop;
 与事件冒泡相反，事件会从最外层开始发生，直到最具体的元素。
 事件捕获时，父级元素先触发，子级元素后触发
 
-通过addEventListener函数，可以自己选择绑定事件时采用事件捕获还是事件冒泡它有三个参数，第三个参数若是true，则表示采用事件捕获，若是false，则表示采用事件冒泡。详见[3.12.2](/jaqi.note/frontend/javascript/event/#_3-12-2事件的冒泡和捕获)
+通过addEventListener函数，可以自己选择绑定事件时采用事件捕获还是事件冒泡它有三个参数，第三个参数若是true，则表示采用事件捕获，若是false，则表示采用事件冒泡。详见[3.12.2](/frontend/javascript/event#_3-12-2事件的冒泡和捕获)
 
 :::warning
 1. IE9以前的版本只支持事件冒泡，不支持事件捕获，它也不支持addEventListener函数，不会用第三个参数来表示是冒泡还是捕获，它提供了另一个函数attachEvent。

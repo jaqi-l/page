@@ -207,7 +207,7 @@ obj.b.fnB.apply(obj) // call apply 不能修改箭头函数的继承
 obj.c()() // 10 // 箭头函数继承c的this，c的this是obj  a=10
 obj2.c()() // 10 // 箭头函数继承c的this，c的this是obj2  a=10
 ```   
-箭头函数详见[3.16.3](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-3-函数扩展)    
+箭头函数详见[3.16.3](/frontend/javascript/ECMAScript#_3-16-3-函数扩展)    
 
 5. 在事件中，this表示指向接收事件的DOM元素。 
 ```html

@@ -467,7 +467,7 @@ obj = 1; // 报错
 
 `Typescript`全面支持ES2015中的`class`关键字，并为其添加了类型的注解和语法
 
-`javascript`中的`class`关键字详见[3.16.9](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-19-class)
+`javascript`中的`class`关键字详见[3.16.9](/frontend/javascript/ECMAScript#_3-16-19-class)
 
 ```ts
 class Person {
@@ -769,8 +769,7 @@ interface objTemp1 extends objTemp {z:string }  // 继承objTemp的类型并设�
 let obj: objTemp1 = { x: 1, y: 2, z: '3' }
 ```
 
-* `class`类的继承：详见[class类的继承方法
-](/jaqi.note/frontend/javascript/TypeScript/#class类)
+* `class`类的继承：详见[class类的继承方法](/frontend/javascript/TypeScript#class类)
 
 
 ### 交叉类型

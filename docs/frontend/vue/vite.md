@@ -480,7 +480,7 @@ pnpm install vue-tsc -D
 
 * 配置`tsconfig.json`：   
 
-详见：[3.17.4 vite项目配置案例](/jaqi.note/frontend/javascript/TypeScript/#vite项目配置案例)
+详见：[3.17.4 vite项目配置案例](/frontend/javascript/TypeScript#vite项目配置案例)
 
 * * 配置`package.json`：
 ```json

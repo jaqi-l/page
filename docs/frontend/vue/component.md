@@ -55,7 +55,7 @@
 ::: tip
 1. 如果子组件使用的是选项式 API，被引用的组件实例和该子组件的 `this` 完全一致，这意味着父组件对子组件的每一个属性和方法都有完全的访问权。
 
-2. <span style="color: red">*</span>Vue3：使用了`<script setup>` 的组件是默认私有的，父组件无法访问使用了` <script setup>` 的子组件中的任何东西,除非子组件在其中通过显式暴露[defineExpose](/jaqi.note/frontend/vue/setup/#defineexpose)
+2. <span style="color: red">*</span>Vue3：使用了`<script setup>` 的组件是默认私有的，父组件无法访问使用了` <script setup>` 的子组件中的任何东西,除非子组件在其中通过显式暴露[defineExpose](/frontend/vue/setup#defineexpose)
 
 3. <span style="color: red">*</span>Vue3：函数模板引用，除了使用字符串作为实例的名字之外，还可以使用函数
 > ```vue
@@ -107,8 +107,8 @@
 
 ### 模块系统
 * 将每个组件放置在其各自的文件中。    
-* 通过`import`/`require`引入组件。（`ES6 Module`详见[7.16.20](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-20-es6-module)
-`CommonJS`详见[7.1.7](/jaqi.note/other/node/introduction/#_7-1-7-模块系统)）    
+* 通过`import`/`require`引入组件。（`ES6 Module`详见[7.16.20](/frontend/javascript/ECMAScript#_3-16-20-es6-module)
+`CommonJS`详见[7.1.7](/other/node/introduction#_7-1-7-模块系统)）    
 
 * 全局注册的行为必须在根Vue实例(通过 new Vue)创建之前发生
 * 局部注册：
@@ -897,7 +897,7 @@ inject('key', () => new ExpensiveClass())
 
 但如果你正在构建大型的应用，包含非常多的依赖提供，或者你正在编写提供给其他开发者使用的组件库，建议最好使用 Symbol 来作为注入名以避免潜在的冲突。
 
-详见[3.16.9 Symbol](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-9-symbol)
+详见[3.16.9 Symbol](/frontend/javascript/ECMAScript#_3-16-9-symbol)
 ```js
 // keys.js
 export const myInjectionKey = Symbol() as InjectionKey<string>

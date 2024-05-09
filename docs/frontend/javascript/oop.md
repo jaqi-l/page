@@ -131,7 +131,7 @@ alert(cat1.type); // 猫科动物
 ```
 
 ### 相关方法
-详见：[7、Prototype模式的验证方法](/jaqi.note/frontend/javascript/oop/#_7、prototype模式的验证方法)
+详见：[7、Prototype模式的验证方法](/frontend/javascript/oop#_7、prototype模式的验证方法)
 
 ## 3.15.3 对象封装方法
 封装的六种方法
@@ -266,7 +266,7 @@ var cat2 = new Cat("二毛","黑色");
 alert(cat1.type); // 猫科动物
 cat1.eat(); // 吃老鼠
 ```
-`class`详见[3.16.19](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-19-class)
+`class`详见[3.16.19](/frontend/javascript/ECMAScript#_3-16-19-class)
 ### 7、`Prototype`模式的验证方法
 
 为了配合prototype属性，Javascript定义了一些辅助方法，帮助我们使用它。，

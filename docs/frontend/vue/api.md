@@ -47,15 +47,15 @@
 * `Vue.config.productionTip`:阻止vue在启动时生成生产提示。<span style="color: red">*</span>Vue3中移除
 
 ## 6.11.2 全局API
-* `Vue.extend()`:在Vue实例中创建一个“子类” 详见[6.4.6](/jaqi.note/frontend/vue/component/#混入-mixin) 。<span style="color: red">*</span>Vue3中移除
-* `Vue.nextTick()`:在下次DOM更新循环结束之后执行延迟回调,详见[6.9.1](/jaqi.note/frontend/vue/async/#_6-9-1nexttick) 
-* `Vue.set()`修改数组或对象并触发视图更新,详见[6.4.6](/jaqi.note/frontend/vue/component/#控制更新) 
+* `Vue.extend()`:在Vue实例中创建一个“子类” 详见[6.4.6](/frontend/vue/component#混入-mixin) 。<span style="color: red">*</span>Vue3中移除
+* `Vue.nextTick()`:在下次DOM更新循环结束之后执行延迟回调,详见[6.9.1](/frontend/vue/async#_6-9-1nexttick) 
+* `Vue.set()`修改数组或对象并触发视图更新,详见[6.4.6](/frontend/vue/component#控制更新) 
 * `Vue.delete()`删除数组或对象并触发视图更新
-* `Vue.directive()`注册或获取全局自定义指令,详见[6.2.14](/jaqi.note/frontend/vue/control/#_6-2-14-自定义指令-directive) 
+* `Vue.directive()`注册或获取全局自定义指令,详见[6.2.14](/frontend/vue/control#_6-2-14-自定义指令-directive) 
 * `Vue.filter()`注册或获取全局过滤器
 * `Vue.component()`注册或获取全局组件
 * `Vue.use()`使用已安装的vue插件
-* `Vue.mixin()`全局注册一个混入,详见[6.4.6](/jaqi.note/frontend/vue/component/#混入-mixin) 
+* `Vue.mixin()`全局注册一个混入,详见[6.4.6](/frontend/vue/component#混入-mixin) 
 * `Vue.compile()`将一个模板字符串编译成render函数
 * <span style="color: red">*</span>Vue3新增：`createApp`创建应用实例
 * <span style="color: red">*</span>Vue3新增：`mount`挂载应用实例

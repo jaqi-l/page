@@ -38,7 +38,7 @@
 
 
 ::: tip
-1. `pushState`与`popState`详见[3.10.3](/jaqi.note/frontend/javascript/BOM/#_3-10-3-window%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7) 
+1. `pushState`与`popState`详见[3.10.3](/frontend/javascript/BOM#_3-10-3-window%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7) 
 2. `HTML Entry` & `JS Entry`
 * `JS Entry`
 > 原理：所有的资源（css、图片）都打包成一个 `js` 文件,主应用引用微应用打包出的 `js`文件        

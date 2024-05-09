@@ -66,7 +66,7 @@
 <!-- 简写 -->
 <button @click="fn"></button>
 ```
-支持的事件详见：[事件](/jaqi.note/frontend/javascript/event/)
+支持的事件详见：[事件](/frontend/javascript/event)
 ## 6.2.9 `v-for`
 `in`遍历key,在遍历对象时使用。
 ```html

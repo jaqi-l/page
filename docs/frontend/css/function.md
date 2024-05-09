@@ -36,7 +36,7 @@ vue中通过定义自定义属性值
 ```html
 <div :style="{'--top-bar-height':topBarHeight}"></div>
 ```
-<span style="color: red">*</span>Vue3`v-bind`写法,详见：[vue中的特殊选择器、方法](/jaqi.note/frontend/css/introduction/#vue中的特殊选择器、方法)
+<span style="color: red">*</span>Vue3`v-bind`写法,详见：[vue中的特殊选择器、方法](/frontend/css/introduction#vue中的特殊选择器、方法)
 
 ### clamp
 `clamp`函数的作用是把一个值限制在一个上限和下限之间

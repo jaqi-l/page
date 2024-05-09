@@ -25,7 +25,7 @@
 > * 全局变量的优点：可以减少变量的个数，减少由于实际参数和形式参数的数据传递带来的时间消耗。
 > * 全局变量缺点:使函数的代码可读性降低。由于多个函数都可能使用全局变量，函数执行时全局变量的值可能随时发生变化，对于程序的查错和调试都非常不利。
 
-<span style="color: red">\*ES6新增块级作用域</span> [3.16.1 let和const命令](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-1-let和const命令)
+<span style="color: red">\*ES6新增块级作用域</span> [3.16.1 let和const命令](/frontend/javascript/ECMAScript#_3-16-1-let和const命令)
 
 ::: tip
 1. 当局部变量与全部变量同名时，用自己的。

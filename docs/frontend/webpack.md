@@ -1247,9 +1247,9 @@ module.exports={
 > }
 > ```
 3. 多进程多实例并行压缩`parallel-uglify-plugin`/`uglifyjs-webpack-plugin`(不支持压缩ES6语法)/`terser-webpack-plugin`(webpack 4.x内置)
-> `terser-webpack-plugin`:详见[7.8.4](/jaqi.note/frontend/webpack/#_7-4-4-js文件压缩terser-webpack-plugin)
+> `terser-webpack-plugin`:详见[7.8.4](/frontend/webpack#_7-4-4-js文件压缩terser-webpack-plugin)
 4. 分包`html-webpack-externals-plugin`（对业务包不友善）/`DLLPlugin`预编译资源模块（将基础包和业务包打包成一个文件）
-> `html-webpack-externals-plugin`:详见[7.4.8](/jaqi.note/frontend/webpack/#_7-4-8-基础库的分离html-webpack-externals-plugin-splitchunksplugin
+> `html-webpack-externals-plugin`:详见[7.4.8](/frontend/webpack#_7-4-8-基础库的分离html-webpack-externals-plugin-splitchunksplugin)
 > `DLLPlugin`:
 > webpack.config.dll.js文件：
 > ```js
@@ -1348,7 +1348,7 @@ module.exports={
 >   ],
 > }]
 > ```
-2. 摇树优化tree shaking详见[7.2.9](/jaqi.note/frontend/webpack/#_7-2-9-摇树优化tree-shaking)
+2. 摇树优化tree shaking详见[7.2.9](/frontend/webpack#_7-2-9-摇树优化tree-shaking)
 3. 动态Polyfill服务
 > polyfill服务原理：识别浏览器User Agent下发不同的polyfill。[polyfill在线识别服务](https://polyfill.io/v3/polyfill.min.js)
-4. ScopeHoisting[7.4.10](/jaqi.note/frontend/webpack/#_7-4-10-scopehoisting) 
+4. ScopeHoisting[7.4.10](/frontend/webpack#_7-4-10-scopehoisting) 

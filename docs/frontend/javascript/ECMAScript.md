@@ -197,7 +197,7 @@ var f = function (v) {
 * 尾递归优化:只保留一个调用记录，只要严格模式模式下有效。
 尾递归：指某个函数的最后一步是调用函数自己。`return`后调用自己
 
-箭头函数的作用域详见[3.5.5](/jaqi.note/frontend/javascript/function/#_3-5-5-函数上下文与this关键字)   
+箭头函数的作用域详见[3.5.5](/frontend/javascript/function#_3-5-5-函数上下文与this关键字)   
 
 ## 3.16.4 字符串扩展
 ### 1. `for...of`方法遍历字符串
@@ -804,7 +804,7 @@ console.log(obj[d]) // 4
 ```
 
 ## 3.16.13 Promise
-`Promise`详见[3.14.2](/jaqi.note/frontend/javascript/sync_asyn/#_3-14-2promise)
+`Promise`详见[3.14.2](/frontend/javascript/sync_asyn#_3-14-2promise)
 
 ## 3.16.14 Iterator和`for...of`循环
 JavaScript原有的表示“集合”的数据结构，主要是数组（Array）和对象（Object），ES6 又添加了Map和Set。为了统一接口机制，来处理不同的数据结构，因此提出了遍历器（Iterator）为各种不同的数据结构提供统一的访问机制。以及新的遍历命令`for...of`
@@ -911,7 +911,7 @@ g.next()        // { value: undefined, done: true }
 3. 更广的适用性：yield命令后面只能是Thunk函数或Promise对象，而async函数的await命令后面，可以是Promise对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即resolved的Promise对象）。
 4. 返回值是Promise：async函数的返回值是Promise对象，可以用then方法指定下一步的操作。
 
-async/await详见[3.14.3](/jaqi.note/frontend/javascript/sync_asyn/#_3-14-3async-await)
+async/await详见[3.14.3](/frontend/javascript/sync_asyn#_3-14-3async-await)
 
 ## 3.16.19 Class
 为了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。
@@ -955,7 +955,7 @@ p.total() // 3
 1. 类名不能重复
 2. 类定义不会被提升，需要在访问前定义
 :::
-`prototype`详见[3.15.3](/jaqi.note/frontend/javascript/oop/#_5、prototype模式)
+`prototype`详见[3.15.3](/frontend/javascript/oop#_5、prototype模式)
 
 ## 3.16.20 ES6 Module
 `CommonJS`、`AMD`和`ES6 Module`规范的区别： 
@@ -970,7 +970,7 @@ p.total() // 3
 ::: tip
 * `ES6 Module`模块输出的是实时的动态数据，是值的引用，而`CommonJS`输出的是缓存的值，是一个值的拷贝。   
 * `CommonJS`加载的是一个对象该对象只有在脚本运行完才会生成。而`ES6 Module`模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
-* `CommonJS`详见[7.1.7](/jaqi.note/other/node/introduction/#_7-1-7-模块系统) 
+* `CommonJS`详见[7.1.7](/other/node/introduction#_7-1-7-模块系统) 
 :::
 
 `ES6 Module`主要由两个命令构成：`export`和`import`。`export`命令用于规定模块的对外接口，`import`命令用于输入其他模块提供的功能。

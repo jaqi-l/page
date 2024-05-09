@@ -226,7 +226,7 @@ process.env.BASE_URL
 `npm ci`:   
 根据package文件安装依赖，根据package-lock确定版本没有则报错，不会更新依赖，也不会更新package-lock文件。    
 :::
-npm详见[1.1.4 npm（包管理工具）](/backend/node/#_1-1-4-包管理工具-npm)
+npm详见[1.1.4 npm（包管理工具）](/other/node/introduction#_1-1-4-包管理工具-npm)
 :::tip
 Vue CLI 4.x
 :::

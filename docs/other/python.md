@@ -758,7 +758,7 @@ from model import print_name
 print_name('jaqi.L', 20)
 ```
 ## 12.6 面对对象编程
-概念：[什么是面向对象编程](/jaqi.note/frontend/javascript/oop/)
+概念：[什么是面向对象编程](/frontend/javascript/oop)
 ```py
 class Player():
     def __init__(self, name, hp, role):

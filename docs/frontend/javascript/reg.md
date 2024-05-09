@@ -216,7 +216,7 @@ reg.exec(str)
 
 * `search`返回符合元素的索引（忽略`/g`）
 
-* `replace`函数的返回值替换符合正则的元素 详见[3.9.1](/jaqi.note/frontend/javascript/string/#_3-9-1字符串string)
+* `replace`函数的返回值替换符合正则的元素 详见[3.9.1](/frontend/javascript/string#_3-9-1字符串string)
 
 * `split`根据指定字符串对数组进行拆分
 ```js

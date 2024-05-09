@@ -158,7 +158,7 @@ replace中`$`的有特殊含义
 | $'  | 匹配内容右侧的容 |
 :::tip
 #### 替换全部
-1. [replaceAll](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-4-字符串扩展)
+1. [replaceAll](/frontend/javascript/ECMAScript#_3-16-4-字符串扩展)
 2. replace(/RegExp/g, str); //RegExp正则表达式
 ```js
     var str = "test-test-test".replace(/test/g, "ok");

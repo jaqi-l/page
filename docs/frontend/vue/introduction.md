@@ -29,7 +29,7 @@ Vue 不支持 IE8 及以下版本但它支持所有兼容 ECMAScript 5 的浏览
 MVVM：Model-View-ViewModel 数据-视图-视图模型。
 
 响应式数据原理（发布订阅模式）：通过ES5提供的Object.defineProperty（数据劫持）来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应监听回调。    
-<span style="color: red">*</span>Vue3的响应式原理详解：[6.1.6](/jaqi.note/frontend/vue/introduction/#_6-1-6-响应式)
+<span style="color: red">*</span>Vue3的响应式原理详解：[6.1.6](/frontend/vue/introduction#_6-1-6-响应式)
 ::: tip mvc、mvp、mvvm的区别
 * MVC    
 ![docker](/mvc-1.png)  
@@ -167,7 +167,7 @@ export default {
 :::
 
 
-`Object.defineProperty`与`Proxy`详见：[6.1.6](/jaqi.note/frontend/javascript/ECMAScript/#_3-16-11-proxy)
+`Object.defineProperty`与`Proxy`详见：[6.1.6](/frontend/javascript/ECMAScript#_3-16-11-proxy)
 ### DOM的更新时机
 DOM的更新并不是同步的。`Vue`将缓存它们直到更新周期的 “下个时机”（异步dom更新队列） 以确保无论你进行了多少次声明更改，每个组件都只需要更新一次。
 若要等待一个状态改变后的DOM更新完成，你可以使用`nextTick()` 
