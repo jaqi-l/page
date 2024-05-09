@@ -1,0 +1,17 @@
+node_modules
+.DS_Store
+### IntelliJ IDEA ###
+.idea/
+.idea/*
+*.iws
+*.iml
+*.ipr
+
+# jrebel
+rebel.xml
+
+# bak
+*.xml.bak
+.temp
+.cache
+docs/.vuepress/dist/*.psd

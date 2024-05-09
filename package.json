@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "deploy": "node deploy.js"
+  },
+  "dependencies": {
+    "element-plus": "^2.7.2"
+  },
+  "devDependencies": {
+    "moment": "^2.30.1",
+    "shelljs": "^0.8.5",
+    "vitepress": "^1.1.4"
+  }
+}
