@@ -23,47 +23,39 @@
 #### `pyenv`多版本管理工具
 
 安装： 
-<CodeGroup>
-    <CodeGroupItem title="MacOS">
+::: code-group
 
-  ```zsh
-  brew install pyenv
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Linux">
+```zsh [MacOS]
+brew install pyenv
+```
 
-  ```zsh
-  git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+```zsh [Linux]
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+```
+:::
 
 配置环境变量：
 
-<CodeGroup>
-    <CodeGroupItem title="MacOS">
+::: code-group
 
-  ```zsh
-  vi ~/.zshrc
+```zsh [MacOS]
+vi ~/.zshrc
 
-  # pyenv
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Linux">
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
 
-  ```zsh
-  vi ~/.bash_profile
+```zsh [Linux]
+vi ~/.bash_profile
 
-  # pyenv
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
+:::
 
 使用：
 ```zsh

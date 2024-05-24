@@ -77,24 +77,19 @@
 #### 主应用 
 
 * 初始化主应用
-<CodeGroup>
-  <CodeGroupItem title="Vue/Cli" active>    
+::: code-group
+```zsh [Vue/Cli]
+npm install -g @vue/cli
+vue create main-app
+npm install vue-router -S
+```
 
-  ```zsh
-    npm install -g @vue/cli
-    vue create main-app
-    npm install vue-router -S
-  ```
-  </CodeGroupItem>
-   <CodeGroupItem title="Vite">   
-
-  ```zsh
-    pnpm install vite
-    pnpm create vite
-    pnpm install vue-router -S
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+```zsh [Vite]
+pnpm install vite
+pnpm create vite
+pnpm install vue-router -S
+```
+:::
 
 
 * 安装 `qiankun`

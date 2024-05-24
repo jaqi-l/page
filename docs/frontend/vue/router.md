@@ -6,23 +6,20 @@ npm install vue-router
 * 全局引用      
 main.js 
 
-<CodeGroup>
-  <CodeGroupItem title="Vue Router 3.x">
+::: code-group
 
-  ```js
-  import VueRouter from 'vue-router'
-  
-  Vue.use(VueRouter)
-  // 或
-  new Vue({
-      render: h => h(App),
-      router,
-  }).$mount('#app')
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue Router 4.x">
+```js [Vue Router 3.x]
+import VueRouter from 'vue-router'
 
-  ```js
+Vue.use(VueRouter)
+// 或
+new Vue({
+    render: h => h(App),
+    router,
+}).$mount('#app')
+```
+
+```js [Vue Router 4.x]
 import { createRouter, createWebHistory } from 'vue-router'
 // 还有 createWebHashHistory 和 createMemoryHistory
 
@@ -31,8 +28,7 @@ createRouter({
   routes: [],
 })
 ```
-  </CodeGroupItem>
-</CodeGroup>
+:::
 
 #### js方法：
 ```js

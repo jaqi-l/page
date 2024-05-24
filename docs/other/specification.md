@@ -70,26 +70,19 @@
 ### 13.2.1 代码检查
 
 1. 安装 `ESLint` 及相关依赖
-<CodeGroup>
-  <CodeGroupItem title="Vue2">    
-
-```zsh
+::: code-group  
+```zsh [Vue2]
 npm install eslint eslint-plugin-vue -D
 ```
-  </CodeGroupItem>
-    <CodeGroupItem title="Vue3+Typescript" active>    
 
-```zsh
+```zsh [Vue3+Typescript]
 npm install eslint eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
 ```
-  </CodeGroupItem>
-</CodeGroup>
+:::
 
 1. 配置 `ESLint` 规则
-<CodeGroup>
-  <CodeGroupItem title="Vue2">    
-
-```js
+::: code-group    
+```zsh [Vue2]
 // .eslintrc.js
 
 module.exports = {
@@ -643,10 +636,8 @@ module.exports = {
     }
 };
 ```
-  </CodeGroupItem>
-    <CodeGroupItem title="Vue3+Typescript" active>    
-
-```js
+  
+```zsh [Vue3+Typescript]
 // .eslintrc.cjs
 
 module.exports = {
@@ -706,8 +697,7 @@ module.exports = {
     }
 };
 ```
-  </CodeGroupItem>
-</CodeGroup>
+:::  
 
 1. 配置 `ESLint` 的忽略文件
 
@@ -733,47 +723,41 @@ dist
 
 ### 13.2.2 代码高亮
 
-<CodeGroup>
-  <CodeGroupItem title="Vscode Vue2">    
+::: code-group
 
-  ```zsh
+``` [Vscode Vue2]
 安装 `Vetur` 代码高亮插件
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vscode Vue3+Typescript" active>    
+```
 
-  ```zsh
+``` [Vscode Vue3+Typescript]
 安装 `Vue Language Features (Volar)`、`TypeScript Vue Plugin (Volar)`
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+```
+:::
 
 ### 13.2.3 代码格式化
 
-<CodeGroup>
-  <CodeGroupItem title="Vscode" active>    
+::: code-group
 
-  ```json
-    // command+shift+p
-    // settings.json
-    // Vscode 安装 `Markdown All in One`
+```json [Vscode]
+ // command+shift+p
+ // settings.json
+ // Vscode 安装 `Markdown All in One`
 
-    "[vue]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[markdown]": {
-        "editor.defaultFormatter": "yzhang.markdown-all-in-one" 
-    },
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+ "[vue]": {
+     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+ },
+ "[javascript]": {
+     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+ },
+ "[json]": {
+     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+ },
+ "[markdown]": {
+     "editor.defaultFormatter": "yzhang.markdown-all-in-one" 
+ },
+ "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+```
+:::
 
 ### 13.2.4 提交校验
 

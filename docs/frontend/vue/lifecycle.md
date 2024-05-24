@@ -24,70 +24,60 @@
 
 ### 使用方法
 
-<CodeGroup>
-  <CodeGroupItem title="Vue2">
+::: code-group
 
-  ```vue
-  <script>
-  export default {
-    mounted() {
-        console.log(`the component is now mounted.`)
-    }
+```vue [Vue2]
+<script>
+export default {
+  mounted() {
+      console.log(`the component is now mounted.`)
   }
-  </script>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3 setup">
+}
+</script>
+```
 
-  ```vue
-  <script setup>
-  import { onMounted } from 'vue'
+```vue [Vue3 setup]
+<script setup>
+import { onMounted } from 'vue'
 
+onMounted(() => {
+  console.log(`the component is now mounted.`)
+})
+</script>
+```
+
+```vue [Vue3 setup()]
+<script>
+import { onMounted } from 'vue'
+
+export default {
+setup(props, ctx) {
   onMounted(() => {
     console.log(`the component is now mounted.`)
-  })
-  </script>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3 setup()">
-
-  ```vue
-  <script>
-  import { onMounted } from 'vue'
-
-  export default {
-  setup(props, ctx) {
-    onMounted(() => {
-      console.log(`the component is now mounted.`)
-    });
-    return {}
-  }
-  }
-  </script>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+  });
+  return {}
+}
+}
+</script>
+```
+:::
 
 ### 生命周期事件
-<CodeGroup>
-  <CodeGroupItem title="Vue2">
+::: code-group
 
-  ```html
-  <!-- 以hook:开头 -->
-  <template>
-    <child-component @hook:updated="onUpdated">
-  </template>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3">
+```html [Vue2]
+<!-- 以hook:开头 -->
+<template>
+  <child-component @hook:updated="onUpdated">
+</template>
+```
 
-  ```html
-  <!-- 以vnode-开头 -->
-  <template>
-      <child-component @vnode-updated="onUpdated">
-      <!-- 驼峰命名法 -->
-      <child-component @vnodeUpdated="onUpdated">
-  </template>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+```html [Vue3]
+<!-- 以vnode-开头 -->
+<template>
+    <child-component @vnode-updated="onUpdated">
+    <!-- 驼峰命名法 -->
+    <child-component @vnodeUpdated="onUpdated">
+</template>
+```
+::: code-group

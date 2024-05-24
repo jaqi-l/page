@@ -15,42 +15,38 @@
 
 ### 组件的实例
 组件挂载后才能访问模板引用
-<CodeGroup>
-    <CodeGroupItem title="Vue2" active>
+::: code-group
 
-  ```vue
-  <template>
-    <input ref="input" />
-  </template>
-  <script>
-  export default {
-    mounted() {
-      // 所有实例对象都会被挂载到 this.$refs对象上
-      this.$refs.input.focus()
-    }
+```vue [Vue2]
+<template>
+  <input ref="input" />
+</template>
+<script>
+export default {
+  mounted() {
+    // 所有实例对象都会被挂载到 this.$refs对象上
+    this.$refs.input.focus()
   }
-  </script>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3 ">
+}
+</script>
+```
 
-  ```vue
-  <template>
-    <input ref="input" />
-  </template>
-  <script setup>
-  import { onMounted } from 'vue'
+```vue [Vue3]
+<template>
+  <input ref="input" />
+</template>
+<script setup>
+import { onMounted } from 'vue'
 
-  // 需要手动声明一个 ref 来存放该实例对象
-  const input = ref(null)
+// 需要手动声明一个 ref 来存放该实例对象
+const input = ref(null)
 
-  onMounted(() => {
-    input.value.focus()
-  })
-  </script>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+onMounted(() => {
+  input.value.focus()
+})
+</script>
+```
+:::
 
 ::: tip
 1. 如果子组件使用的是选项式 API，被引用的组件实例和该子组件的 `this` 完全一致，这意味着父组件对子组件的每一个属性和方法都有完全的访问权。
@@ -113,62 +109,56 @@
 * 全局注册的行为必须在根Vue实例(通过 new Vue)创建之前发生
 * 局部注册：
 
-<CodeGroup>
-  <CodeGroupItem title="Vue2">
+::: code-group
 
-  ```vue
-  <script>
-  import BaseButton from './BaseButton.vue'
-  import BaseIcon from './BaseIcon.vue'
-  import BaseInput from './BaseInput.vue'
+```vue [Vue2]
+<script>
+import BaseButton from './BaseButton.vue'
+import BaseIcon from './BaseIcon.vue'
+import BaseInput from './BaseInput.vue'
 
-  export default {
-    components: {
-      BaseButton,
-      BaseIcon,
-      BaseInput
-    }
+export default {
+  components: {
+    BaseButton,
+    BaseIcon,
+    BaseInput
   }
-  </script>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3 setup">
+}
+</script>
+```
 
-  ```vue
+```vue [Vue3 setup]
 <script setup>
 // 导入即可，不需要注册
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseInput from './BaseInput.vue'
 </script>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3 setup()">
+```
 
-
-  ```vue
-  <script>
-  export default {
-    import BaseButton from './BaseButton.vue'
-    import BaseIcon from './BaseIcon.vue'
-    import BaseInput from './BaseInput.vue'
-    components: {
+```vue [Vue3 setup()]
+<script>
+export default {
+  import BaseButton from './BaseButton.vue'
+  import BaseIcon from './BaseIcon.vue'
+  import BaseInput from './BaseInput.vue'
+  components: {
+    BaseButton,
+    BaseIcon,
+    BaseInput
+  }
+  setup(props, ctx) {
+    return {
       BaseButton,
       BaseIcon,
       BaseInput
     }
-    setup(props, ctx) {
-      return {
-        BaseButton,
-        BaseIcon,
-        BaseInput
-      }
-    }
   }
-  </script>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+}
+</script>
+```
+
+:::
 
 ## 6.3.2 全局组件
 1. 第一步声明
@@ -527,36 +517,32 @@ export default {
 
 <span style="color: red">*</span>Vue3写法
 
-<CodeGroup>
-  <CodeGroupItem title="setup">
+::: code-group
 
-  ```vue
-  <script setup>
-  // defineProps接受props参数
-  const props = defineProps(['title'])
-  console.log(props.title)
-  </script>
+```vue [Vue3 setup]
+<script setup>
+// defineProps接受props参数
+const props = defineProps(['title'])
+console.log(props.title)
+</script>
 
-  <template>
-    <h4>{{ title }}</h4>
-  </template>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="setup()">
+<template>
+ <h4>{{ title }}</h4>
+</template>
+```
 
 
-  ```vue
-  <script setup>
-  export default {
-    props: ['title'],
-    setup(props) {
-      console.log(props.title)
-    }
-  }
-  </script>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+```vue [Vue3 setup()]
+<script setup>
+export default {
+ props: ['title'],
+ setup(props) {
+   console.log(props.title)
+ }
+}
+</script>
+```
+:::
 
 * `withDefaults`使用`TS`声明类型
 ```js
@@ -692,42 +678,36 @@ const props = withDefaults(defineProps<Props>(), {
 
 <span style="color: red">*</span>Vue3写法
 
-<CodeGroup>
-  <CodeGroupItem title="setup">
+::: code-group
 
-  ```vue
+```vue [Vue3 setup]
 <script setup>
-  // 子组件 
-  const childClick = （） => {
-    emit('childByValue')
-  }
-  
-  // defineEmits定义对外公开的方法 
-  const emit = defineEmits(["childByValue"]);
-  // TS
-  const emit = defineEmits<{
-	  (e: 'childByValue'): void
-	}>();
+// 子组件 
+const childClick = （） => {
+  emit('childByValue')
+}
 
+// defineEmits定义对外公开的方法 
+const emit = defineEmits(["childByValue"]);
+// TS
+const emit = defineEmits<{
+  (e: 'childByValue'): void
+}>();
 </script>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="setup()">
+```
 
-
-  ```vue
-  <script setup>
-  // 子组件 
-  export default {
-    emits: ['childByValue'],
-    setup(props, ctx) {
-      ctx.emit('childByValue')
-    }
+```vue [Vue3 setup()]
+<script setup>
+// 子组件 
+export default {
+  emits: ['childByValue'],
+  setup(props, ctx) {
+    ctx.emit('childByValue')
   }
-  </script>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+}
+</script>
+```
+:::
 
 ### 子传父`listeners`
 <span style="color: red">*</span>Vue3中移除   
@@ -800,51 +780,46 @@ const props = withDefaults(defineProps<Props>(), {
 
 ### 依赖注入（`provide`、`inject`）
 
-<CodeGroup>
-  <CodeGroupItem title="Vue2" active>    
+::: code-group   
+```vue [Vue2]
+<!-- 父组件 -->
+<script>
+  export default {
+    // 父组件通过provide方法想数据分发给后代组件
+    provide() { 
+        return {
+            name: 'jaqi'
+        };
+    },
+  }
+</script>
 
-  ```vue
-  <!-- 父组件 -->
-  <script>
-    export default {
-      // 父组件通过provide方法想数据分发给后代组件
-      provide() { 
-          return {
-              name: 'jaqi'
-          };
-      },
-    }
-  </script>
+<!-- 子组件 -->
+<script>
+  export default {
+    // 后代组件直接通过inject获取父组件分发的数据
+    inject: ['name'],
+  }
+</script>
 
-  <!-- 子组件 -->
-  <script>
-    export default {
-      // 后代组件直接通过inject获取父组件分发的数据
-      inject: ['name'],
-    }
-  </script>
+```   
 
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3" active>    
+```vue [Vue3]
+<!-- 父组件 -->
+<script setup>
+import { provide } from 'vue'
 
-  ```vue
-  <!-- 父组件 -->
-  <script setup>
-  import { provide } from 'vue'
+provide( 'name','jaqi')
+</script>
 
-  provide( 'name','jaqi')
-  </script>
+<!-- 子组件 -->
+<script setup>
+import { inject } from 'vue'
 
-  <!-- 子组件 -->
-  <script setup>
-  import { inject } from 'vue'
-
-  const message = inject<string>('name')
-  </script>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+const message = inject<string>('name')
+</script>
+ ```
+:::
 
 
 

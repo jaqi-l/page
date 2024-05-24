@@ -63,43 +63,39 @@ console.log(piniaStoreA.piniaMsg); //hello juejin
   > 第二个参数可接受两类值：`Setup` 函数或 `Option` 对象
 
 
-<CodeGroup>
-  <CodeGroupItem title="选项式写法">
+::: code-group
 
-  ```js
-  export const useCounterStore = defineStore('counter', {
-    state: () => ({ count: 0 }),
-    getters: {
-      double: (state) => state.count * 2,
+```js [选项式写法]
+export const useCounterStore = defineStore('counter', {
+  state: () => ({ count: 0 }),
+  getters: {
+    double: (state) => state.count * 2,
+  },
+  actions: {
+    increment() {
+      this.count++
     },
-    actions: {
-      increment() {
-        this.count++
-      },
-    },
-  })
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="组合式写法">
+  },
+})
+```
 
-  ```js
-  export const useCounterStore = defineStore('counter', () => {
-    const count = ref(0)
-    function increment() {
-      count.value++
-    }
-  
-    return { count, increment }
-  })
-  ```
-  ::: tip    
-  `ref()`就是`state`属性    
-  `computed()`就是`getters`    
-  `function()`就是`actions`    
-  使用组合式函数会让`SSR`变得更加复杂   
-  :::
-  </CodeGroupItem>
-</CodeGroup>
+```js [组合式写法]
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+  function increment() {
+    count.value++
+  }
+
+  return { count, increment }
+})
+```
+:::
+::: tip    
+`ref()`就是`state`属性    
+`computed()`就是`getters`    
+`function()`就是`actions`    
+使用组合式函数会让`SSR`变得更加复杂   
+:::
 
 * 使用`store`
 ```vue
@@ -225,41 +221,37 @@ watch(
 ### `Getter`
 * 定义`Getter`
 
-<CodeGroup>
-  <CodeGroupItem title="选项式写法">
+::: code-group
 
-  ```js
-  export const useStore = defineStore('main', {
-    state: () => ({
-      count: 0,
-    }),
-    getters: {
-      doubleCount: (state) => state.count * 2,
-      // 可以使用this访问当前store实例
-      doublePlusOne: (state) => this.doubleCount + 2,
-    },
-  })
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="组合式写法">
+```js [选项式写法]
+export const useStore = defineStore('main', {
+  state: () => ({
+    count: 0,
+  }),
+  getters: {
+    doubleCount: (state) => state.count * 2,
+    // 可以使用this访问当前store实例
+    doublePlusOne: (state) => this.doubleCount + 2,
+  },
+})
+```
 
-  ```js
-  export const useCounterStore = defineStore('counter', () => {
-    const count = ref(0)
-    function increment() {
-      count.value++
-    }
-    const doubleCount = computed(() => {
-      return state.count * 2
-    })
-    const doublePlusOne = computed(() => {
-      return doubleCount + 2
-    })
-    return { count }
+```js [组合式写法]
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+  function increment() {
+    count.value++
+  }
+  const doubleCount = computed(() => {
+    return state.count * 2
   })
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+  const doublePlusOne = computed(() => {
+    return doubleCount + 2
+  })
+  return { count }
+})
+```
+:::
 
 
 
@@ -322,11 +314,10 @@ const { getUserById } = storeToRefs(userList)
 ### `Action`
 * 定义`Action`
 
-<CodeGroup>
-  <CodeGroupItem title="选项式写法">
+::: code-group
 
-  ```js
-  export const useCounterStore = defineStore('main', {
+```js [选项式写法]
+export const useCounterStore = defineStore('main', {
   state: () => ({
     count: 0,
   }),
@@ -341,26 +332,23 @@ const { getUserById } = storeToRefs(userList)
     },
   },
 })
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="组合式写法">
+```
 
-  ```js
-  export const useCounterStore = defineStore('main', () => {
-    const count = ref(0)
-    function increment() {
-      count.value++
-    }
+```js [组合式写法]
+export const useCounterStore = defineStore('main', () => {
+  const count = ref(0)
+  function increment() {
+    count.value++
+  }
 
-    function randomizeCounter() {
-      this.count = Math.round(100 * Math.random())
-    }
+  function randomizeCounter() {
+    this.count = Math.round(100 * Math.random())
+  }
 
-    return { count, increment,randomizeCounter }
-  })
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+  return { count, increment,randomizeCounter }
+})
+```
+:::
 
  * 订阅`Action`
  你可以通过`store.$onAction()`来监听`action`和它们的结果。传递给它的回调函数会在`action`本身之前执行。`after`表示在`promise`解决之后，允许你在`action`解决后执行一个回调函数。同样地，`onError`允许你在`action`抛出错误或`reject`时执行一个回调函数。

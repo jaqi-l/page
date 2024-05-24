@@ -6,6 +6,7 @@ export default defineConfig({
   description: "",
   lastUpdated: true,
   appearance: true,
+  base: '',
   head: [
     ['meta', { name: 'viewport', content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" }],
     ["link", { rel: "icon", href: "/favicon.ico" }],
@@ -78,12 +79,13 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @24.05.09.4 V3'
+      copyright: 'jaqi.note © jaqi.l @24.05.24.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
       { text: '前端文档', link: '/frontend/' },
       { text: '其他文档', link: '/other/' },
+      { text: 'jaqi.server', link: 'https://jaqi.synology.me:5001/' },
       { text: 'jaqi.csnd', link: 'https://blog.csdn.net/ljq547152849' },
     ],
 
@@ -358,7 +360,9 @@ export default defineConfig({
               },
               {
                 text: '6.18 vue2源码',
-                link: 'http://caibaojian.com/vue-design/'
+                link: 'http://caibaojian.com/vue-design/',
+                target: '_blank',
+                rel: 'sponsored'
               }
             ]
           },

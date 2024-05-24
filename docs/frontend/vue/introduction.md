@@ -62,72 +62,66 @@ npm install vue
 ```
 ## 6.1.5 基本结构
 
-<CodeGroup>
-    <CodeGroupItem title="Vue2" active>
+::: code-group
 
-  ```vue
-  <div id="app">
-      <button @click="add">{{a}}</button>
-  </div>
-  <script>
-  new Vue({
-      el:"#app", //元素 不能使用body、html标签
-      data (){ // data也可以是对象，但不建议会导致数据覆盖
-          return{
-              count:0
-          }
-      },
-      methods:{
-          add() {
-              this.count++
-          }
-      }
-  });
-  </script>
-  ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Vue3 setup()">
-
-  ```vue
-  <div id="app">
-      <button @click="add">{{a}}</button>
-  </div>
-  <script>
-  // 使用场景：
-  // 要在非单文件组件中使用组合式 API 时。
-  // 需要在基于选项式 API 的组件中集成基于组合式 API 的代码时。
-  createApp({
-    setup() {
-      let count = ref(0)
-      const add = () => {
-        count++
-      }
-      return {
-        count,
-        add
-      }
+```vue [Vue2]
+<div id="app">
+    <button @click="add">{{a}}</button>
+</div>
+<script>
+new Vue({
+    el:"#app", //元素 不能使用body、html标签
+    data (){ // data也可以是对象，但不建议会导致数据覆盖
+        return{
+            count:0
+        }
+    },
+    methods:{
+        add() {
+            this.count++
+        }
     }
-  }).mount('#app')
-  </script>
-  ```
-  </CodeGroupItem>
-    <CodeGroupItem title="Vue3 setup">
+});
+</script>
+```
 
-  ```vue
-  <div id="app">
-      <button @click="add">{{a}}</button>
-  </div>
-  <script setup>
-    // 使用场景：只支持单文件组件
-    // setup()的简化写法
+```vue [Vue3 setup()]
+<div id="app">
+    <button @click="add">{{a}}</button>
+</div>
+<script>
+// 使用场景：
+// 要在非单文件组件中使用组合式 API 时。
+// 需要在基于选项式 API 的组件中集成基于组合式 API 的代码时。
+createApp({
+  setup() {
     let count = ref(0)
     const add = () => {
-     count++
+      count++
     }
-  </script>
-  ```
-  </CodeGroupItem>
-</CodeGroup>
+    return {
+      count,
+      add
+    }
+  }
+}).mount('#app')
+</script>
+```
+
+```vue [Vue3 setup]
+<div id="app">
+    <button @click="add">{{a}}</button>
+</div>
+<script setup>
+  // 使用场景：只支持单文件组件
+  // setup()的简化写法
+  let count = ref(0)
+  const add = () => {
+   count++
+  }
+</script>
+```
+:::
 
 ::: tip setup 的优点
 1. 更加简洁的代码
