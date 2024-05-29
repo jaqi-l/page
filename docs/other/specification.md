@@ -80,7 +80,7 @@ npm install eslint eslint-plugin-vue @typescript-eslint/eslint-plugin @typescrip
 ```
 :::
 
-1. 配置 `ESLint` 规则
+2. 配置 `ESLint` 规则
 ::: code-group    
 ```zsh [Vue2]
 // .eslintrc.js
@@ -699,7 +699,7 @@ module.exports = {
 ```
 :::  
 
-1. 配置 `ESLint` 的忽略文件
+3. 配置 `ESLint` 的忽略文件
 
 ```zsh
 // .eslintignore

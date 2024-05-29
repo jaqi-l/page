@@ -1,6 +1,6 @@
 import {
   isVue2
-} from "./chunk-N5HFKBPK.js";
+} from "./chunk-FD3UQ4LD.js";
 import {
   Comment,
   Fragment,

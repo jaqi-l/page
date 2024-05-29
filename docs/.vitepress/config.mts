@@ -79,7 +79,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @24.05.24.1 V3'
+      copyright: 'jaqi.note © jaqi.l @24.05.29.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -468,10 +468,6 @@ export default defineConfig({
           }
         ]
       }
-    },
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+    }
   }
 })
