@@ -8,5 +8,5 @@ git add .
 
 git commit -m "`echo $currentVersion`"
 
-# git push origin master
+git push origin master
 
