@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.CEJVZlIo.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"frontend/react.md","filePath":"frontend/react.md","lastUpdated":1715234692000}'),r={name:"frontend/react.md"};function n(o,c,s,d,p,f){return a(),t("div")}const m=e(r,[["render",n]]);export{i as __pageData,m as default};
