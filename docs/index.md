@@ -8,11 +8,13 @@ footer: true
 <div class="searchBox">
   <el-input v-model="searchValue" size="large" placeholder="Please input" class="input-with-select" @keyup.enter="search">
     <template #prepend>
+    <client-only>
       <el-select v-model="searcher" size="large" placeholder="Select" style="width: 90px">
         <template v-for="(item, index) in searcherList" :key="index">
           <el-option :label="item.name" :value="item.url"/>
         </template>
       </el-select>
+      </client-only>
     </template>
     <template #append>
       <el-button type="primary" @click="search">搜索</el-button>
