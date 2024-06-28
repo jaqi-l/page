@@ -26,7 +26,18 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
-    lastUpdatedText: '最后更新时间',
+    returnToTopLabel:'回到顶部',
+    lastUpdated: {
+      text: '最后更新时间',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
+    },
+    docFooter: {
+      prev: '上一页',
+      next: '下一页'
+    },
     search: {
       provider: 'local',
       // options: {
@@ -79,7 +90,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @24.06.28.1 V3'
+      copyright: 'jaqi.note © jaqi.l @24.06.28.2 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -90,273 +101,272 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/frontend/': {
-        base: '/frontend/',
+      '/frontend/': [{
         items: [
           {
             text: '第一章：HTML5',
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: '1.1 HTML概述',
-                link: '/html/introduction'
+                link: '/frontend/html/introduction'
               },
               {
                 text: '1.2 html元素',
-                link: '/html/element/index',
+                link: '/frontend/html/element/index',
                 items: [
                   {
                     text: '1.2.1 文本元素',
-                    link: '/html/element/text'
+                    link: '/frontend/html/element/text'
                   },
                   {
                     text: '1.2.2 a元素',
-                    link: '/html/element/link'
+                    link: '/frontend/html/element/link'
                   },
                   {
                     text: '1.2.3 img元素',
-                    link: '/html/element/img'
+                    link: '/frontend/html/element/img'
                   },
                   {
                     text: '1.2.4 列表',
-                    link: '/html/element/list'
+                    link: '/frontend/html/element/list'
                   },
                   {
                     text: '1.2.5 表格',
-                    link: '/html/element/table'
+                    link: '/frontend/html/element/table'
                   },
                   {
                     text: '1.2.6 表单',
-                    link: '/html/element/form'
+                    link: '/frontend/html/element/form'
                   },
                   {
                     text: '1.2.7 媒体元素',
-                    link: '/html/element/media'
+                    link: '/frontend/html/element/media'
                   },
                   {
                     text: '1.2.8 布局元素',
-                    link: '/html/element/layout'
+                    link: '/frontend/html/element/layout'
                   },
                   {
                     text: '1.2.9 canvas元素',
-                    link: '/html/element/canvas'
+                    link: '/frontend/html/element/canvas'
                   },
                   {
                     text: '1.2.10 SVG元素',
-                    link: '/html/element/SVG'
+                    link: '/frontend/html/element/SVG'
                   },
                   {
                     text: '1.2.10 iframe元素',
-                    link: '/html/element/iframe'
+                    link: '/frontend/html/element/iframe'
                   }
                 ]
               },
               {
                 text: '1.3 html属性',
-                link: '/html/attribute'
+                link: '/frontend/html/attribute'
               },
               {
                 text: '1.4 HTML5大纲算法',
-                link: '/html/outliner'
+                link: '/frontend/html/outliner'
               }
             ]
           },
           {
             text: '第二章：CSS',
-            link: '/css/introduction',
-            collapsed: false,
+            link: '/frontend/css/introduction',
+            collapsed: true,
             items: [
               {
                 text: '2.1 CSS概述',
-                link: '/css/introduction'
+                link: '/frontend/css/introduction'
               },
               {
                 text: '2.2 CSS选择器',
-                link: '/css/selector'
+                link: '/frontend/css/selector'
               },
               {
                 text: '2.3 CSS属性',
-                link: '/css/attribute'
+                link: '/frontend/css/attribute'
               },
               {
                 text: '2.4 CSS盒模型',
-                link: '/css/box'
+                link: '/frontend/css/box'
               },
               {
                 text: '2.5 CSS定位',
-                link: '/css/location'
+                link: '/frontend/css/location'
               },
               {
                 text: '2.6 CSS布局',
-                link: '/css/layout'
+                link: '/frontend/css/layout'
               },
               {
                 text: '2.7 CSS动画',
-                link: '/css/animation'
+                link: '/frontend/css/animation'
               },
               {
                 text: '2.8 CSS雪碧图',
-                link: '/css/sprite'
+                link: '/frontend/css/sprite'
               },
               {
                 text: '2.9 CSS函数与预编译器',
-                link: '/css/function'
+                link: '/frontend/css/function'
               },
             ]
           },
           {
             text: '第三章：JavaScript',
-            link: '/javascript/var',
-            collapsed: false,
+            link: '/frontend/javascript/var',
+            collapsed: true,
             items: [
               {
                 text: '3.1 变量',
-                link: '/javascript/var'
+                link: '/frontend/javascript/var'
               },
               {
                 text: '3.2 数据类型',
-                link: '/javascript/datatype'
+                link: '/frontend/javascript/datatype'
               },
               {
                 text: '3.3 运算符',
-                link: '/javascript/symbol'
+                link: '/frontend/javascript/symbol'
               },
               {
                 text: '3.4 控制语句',
-                link: '/javascript/control'
+                link: '/frontend/javascript/control'
               },
               {
                 text: '3.5 函数',
-                link: '/javascript/function'
+                link: '/frontend/javascript/function'
               },
               {
                 text: '3.6 对象',
-                link: '/javascript/object'
+                link: '/frontend/javascript/object'
               },
               {
                 text: '3.7 日期和时间对象',
-                link: '/javascript/date'
+                link: '/frontend/javascript/date'
               },
               {
                 text: '3.8 Math对象',
-                link: '/javascript/math'
+                link: '/frontend/javascript/math'
               },
               {
                 text: '3.9 字符串对象',
-                link: '/javascript/string'
+                link: '/frontend/javascript/string'
               },
               {
                 text: '3.10 BOM',
-                link: '/javascript/BOM'
+                link: '/frontend/javascript/BOM'
               },
               {
                 text: '3.11 DOM',
-                link: '/javascript/DOM'
+                link: '/frontend/javascript/DOM'
               },
               {
                 text: '3.12 事件',
-                link: '/javascript/event'
+                link: '/frontend/javascript/event'
               },
               {
                 text: '3.13 正则',
-                link: '/javascript/reg'
+                link: '/frontend/javascript/reg'
               },
               {
                 text: '3.14 同步与异步',
-                link: '/javascript/sync_asyn'
+                link: '/frontend/javascript/sync_asyn'
               },
               {
                 text: '3.15 面向对象编程',
-                link: '/javascript/oop'
+                link: '/frontend/javascript/oop'
               },
               {
                 text: '3.16 ECMAScript',
-                link: '/javascript/ECMAScript'
+                link: '/frontend/javascript/ECMAScript'
               },
               {
                 text: '3.17 TypeScript',
-                link: '/javascript/TypeScript'
+                link: '/frontend/javascript/TypeScript'
               },
             ]
           },
           {
             text: '第四章：jQuery',
-            link: '/jquery'
+            link: '/frontend/jquery'
           },
           {
             text: '第五章：ajax',
-            link: '/ajax'
+            link: '/frontend/ajax'
           },
           {
             text: '第六章：vue.js',
-            link: '/vue/introduction',
-            collapsed: false,
+            link: '/frontend/vue/introduction',
+            collapsed: true,
             items: [
               {
                 text: '6.1 基本介绍',
-                link: '/vue/introduction'
+                link: '/frontend/vue/introduction'
               },
               {
                 text: '6.2 指令系统',
-                link: '/vue/control'
+                link: '/frontend/vue/control'
               },
               {
                 text: '6.3 组件系统',
-                link: '/vue/component'
+                link: '/frontend/vue/component'
               },
               {
                 text: '6.4 过滤器',
-                link: '/vue/filter'
+                link: '/frontend/vue/filter'
               },
               {
                 text: '6.5 插槽',
-                link: '/vue/slot'
+                link: '/frontend/vue/slot'
               },
               {
                 text: '6.6 methods/watch/computed',
-                link: '/vue/methods'
+                link: '/frontend/vue/methods'
               },
               {
                 text: '6.7 生命周期',
-                link: '/vue/lifecycle'
+                link: '/frontend/vue/lifecycle'
               },
               {
                 text: '6.8 Vue Router',
-                link: '/vue/router'
+                link: '/frontend/vue/router'
               },
               {
                 text: '6.9 异步',
-                link: '/vue/async'
+                link: '/frontend/vue/async'
               },
               {
                 text: '6.10 过渡与动画',
-                link: '/vue/transitions'
+                link: '/frontend/vue/transitions'
               },
               {
                 text: '6.11 Api',
-                link: '/vue/api'
+                link: '/frontend/vue/api'
               },
               {
                 text: '6.12 组合式Api',
-                link: '/vue/setup'
+                link: '/frontend/vue/setup'
               },
               {
                 text: '6.13 axios',
-                link: '/vue/axios'
+                link: '/frontend/vue/axios'
               },
               {
                 text: '6.14 Vue/Cli',
-                link: '/vue/vuecli'
+                link: '/frontend/vue/vuecli'
               },
               {
                 text: '6.15 vuex',
-                link: '/vue/vuex'
+                link: '/frontend/vue/vuex'
               }, {
                 text: '6.16 vite',
-                link: '/vue/vite'
+                link: '/frontend/vue/vite'
               }, {
                 text: '6.17 Pinia',
-                link: '/vue/pinia'
+                link: '/frontend/vue/pinia'
               },
               {
                 text: '6.18 vue2源码',
@@ -368,106 +378,105 @@ export default defineConfig({
           },
           {
             text: '第七章：webpack',
-            link: '/webpack'
+            link: '/frontend/webpack'
           },
           {
             text: '第八章：小程序',
-            link: '/miniprogram'
+            link: '/frontend/miniprogram'
           },
           {
             text: '第九章：React',
-            link: '/react'
+            link: '/frontend/react'
           },
           {
             text: '第十章：微前端',
-            link: '/microFrontends'
+            link: '/frontend/microFrontends'
           },
           {
             text: '第十一章：Web3D',
-            link: '/web3D'
+            link: '/frontend/web3D'
           }
         ]
-      },
-      '/other/': {
-        base: '/other/',
+      }],
+      '/other/': [{
         items: [
           {
             text: '第一章：Linux',
-            link: '/linux'
+            link: '/other/linux'
           },
           {
             text: '第二章：Nginx',
-            link: '/nginx'
+            link: '/other/nginx'
           },
           {
             text: '第三章：web协议',
-            link: '/network'
+            link: '/other/network'
           },
           {
             text: '第四章：SEO',
-            link: '/SEO'
+            link: '/other/SEO'
           },
           {
             text: '第五章：Git',
-            link: '/git'
+            link: '/other/git'
           },
           {
             text: '第六章：FreeMarker',
-            link: '/FreeMarker'
+            link: '/other/FreeMarker'
           },
           {
             text: '第七章：node.js',
-            link: '/node/introduction',
-            collapsed: false,
+            link: '/other/node/introduction',
+            collapsed: true,
             items: [
               {
                 text: '7.1 node.js概述',
-                link: '/node/introduction',
+                link: '/other/node/introduction',
               },
               {
                 text: '7.2 系统核心模块',
-                link: '/node/modules'
+                link: '/other/node/modules'
               },
               {
                 text: '7.3 第三方模块',
-                link: '/node/otherModules'
+                link: '/other/node/otherModules'
               },
               {
                 text: '7.4 node.js 框架',
-                link: '/node/frame'
+                link: '/other/node/frame'
               },
               {
                 text: '7.5 node.js 工具',
-                link: '/node/tools'
+                link: '/other/node/tools'
               }
             ]
           },
           {
             text: '第八章：数据库',
-            link: '/database'
+            link: '/other/database'
           },
           {
             text: '第九章：Docker',
-            link: '/docker'
+            link: '/other/docker'
           },
           {
             text: '第十章：数据结构与算法',
-            link: '/dataStructure_algorithm'
+            link: '/other/dataStructure_algorithm'
           },
           {
             text: '第十一章 设计模式',
-            link: '/designPattern'
+            link: '/other/designPattern'
           },
           {
             text: '第十二章：Python',
-            link: '/python'
+            link: '/other/python'
           },
           {
             text: '第十三章：风格规范',
-            link: '/specification'
+            link: '/other/specification'
           }
         ]
-      }
+      }]
     }
   }
 })
