@@ -29,6 +29,7 @@ footer: true
       <span><span class="decorate">-</span>{{ item.description }}</span>
       <div class="category-list">
         <template v-for="child in item.children" :key="child.title">
+        <client-only>
           <el-tooltip
             v-if="child.description"
             class="box-item"
@@ -39,6 +40,7 @@ footer: true
             <a :href="child.link" target="_blank">{{ child.title }}</a> 
           </el-tooltip>
           <a v-else :href="child.link" target="_blank">{{ child.title }}</a> 
+          </client-only>
           </template>
         </div>
     </div>
