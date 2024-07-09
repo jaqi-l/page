@@ -10,3 +10,5 @@ git commit -m "`echo $currentVersion`"
 
 git push origin master
 
+git push github master
+

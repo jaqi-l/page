@@ -6,3 +6,6 @@
 .VPDoc.has-aside .content-container {
   max-width: 100% !important;
 }
+a{
+  text-decoration: none;
+}
