@@ -832,6 +832,10 @@
       "title": "uniCloud",
       "link": "https://unicloud.dcloud.net.cn/",
       "description": "serverless"
+    },{
+      "title": "cloudflare",
+      "link": "https://www.cloudflare-cn.com/",
+      "description": "serverless"
     }
   ]
 }]
