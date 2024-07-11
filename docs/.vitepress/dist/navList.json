@@ -29,6 +29,11 @@
       "description": ""
     },
     {
+      "title": "vite",
+      "link": "https://vitejs.cn/",
+      "description": null
+    },
+    {
       "title": "知乎",
       "link": "https://www.zhihu.com/",
       "description": ""
@@ -91,11 +96,6 @@
     {
       "title": "animejs",
       "link": "https://animejs.com/",
-      "description": ""
-    },
-    {
-      "title": "jqueryAPI手册",
-      "link": "http://jquery.cuishifeng.cn/",
       "description": ""
     },
     {
@@ -206,11 +206,6 @@
     {
       "title": "stackoverflow",
       "link": "https://stackoverflow.com/",
-      "description": null
-    },
-    {
-      "title": "vite",
-      "link": "https://vitejs.cn/",
       "description": null
     },
     {

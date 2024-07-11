@@ -541,6 +541,18 @@ const obj = {
 > ])
 > // { foo: "bar", baz: 42 }
 > ```
+### 15. `groupBy`<span style="color: red">*</span>ES2024新增
+允许您基于指定的属性，进行分组，并返回一个新的数组
+> ```js
+> const inventory = [
+>    { name: "芦笋", type: "蔬菜", quantity: 5 },
+>    { name: "香蕉", type: "水果", quantity: 0 },
+>    { name: "山羊", type: "肉", quantity: 23 },
+>    { name: "樱桃", type: "水果", quantity: 5 }
+> ];
+> 
+> console.log(Object.groupBy(inventory, (item) => item.type))
+> ```
 
 ## 3.16.9 Symbol
 ES5的对象属性名都是字符串，这容易造成属性名的冲突。   
