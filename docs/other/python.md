@@ -1817,6 +1817,58 @@ print(os.path.join('a/b','c/d'))
 `os.removedirs(path)`递归删除非空目录       
 > `path`要移除的目录路径
 
+### 12.8.4 网络库`urllib`(http协议库)
+```py
+from urllib import request
+
+url = 'https://www.baidu.com/'
+
+res = request.urlopen(url,timeout=1)
+
+print(res.read().decode('utf-8')) 
+```
+* `get` / `post`
+```py
+from urllib import request
+from urllib import parse
+
+data = bytes(parse.urlencode({'word': 'hello'}), encoding='utf-8')
+
+response1 = request.urlopen('http://httpbin.org/post', data=data)
+print(response1.read().decode('utf-8'))
+
+response2 = request.urlopen('http://httpbin.org/get?word=hello',timeout=1)
+print(response2.read().decode('utf-8'))
+```
+* 捕获错误
+```py
+from urllib import request
+
+try:
+    response = request.urlopen('http://httpbin.org/get', timeout=0.1)
+    print(response.read().decode('utf-8'))
+except Exception as e:
+    print('time out')
+```
+
+* 设置请求头
+```py
+from urllib import request
+from urllib import parse
+
+data = bytes(parse.urlencode({'word': 'hello'}), encoding='utf-8')
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36'
+}
+
+req = request.Request('http://httpbin.org/post', data=data, headers=headers, method='POST')
+
+res = request.urlopen(req)
+
+print(res.read().decode('utf-8'))
+```
+
 ## 12.9 第三方库
 
 ### 12.9.1 `Numpy`
@@ -1954,6 +2006,7 @@ data = pd.Series(np.random.randn(10),index=[['a','b','c','d','e','f','g','h','i'
 print(data)
 ```
 ### 12.9.3 `Matplotlib`
+2D绘图库
 * 安装
 ```zsh
 pip install matplotlib
@@ -1980,9 +2033,63 @@ plt.show()
 ```
 
 ### 12.9.4 `seaborn`
+基于 `Matplotlib` 的数据可视化库
 ### 12.9.5 `Tensorflow`
+机器学习平台
 * 安装
 ```zsh
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow # 使用国内镜像
 ```
-<!-- next-62 -->
+### 12.9.6 网络
+#### `requests`(http协议库)
+* 安装
+```zsh
+pip install requests
+```
+* 使用
+```py
+import requests
+
+data = {'word': 'hello'}
+
+# get
+res1 = requests.get('http://httpbin.org/get',data)
+print(res1.text)
+
+#post
+res2 = requests.post('http://httpbin.org/post',data)
+print(res2.json())
+```  
+
+* 爬取图片
+```py
+import requests
+import re
+content = requests.get('https://bbs.fengniao.com/forum/forum_101.html',timeout=20).text
+urls = re.findall('<img.*?src="(https://.*?\.jpg)"',content)
+print(urls)
+```
+
+#### `BeautifulSoup`(xml格式处理库)
+* 安装
+```zsh
+pip install bs4
+```
+* 使用
+```py
+from bs4 import BeautifulSoup
+import requests
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
+}
+
+url = 'https://news.sina.com.cn/hotnews/'
+
+res = requests.get(url, headers=headers)
+res.encoding = "utf-8"
+
+soup = BeautifulSoup(res.text, "html.parser")
+for i in soup.find_all('a'):
+    print('地址',i.get('href'),'标题',i.get_text())
+```
