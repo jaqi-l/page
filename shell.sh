@@ -1,4 +1,4 @@
-npm run build
+# npm run build
 
 currentVersion=`grep -E -o "\d{2}\.\d{2}\.\d{2}\.\d{1,}" ./docs/.vitepress/config.mts`
 
