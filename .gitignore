@@ -14,5 +14,4 @@ rebel.xml
 *.xml.bak
 .temp
 .cache
-docs/.vuepress/dist/*.psd
-dist
+docs/.vuepress/dist
