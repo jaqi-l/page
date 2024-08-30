@@ -14,4 +14,4 @@ rebel.xml
 *.xml.bak
 .temp
 .cache
-docs/.vuepress/dist
+docs/.vitepress/dist/*
