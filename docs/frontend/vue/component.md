@@ -46,6 +46,21 @@ onMounted(() => {
 })
 </script>
 ```
+
+```vue [Vue3.5]
+<template>
+  <input ref="input" />
+</template>
+<script setup>
+import { onMounted, useTemplateRef } from 'vue'
+
+const input = useTemplateRef('input')
+
+onMounted(() => {
+  input.value.focus()
+})
+</script>
+```
 :::
 
 ::: tip
@@ -524,6 +539,9 @@ export default {
 // defineProps接受props参数
 const props = defineProps(['title'])
 console.log(props.title)
+
+// Vue3.5+ 写法
+const { title } = defineProps(['title'])
 </script>
 
 <template>

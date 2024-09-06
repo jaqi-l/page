@@ -90,7 +90,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @24.08.30.2 V3'
+      copyright: 'jaqi.note © jaqi.l @24.09.06.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -323,7 +323,7 @@ export default defineConfig({
                 link: '/frontend/vue/slot'
               },
               {
-                text: '6.6 methods/watch/computed',
+                text: '6.6 属性方法',
                 link: '/frontend/vue/methods'
               },
               {
