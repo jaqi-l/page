@@ -79,7 +79,7 @@
 ```html
   <div id="app">
   <component>
-    <!-- 获取具名插槽user，的user参数并重命名为name-->
+    <!-- 获取具名插槽user，并重命名user为name -->
     <template v-slot:user="{user:name}">  
       {{ name.firstName }}
     </template>
