@@ -640,6 +640,11 @@
       "title": "JWT在线解密",
       "link": "https://www.box3.cn/tools/jwt.html",
       "description": "JWT在线解密"
+    },
+    {
+      "title": "Z-Library",
+      "link": "https://zh.singlelogin.re",
+      "description": "电子书"
     }
   ]
 },
