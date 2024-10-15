@@ -177,7 +177,7 @@ p.then(function(req){
 ```
 :::tip p的状态来源
 1. 所有的都是完成(fulfilled)，p的状态才是完成(fulfilled)。此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。
-2. 有一个是失败(rejected)，p的状态就变成失败(rejected)，此时第一个失败的(rejected)实例的返回值，会传递给p的回调函数。
+2. 有一个是失败(rejected)，p的状态就变成失败(rejected)，并立即结束，此时第一个失败的(rejected)实例的返回值，会传递给p的回调函数。
 :::
 
 

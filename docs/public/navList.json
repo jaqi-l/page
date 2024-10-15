@@ -159,8 +159,13 @@
       "description": ""
     },
     {
-      "title": "微信IM SDK v3",
+      "title": "微信IM TencentCloudChat v3",
       "link": "https://web.sdk.qcloud.com/im/doc/v3/zh-cn/index.html",
+      "description": ""
+    },
+    {
+      "title": "微信IM TUIChatEngine v3",
+      "link": "https://web.sdk.qcloud.com/im/doc/chat-engine/index.html",
       "description": ""
     },
     {
@@ -499,8 +504,8 @@
       "description": ""
     },
     {
-      "title": "liblibai",
-      "link": "https://www.liblibai.com/",
+      "title": "liblib",
+      "link": "https://www.liblib.art/",
       "description": "AI 生图"
     },
     {
