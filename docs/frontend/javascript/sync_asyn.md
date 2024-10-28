@@ -146,10 +146,10 @@ let promise = new Promise(function(resolve,reject){
 });
 ```
 
-* `then`监听成功或失败回调
+* `then`监听成功回调
 ```js
 promise.then(function(req){
-    console.log(req) // req即resolve/reject返回的值
+    console.log(req) // req即resolve返回的值
 });
 ```
 
@@ -160,10 +160,10 @@ promise.catch(function(fail){
 });
 ```
 
-* `finally`监听失败回调
+* `finally`监听成功或失败回调
 ```js
-promise.finally(function(fail){
-    console.log(fail) // fail即reject返回的值
+promise.finally(function(req){
+    console.log(req) // req即resolve/reject返回的值
 });
 ```
 

@@ -106,5 +106,5 @@ border-style可选值solid 实线/dotted 点状边框/double双线
 
 * 内外边距：绝大多数情况可以混用，建议优先使用width>padding>margin
 
-* `margin`和`padding`设置百分比的时候，是指相对于最近的块级父元素width（非总宽度）的百分比的计算,利用此方法可以根据宽度。
+* `margin`和`padding`设置百分比的时候，是指相对于最近的块级父元素width（非总宽度）的百分比的计算,利用此方法可以根据宽度动态设置高度。
 :::
