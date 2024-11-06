@@ -29,6 +29,11 @@
       "description": ""
     },
     {
+      "title": "React",
+      "link": "https://zh-hans.react.dev/",
+      "description": ""
+    },
+    {
       "title": "vite",
       "link": "https://vitejs.cn/",
       "description": null
