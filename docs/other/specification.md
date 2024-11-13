@@ -16,9 +16,9 @@
 7.  使用`ESLint`检查工具    -->
 
 ## 13.1 HTML规范
-参加`ESLINT`
+参考`ESLINT`
 ## 13.2 JavaScript规范
-参加`ESLINT`
+参考`ESLINT`
 ## 13.3 CSS规范
 
 ### 13.3.1 书写规范
@@ -720,6 +720,30 @@ dist
     "lintfix": "eslint --fix --ext .js,.ts,.vue src"
 },
 ```
+
+5. 对代码单独设置校验规则
+
+* 关闭段落校验
+```js
+/* eslint-disable */
+some code1
+some code2
+/* eslint-enable */
+```
+
+* 关闭当前行校
+```js
+some code // eslint-disable-line
+```
+
+* 关闭下一行校验
+```js
+// eslint-disable-next-line
+some code
+```
+
+[ESLint规则参考](https://eslint.nodejs.cn/docs/latest/rules/)、[VUE规则参考](https://eslint.vuejs.org/rules/)
+
 
 ### 13.2.2 代码高亮
 

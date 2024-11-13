@@ -24,9 +24,59 @@ export default defineConfig({
                 })();
            `
     ],
+    // 百度统计
+    [
+      "script",
+      {},
+      `
+              (function () {
+          'use strict';
+        
+          const SCRIPT_URLs = [
+              'https://dldir1.qq.com/WechatWebDev/devPlatform/px.min.js',
+              'https://dev.weixin.qq.com/platform-console/proxy/assets/tel/px.min.js',
+          ];
+          const param = {
+              maskMode: 'no-mask', // 隐私策略, all-mask 或 no-mask, 详见：https://dev.weixin.qq.com/docs/analysis/sdk/docs.html
+              recordCanvas: true,  // 若要采集canvas, 设为true
+              projectId: 'wx70013fa085d4ab77-YEcfdXEgk-7hbenA', // 项目 ID，需替换为体验分析项目 ID
+              iframe: true, // 是否采集 iframe 页面
+              console: true, // 是否采集 console 输出的错误日志
+              network: true, // 是否采集网络错误
+          };
+          function loadScript(url) {
+              return new Promise((resolve, reject) => {
+                  const scriptEle = document.createElement('script');
+                  scriptEle.type = 'text/javascript';
+                  scriptEle.async = true;
+                  scriptEle.src = url;
+                  scriptEle.onload = () => {
+                      resolve(url);
+                  };
+                  scriptEle.onerror = () => {
+                      reject(new Error('Script load error'));
+                  };
+                  document.head.appendChild(scriptEle);
+              });
+          }
+          async function main() {
+              try {
+                  sessionStorage.setItem('wxobs_start_timestamp', String(Date.now()));
+                  const fastestUrl = await Promise.race(SCRIPT_URLs.map(url => loadScript(url)));
+                  window.__startPX && window.__startPX(param);
+              }
+              catch (error) {
+                  console.error('Error loading scripts:', error);
+              }
+          }
+          main();
+        
+        })();
+      `
+    ],
   ],
   themeConfig: {
-    returnToTopLabel:'回到顶部',
+    returnToTopLabel: '回到顶部',
     lastUpdated: {
       text: '最后更新时间',
       formatOptions: {
@@ -90,7 +140,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @24.11.06.1 V3'
+      copyright: 'jaqi.note © jaqi.l @24.11.13.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
