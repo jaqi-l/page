@@ -1,13 +1,13 @@
 ## 9.1 基本介绍
 `React` 由 `Meta` 公司研发，用于构建Web和原生交互界面的库
 
-### 创建项目
+#### 创建项目
 ```zsh
 // create-react-app 核心包  react-demo 项目名称
 npx create-react-app react-demo
 ```
 
-### 项目结构
+#### 项目结构
 * 入口文件
 ```js
 // index.js
@@ -40,7 +40,7 @@ function App() {
 
 export default App;
 ```
-## 9.1.1 JSX
+### 9.1.1 JSX
 
 `JSX` 是 `JavaScript` 和 `XML`（ `HTML` ）的缩写，表示在 `JavaScript` 代码中便携写html模板结构，它是 `React` 中编写UI模板的方式。
 
@@ -57,7 +57,7 @@ function App() {
 }
 ```
 
-### 表达式
+#### 表达式
 
 在 `JSX` 中可以通过大括号 `{}` 识别 `JavaScript` 中的表达式，比如场景的变量、函数调用、方法调用等等
 
@@ -91,7 +91,7 @@ function App() {
 export default App;
 ```
 
-### 列表渲染
+#### 列表渲染
 
 ```js
 const list = [
@@ -119,7 +119,7 @@ function App() {
 export default App;
 ```
 
-### 条件渲染
+#### 条件渲染
 
 ```js
 let islogin = false
@@ -152,7 +152,7 @@ function App() {
 export default App;
 ```
 
-### 事件绑定
+#### 事件绑定
 
 ```js
 function handClick(e) {
@@ -171,8 +171,101 @@ function App() {
 export default App;
 ```
 
+### 9.1.2 组件 
+
+在 `React` 中，组件就是首字母大写的函数。内部存放了组件的逻辑和视图，渲染组件只需要把组件当成标签书写
+
+```js
+// 定义组件
+function Button() {
+  // 内部逻辑、视图
+  return <button>click me</button>
+}
+
+function App() {
+  return (
+    {/* 使用组件 */}
+    {/* 单标签 */}
+    <Button />
+    {/* 双标签 */}
+    <Button></Button>
+  )
+}
+```
+
+#### 样式
+
+1. 行内样式
+2. 类
+
+```js
+import './index.css'
+
+const style= {
+  color: 'red',
+  fontSize: '30px'
+}
+function App() {
+
+  return (
+    <div className="App">
+      <div style={{color:'red',fontSize:'30px'}}>行内样式</div>
+      <div style={style}>行内样式</div>
+      <div className='foo'>类 样式</div>
+    </div >
+  );
+}
+
+export default App;
+```
+
+```css
+.foo{
+  color: red;
+  font-size: 30px;
+}
+```
+
+### 9.1.3 响应式 `useState`
+useState 是一个 `React hooks`  ，它允许我们向组件添加一个状态变量，从而控制影响组件的渲染结果。
+
+* 状态规则：
+1. 状态不可变：状态是只读的，我们应该始终替换它而不是修改它，直接修改不会引起视图更新
+2. 修改对象状态：应该始终传递给 `set` 方法一个全新的对象来进行修改
+
+```js
+import { useState } from 'react'
+function App() {
+  // count 变量 setCount 修改变量的方法
+  const [count, setCount] = useState(0)
+
+  const [form, setForm] = useState({ name: 'zhangsan' })
+
+  const [array, setArray] = useState([1, 2, 3])
+  const handleClick = () => {
+    // 修改变量
+    // 基本类型
+    setCount(count + 1)
+    // 对象
+    setForm({ ...form, name: 'jaqi' })
+    // 数组
+    setArray([...array, 4, 5, 6])
+  }
+  return (
+    <div className="App">
+      <button onClick={handleClick}>{count}</button>
+      <div>{form.name}</div>
+      <div>{array}</div>
+    </div >
+  );
+}
+
+export default App;
+```
+
+
 ## 9.2 Redux
 ## 9.3 Router
 
 
-<!-- https://www.bilibili.com/video/BV1ZB4y1Z7o8?spm_id_from=333.788.player.switch&vd_source=21e371c1bffc1d55378da343e016464a&p=10 -->
+<!-- https://www.bilibili.com/video/BV1ZB4y1Z7o8/?spm_id_from=333.788.player.switch&vd_source=21e371c1bffc1d55378da343e016464a&p=14 -->

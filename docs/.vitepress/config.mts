@@ -10,21 +10,7 @@ export default defineConfig({
   head: [
     ['meta', { name: 'viewport', content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" }],
     ["link", { rel: "icon", href: "/favicon.ico" }],
-    // 百度统计
-    [
-      "script",
-      {},
-      `
-                var _hmt = _hmt || [];
-                (function() {
-                    var hm = document.createElement("script");
-                    hm.src = "https://hm.baidu.com/hm.js?b7303024b1d1000570507a8af21071bd";
-                    var s = document.getElementsByTagName("script")[0];
-                    s.parentNode.insertBefore(hm, s);
-                })();
-           `
-    ],
-    // 百度统计
+    // donut
     [
       "script",
       {},
@@ -140,7 +126,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @24.11.13.1 V3'
+      copyright: 'jaqi.note © jaqi.l @24.11.26.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
