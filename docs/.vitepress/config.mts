@@ -126,7 +126,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @24.11.26.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.01.15.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },

@@ -10,6 +10,6 @@
   "devDependencies": {
     "moment": "^2.30.1",
     "shelljs": "^0.8.5",
-    "vitepress": "^1.2.2"
+    "vitepress": "^1.5.0"
   }
 }

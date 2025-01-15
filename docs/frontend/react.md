@@ -232,6 +232,7 @@ useState 是一个 `React hooks`  ，它允许我们向组件添加一个状态�
 * 状态规则：
 1. 状态不可变：状态是只读的，我们应该始终替换它而不是修改它，直接修改不会引起视图更新
 2. 修改对象状态：应该始终传递给 `set` 方法一个全新的对象来进行修改
+3. `useState` 是一个 `Hook`，因此你只能在 组件的顶层 或自己的 `Hook` 中调用它。你不能在循环或条件语句中调用它   
 
 ```js
 import { useState } from 'react'
@@ -263,9 +264,28 @@ function App() {
 export default App;
 ```
 
+### 9.1.4 获取DOM `useRef`
+
+```js
+import { useRef } from 'react'
+function App() {
+  const inputRef = useRef()
+  const handleClick = () => {
+    console.log(inputRef);
+  }
+  return (
+    <div className="App">
+      <button onClick={handleClick}>useRef</button>
+      <input type="text" ref={inputRef} placeholder='请输入内容'/>
+    </div >
+  );
+}
+
+export default App;
+```
 
 ## 9.2 Redux
 ## 9.3 Router
 
 
-<!-- https://www.bilibili.com/video/BV1ZB4y1Z7o8/?spm_id_from=333.788.player.switch&vd_source=21e371c1bffc1d55378da343e016464a&p=14 -->
+<!-- https://www.bilibili.com/video/BV1ZB4y1Z7o8?spm_id_from=333.788.player.switch&vd_source=21e371c1bffc1d55378da343e016464a&p=21 -->
