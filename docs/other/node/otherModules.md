@@ -38,7 +38,7 @@ db.query('SELECT * FROM `myDataBase`.`student` WHERE id<=200',(err,data)=>{
 })
 ```
 
-`MySQL`详见[8.2 MySQL](/other/database#_8-2-mysql)
+`MySQL`详见[8.2 MySQL](/other/database/mySQL)
 
 
 ## 7.3.2 服务端渲染(ssr)模块

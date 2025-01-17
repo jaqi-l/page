@@ -24,7 +24,7 @@ ls /nome /root  <!-- root目录和根目录下的文件 -->
 -rw-------. 1 root 1555 dec 14 23：:50 anaconda-ks.cfg
 -dw-r--r--. 1 root 1555 dec 14 23：:50 boot
 ```
-文件的权限详见[1.3.4](/other/linux#_1-3-4-文件的权限)
+文件的权限详见[1.2.4](/other/linux/file#_1-2-4-文件的权限)
 ## 1.2.2 目录/文件的创建与删除
 ### mkdir创建一个空目录
 * 在根目录创建一个a目录
