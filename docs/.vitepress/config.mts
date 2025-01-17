@@ -126,7 +126,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.01.17.2 V3'
+      copyright: 'jaqi.note © jaqi.l @25.01.17.3 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -422,7 +422,30 @@ export default defineConfig({
           },
           {
             text: '第九章：React',
-            link: '/frontend/react'
+            link: '/frontend/react/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '9.1 基本介绍',
+                link: '/frontend/react/introduction'
+              },
+              {
+                text: '9.2 方法',
+                link: '/frontend/react/methods'
+              },
+              {
+                text: '9.3 组件系统',
+                link: '/frontend/react/component'
+              },
+              {
+                text: '9.4 Redux',
+                link: '/frontend/react/redux'
+              },
+              {
+                text: '9.5 路由',
+                link: '/frontend/react/router'
+              }
+            ]
           },
           {
             text: '第十章：微前端',
@@ -660,7 +683,7 @@ export default defineConfig({
                 link: '/other/python/introduction',
               },
               {
-                text: '12.2 变量、数字、序列、映射和集合',
+                text: '12.2 数据类型',
                 link: '/other/python/datatype'
               },
               {
@@ -668,7 +691,7 @@ export default defineConfig({
                 link: '/other/python/control'
               },
               {
-                text: '12.4 文件、输入输出、异常',
+                text: '12.4 文件系统',
                 link: '/other/python/io'
               },
               {
