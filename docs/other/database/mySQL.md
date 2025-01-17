@@ -1,17 +1,5 @@
-## 8.1 数据库概述
-
-* 数据库分类
-> 文件型：`SQLite``WebSQL`、`IndexedDB`
-> 关系型：`Access`、`MySQL`、`Oracle`
-> 分布式：`MongoDB`
-> 非关系型(NoSQL)：`Redis`、`MemCache`
-
-* `SQL`操作关系型数据库的语言
-
-### 8.2 MySQL
-
-
-#### 8.2.1 安装部署
+# 8.2 MySQL
+## 8.2.1 安装部署
 
 * 下载安装
 [下载官方的yum资源包](https://dev.mysql.com/downloads/repo/yum/)
@@ -77,9 +65,9 @@ flush privileges # 刷新权限表
 
 select host,user from mysql.user;  # 查看用户表
 ```
-#### 8.2.2 概述
+## 8.2.2 概述
 
-#### 8.2.3 库与表的创建
+## 8.2.3 库与表的创建
 库的创建：
 `CREATE DATABASE <库> CHARACTER SET <字符集> COLLATE <排序规则>;`
 ``` SQL
@@ -91,7 +79,7 @@ CREATE DATABASE `myDataBase` CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';
 CREATE TABLE `myDataBase`.`student`
 ( `id` int NOT NULL, `name` varchar(255) NULL, `psw` varchar(255) NULL, PRIMARY KEY (`id`));
 ```
-#### 8.2.4 SQL结构化查询语句
+## 8.2.4 SQL结构化查询语句
 
 * `INSERT`插入数据 
 
@@ -131,11 +119,5 @@ SELECT * FROM `bdm314524665_db`.`jaqi` WHERE `id` > '0' LIMIT 0,1000
 ::: tip
 1. 如果SQL语句中的`key`与`MySQL`系统关键字重复，需要使用``反引号包裹起来。
 :::
-### 8.3 MongoDB
 
-### 8.4 SQLite
-
-### 8.5 WebSQL
-
-### 8.6 IndexedDB
 

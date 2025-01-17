@@ -126,7 +126,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.01.15.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.01.17.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -438,19 +438,112 @@ export default defineConfig({
         items: [
           {
             text: '第一章：Linux',
-            link: '/other/linux'
+            link: '/other/linux/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '1.1 概述',
+                link: '/other/linux/introduction',
+              },
+              {
+                text: '1.2 文件管理',
+                link: '/other/linux/file'
+              },
+              {
+                text: '1.3 vi文本编辑器',
+                link: '/other/linux/vi'
+              },
+              {
+                text: '1.4 用户与用户管理',
+                link: '/other/linux/user'
+              },
+              {
+                text: '1.5 网络管理',
+                link: '/other/linux/network'
+              },
+              {
+                text: '1.6 软件安装',
+                link: '/other/linux/software'
+              },
+              {
+                text: '1.7 进程管理',
+                link: '/other/linux/process'
+              },
+              {
+                text: '1.8 内存与磁盘管理',
+                link: '/other/linux/memory_disk'
+              }
+            ]
           },
           {
             text: '第二章：Nginx',
-            link: '/other/nginx'
+            link: '/other/nginx/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '2.1 基本介绍',
+                link: '/other/nginx/introduction',
+              },
+              {
+                text: '2.2 构架基础',
+                link: '/other/nginx/framework'
+              },
+              {
+                text: '2.3 HTTP模块',
+                link: '/other/nginx/http'
+              },
+              {
+                text: '2.4 反向代理与负载均衡',
+                link: '/other/nginx/proxy'
+              },
+              {
+                text: '2.5 配置文件详解',
+                link: '/other/nginx/config'
+              }
+            ]
           },
           {
             text: '第三章：web协议',
-            link: '/other/network'
+            link: '/other/network/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '3.1 Web协议',
+                link: '/other/network/introduction',
+              },
+              {
+                text: '3.2 HTTP/1.1协议',
+                link: '/other/network/http_1'
+              },
+              {
+                text: '3.3 WebSocket协议',
+                link: '/other/network/webSocket'
+              },
+              {
+                text: '3.4 HTTP/2协议',
+                link: '/other/network/http_2'
+              },
+              {
+                text: '3.5 TLS/SSL协议',
+                link: '/other/network/tls_ssl'
+              },
+              {
+                text: '3.6 TCP协议',
+                link: '/other/network/tcp'
+              },
+              {
+                text: '3.7 UDP协议',
+                link: '/other/network/udp'
+              },
+              {
+                text: '4.8 IP协议',
+                link: '/other/network/ip'
+              }
+            ]
           },
           {
             text: '第四章：SEO',
-            link: '/other/SEO'
+            link: '/other/seo'
           },
           {
             text: '第五章：Git',
@@ -458,7 +551,7 @@ export default defineConfig({
           },
           {
             text: '第六章：FreeMarker',
-            link: '/other/FreeMarker'
+            link: '/other/freeMarker'
           },
           {
             text: '第七章：node.js',
@@ -489,11 +582,65 @@ export default defineConfig({
           },
           {
             text: '第八章：数据库',
-            link: '/other/database'
+            link: '/other/database/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '8.1 数据库概述',
+                link: '/other/database/introduction',
+              },
+              {
+                text: '8.2 MySQL',
+                link: '/other/database/mySQL'
+              },
+              {
+                text: '8.3 MongoDB',
+                link: '/other/database/MongoDB'
+              },
+              {
+                text: '8.4 SQLite',
+                link: '/other/database/sqlite'
+              },
+              {
+                text: '8.5 WebSQL',
+                link: '/other/database/webSQL'
+              },
+              {
+                text: '8.6 IndexedDB',
+                link: '/other/database/indexedDB'
+              }
+            ]
           },
           {
             text: '第九章：Docker',
-            link: '/other/docker'
+            link: '/other/docker/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '9.1 概述',
+                link: '/other/docker/introduction',
+              },
+              {
+                text: '9.2 镜像命令',
+                link: '/other/docker/images'
+              },
+              {
+                text: '9.3 容器命令',
+                link: '/other/docker/container'
+              },
+              {
+                text: '9.4 DockerFile',
+                link: '/other/docker/dockerFile'
+              },
+              {
+                text: '9.5 Docker数据卷(volume)',
+                link: '/other/docker/volume'
+              },
+              {
+                text: '9.6 Docker网络',
+                link: '/other/docker/network'
+              }
+            ]
           },
           {
             text: '第十章：数据结构与算法',
@@ -505,11 +652,81 @@ export default defineConfig({
           },
           {
             text: '第十二章：Python',
-            link: '/other/python'
+            link: '/other/python/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '12.1 介绍、安装',
+                link: '/other/python/introduction',
+              },
+              {
+                text: '12.2 变量、数字、序列、映射和集合',
+                link: '/other/python/datatype'
+              },
+              {
+                text: '12.3 条件和循环',
+                link: '/other/python/control'
+              },
+              {
+                text: '12.4 文件、输入输出、异常',
+                link: '/other/python/io'
+              },
+              {
+                text: '12.5 函数、模块',
+                link: '/other/python/function'
+              },
+              {
+                text: '12.6 面对对象编程',
+                link: '/other/python/oop'
+              },
+              {
+                text: '12.7 多线程编程',
+                link: '/other/python/multithreading'
+              },
+              {
+                text: '12.8 标准库',
+                link: '/other/python/package'
+              },
+              {
+                text: '12.9 第三方库',
+                link: '/other/python/extendPackage'
+              }
+            ]
           },
           {
             text: '第十三章：风格规范',
-            link: '/other/specification'
+            link: '/other/specification/html',
+            collapsed: true,
+            items: [
+              {
+                text: '13.1 HTML规范',
+                link: '/other/specification/html',
+              },
+              {
+                text: '13.2 JavaScript规范',
+                link: '/other/specification/javaScript'
+              },
+              {
+                text: '13.3 CSS规范',
+                link: '/other/specification/css'
+              },
+              {
+                text: '13.4 代码检测',
+                link: '/other/specification/code'
+              },
+              {
+                text: '13.5 提交规范',
+                link: '/other/specification/commit'
+              },
+              {
+                text: '13.6 分支管理规范',
+                link: '/other/specification/branch'
+              },
+              {
+                text: '13.7 UI规范',
+                link: '/other/specification/ui'
+              }
+            ]
           }
         ]
       }]

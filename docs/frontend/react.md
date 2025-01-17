@@ -225,7 +225,93 @@ export default App;
   font-size: 30px;
 }
 ```
+#### 组件通讯
+1. 父传子
+> `props`    
+>> * 只读对象，只能由父组件修改，可以是任意的数据类型（数字、函数、字符串、布尔值、数组、对象、JSX）   
+>> * `children`:`props` 的特殊属性,当我们把内容嵌套到子组件标签内时，`children` 返回嵌套的内容
+```js
+// 定义子组件
+function Son(props) {
+  // 子组件通过 props 获取数据
+  return <div>这是父组件传递的内容“{props.parentData}”，这是子组件嵌套的内容"{props.children}"</div>
+}
 
+const data = 'this is parentData'
+
+function App() {
+  return (
+    <div className="App">
+      {/* 通过子组件的标签传递数据 */}
+      <Son Son parentData={data} > This is the nested content</Son>
+    </div>
+  )
+}
+export default App;
+```
+2. 子传父   
+在子组件中调用父组件中的番薯饼传递参数
+```js
+import { useState } from 'react'
+// 定义子组件
+function Son({ onGetSonMsg }) {
+  // 子组件的数据
+  const data = 'this is sonData'
+  return <div>this is son <button onClick={() => onGetSonMsg(data)}>sendMsg</button></div>
+}
+
+
+function App() {
+
+  const [msg, setMsg] = useState('')
+  const getMsg = (data) => {
+    setMsg(data)
+  }
+  return (
+    <div className="App">
+      {/* 通过子组件的标签传递函数，子组件调用改函数，传递数据 */}
+      <Son onGetSonMsg={getMsg}></Son>
+      {msg}
+    </div>
+  )
+}
+export default App;
+```
+
+3. 兄弟传值
+```js
+import { useState } from 'react'
+
+// 定义子组件
+function BrotherA({ onGetSonMsg }) {
+  // 子组件的数据
+  const data = 'this is brotherA`Data'
+  return <div>this is son <button onClick={() => onGetSonMsg(data)}>sendMsg</button></div>
+}
+
+function BrotherB(props) {
+  return <div>brotherB:{props.msg}</div>
+}
+
+
+function App() {
+  const [msg, setMsg] = useState('')
+  const getMsg = (data) => {
+    setMsg(data)
+  }
+  return (
+    <div className="App">
+      {/* 通过子组件的标签传递数据 */}
+      <BrotherA onGetSonMsg={getMsg}></BrotherA>
+     <div>parent:{msg}</div>
+      {/* 父组件再传给BrotherB */}
+      <BrotherB msg={msg}></BrotherB>
+    </div>
+  )
+}
+export default App;
+```
+4. 父传孙
 ### 9.1.3 响应式 `useState`
 useState 是一个 `React hooks`  ，它允许我们向组件添加一个状态变量，从而控制影响组件的渲染结果。
 
@@ -272,13 +358,15 @@ function App() {
   const inputRef = useRef()
   const handleClick = () => {
     console.log(inputRef);
+    // 获取聚焦
+    inputRef.current.focus()
   }
   return (
     <div className="App">
       <button onClick={handleClick}>useRef</button>
       <input type="text" ref={inputRef} placeholder='请输入内容'/>
     </div >
-  );
+  ); 
 }
 
 export default App;
@@ -288,4 +376,4 @@ export default App;
 ## 9.3 Router
 
 
-<!-- https://www.bilibili.com/video/BV1ZB4y1Z7o8?spm_id_from=333.788.player.switch&vd_source=21e371c1bffc1d55378da343e016464a&p=21 -->
+<!-- https://www.bilibili.com/video/BV1ZB4y1Z7o8?spm_id_from=333.788.player.switch&vd_source=21e371c1bffc1d55378da343e016464a&p=29 -->

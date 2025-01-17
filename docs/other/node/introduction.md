@@ -1,4 +1,4 @@
-
+# 7.1 node.js概述
 `Node.js`是`JavaScript`服务器端运行时环境，`Node.js` 建立在 `Google Chrome V8 JavaScript` 引擎之上，不依赖第三方应用（`Apache`）,可以基于`Api`自己实现。    
 `Node.js`应用在单个进程中运行，在其标准库中提供了一组异步 `I/O` 原语，以防止 JavaScript 代码阻塞。    
 
