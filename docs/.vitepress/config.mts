@@ -78,9 +78,9 @@ export default defineConfig({
     search: {
       provider: 'algolia',
       options: {
-        appId: '87COFO7UGR',
-        apiKey: 'c51c83018a9a3f55462529ad9e80976d',
-        indexName: '/',
+        appId: 'AVSL1P7PXW',
+        apiKey: '5368851edef55ba7c73cdec7e40c2399',
+        indexName: 'www_jaqi_top',
         locales: {
           zh: {
             placeholder: "搜索文档",
@@ -127,7 +127,7 @@ export default defineConfig({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.02.14.3 V3'
+      copyright: 'jaqi.note © jaqi.l @25.02.14.4 V3'
     },
     nav: [
       { text: '导航', link: '/' },
