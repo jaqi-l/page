@@ -9,6 +9,7 @@ export default defineConfig({
   base: '',
   head: [
     ['meta', { name: 'viewport', content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" }],
+    ['meta', { name: 'algolia-site-verification', content: "7CFBAF83952B92DE" }],
     ["link", { rel: "icon", href: "/favicon.ico" }],
     // donut
     [
@@ -126,7 +127,7 @@ export default defineConfig({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.02.14.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.02.14.2 V3'
     },
     nav: [
       { text: '导航', link: '/' },
