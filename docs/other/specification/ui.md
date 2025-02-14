@@ -1,4 +1,4 @@
-# 13.7  移动的UI规范
+# 13.7 UI设计与还原规范
 
 ## 基本概念
 
@@ -39,10 +39,9 @@
 
 * ### 全宽图片
 ![全宽图片](/ui/全宽图片.jpg)
-> 全宽：（例如患者端收图）不需要标注宽度，100%屏幕宽度
+> 全宽：不需要标注宽度，100%屏幕宽度
 >> 高度标注固定，则需要备注裁剪和伸缩逻辑
 >> 不标注高度，高度随上传图片比例缩放
-
 
 > 全宽+外边距：（例如 banner）不需要标注宽度，100%屏幕宽度 - 2*外边边距
 >> 高度标注固定，则需要备注裁剪和伸缩逻辑
@@ -53,13 +52,13 @@
 ![满屏](/ui/满屏.png)
 
 * ### 图标：
-到处都图片应该是 `png` 格式的透明图标
+导出都图片应该是 `png` 格式的透明图标
 ![图标](/ui/图标.jpg)
 
 ## 排版
 
 * ### 图文混排：
-图片固定尺寸，文字应标注超宽显示规则是滚动省略还是换行，换行后与图片的垂直对齐规则（例如患者卡片）
+图片固定尺寸，文字应标注超宽显示规则是滚动省略还是换行，换行后与图片的垂直对齐规则
 
 
 * ### 水平居中：
@@ -76,6 +75,21 @@
 1. 使用十六进制写法，有透明度需求使用 `rgba`
 2. 基础色，使用 css 变量定义
 
+```css
+:root {
+  --main-bg-color: red;
+}
+
+:root {
+  --main-text-color: blue;
+}
+ 
+#div1 {
+  background-color: var(--main-bg-color);
+  color:  var(--main-text-color);
+}
+```
+
 ## 文字
 
 1. 所有的字号设置都必须为偶数
@@ -89,12 +103,40 @@
 `.h2`：字号、颜色、内边距（行高）、字体粗细
 `.h3`：字号、颜色、内边距（行高）、字体粗细
 `.h4`：字号、颜色、内边距（行高）、字体粗细
-`.h6`：字号、颜色、内边距（行高）、字体粗细
-`.h7`：字号、颜色、内边距（行高）、字体粗细
+
+```css
+.h1{
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--main-text-color);
+}
+.h2{
+  font-size: 32rpx;
+   color: var(--basic-text-color);
+}
+.h3{
+  font-size: 28rpx;
+  font-weight: bold;
+   color: var(--main-text-color);
+}
+.h3{
+  font-size: 28rpx;
+   color: var(--basic-text-color);
+}
+.h4{
+  font-size: 24rpx;
+   color: var(--main-text-color);
+}
+.h5{
+  font-size: 20rpx;
+  font-weight: bold;
+   color: var(--basic-text-color);
+}
+```
 
 ## 其它
 
-
+gif 图太大：复杂运动才分运动和静止图片，简单运动拆封结构使用 `css` 动画实现
 ## 标注
 
 1. 所有撑满横屏的模块，不需要标注宽度，只需要标注高度   
