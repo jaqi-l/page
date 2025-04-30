@@ -10,17 +10,25 @@ var str=new String
 ## 3.9.3 字符串的方法
 
 * `length`获取字符串的长度。
+如果字符串中包含双字节字符，那么length属性返回的值可能不是准确的字符数
 ```js
 arr.length
 ```
 
 * `toString`返回字符串。可以将数值转换成字符串。
 ```js
-arr.toString
+  let age = 11;
+  let ageAsString = age.toString();        // 字符串"11"
+  let found = true;
+  let foundAsString = found.toString();   // 字符串"true”
+  let num = 10;
+	// 如果需要获取数值的二进制、八进制、十六进制的字符串表示，则可以给toString传递一个表示进制的的整数
+  console.log(num.toString());      // "10"
+  console.log(num.toString(2));     // "1010”
+  console.log(num.toString(8));     // "12"
+  console.log(num.toString(10));    // "10"
+  console.log(num.toString(16));    // "a”
 ```
-:::tip
-如果需要获取数值的二进制、八进制、十六进制的字符串表示，则可以给toString传递一个表示进制的的整数
-:::
 
 * `parseInt`将字符串转换成整数。
 >parseInt(string, radix)

@@ -1,12 +1,16 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
   title: "jaqi.page",
   description: "",
   lastUpdated: true,
   appearance: true,
   base: '',
+  sitemap: {
+    hostname: 'https://www.jaqi.top'
+  },
   head: [
     ['meta', { name: 'viewport', content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" }],
     ['meta', { name: 'algolia-site-verification', content: "7CD6C24DD452B66E" }],
@@ -127,7 +131,7 @@ export default defineConfig({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.04.14.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.04.30.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -136,7 +140,6 @@ export default defineConfig({
       { text: 'jaqi.server', link: 'https://jaqi.synology.me:5001/' },
       { text: 'jaqi.csnd', link: 'https://blog.csdn.net/ljq547152849' },
     ],
-
     sidebar: {
       '/frontend/': [{
         items: [
@@ -749,6 +752,21 @@ export default defineConfig({
               {
                 text: '13.7 UI规范',
                 link: '/other/specification/ui'
+              }
+            ]
+          },
+          {
+            text: '第十四章：AI',
+            link: '/other/ai/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '14.1 概述',
+                link: '/other/ai/introduction',
+              },
+              {
+                text: '14.2 提示词',
+                link: '/other/ai/prompt',
               }
             ]
           }

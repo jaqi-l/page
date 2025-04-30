@@ -447,26 +447,6 @@
       "description": ""
     },
     {
-      "title": "爱奇艺",
-      "link": "https://www.iqiyi.com/",
-      "description": ""
-    },
-    {
-      "title": "腾讯视频",
-      "link": "https://v.qq.com/",
-      "description": ""
-    },
-    {
-      "title": "优酷视频",
-      "link": "https://tv.youku.com/",
-      "description": ""
-    },
-    {
-      "title": "QQ音乐",
-      "link": "https://y.qq.com/",
-      "description": ""
-    },
-    {
       "title": "值得买",
       "link": "https://www.smzdm.com/",
       "description": ""
@@ -495,6 +475,11 @@
       "title": "迅雷电影天堂",
       "link": "https://xunlei8.cc/",
       "description": "电影下载"
+    },
+    {
+      "title": "TVgarden",
+      "link": "https://tv.garden/",
+      "description": "世界电视台"
     }
   ]
 },

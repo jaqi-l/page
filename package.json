@@ -5,11 +5,12 @@
     "deploy": "node deploy.js"
   },
   "dependencies": {
-    "element-plus": "^2.9.7"
+    "element-plus": "^2.9.9",
+    "vitepress-plugin-mermaid": "^2.0.17"
   },
   "devDependencies": {
     "moment": "^2.30.1",
     "shelljs": "^0.8.5",
-    "vitepress": "2.0.0-alpha.4"
+    "vitepress": "2.0.0-alpha.5"
   }
 }

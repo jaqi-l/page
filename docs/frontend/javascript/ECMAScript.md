@@ -3,9 +3,11 @@
 `const`用于声明常量，值不可以改变，不存在预解析，必须初始化（直接赋值），同一作用域不允许重复声明，只能在块内访问。     
 ::: tip
 1. 块级作用域：`if`/`else`/`for`，由`{}`包括起来的部分。
-2. `const`指向的地址不可以改变，但是指向的数据结构是可以改变的。可以使用`Object.freeze`冻结指向的对象。
+2. `const`指向的地址不可以改变，但是指向的数据结构是可以改变的。换句话说，如果`const`变量引用的是一个对象，那么修改这个对象内部的属性并不违反const的限制,可以使用`Object.freeze`冻结指向的对象。
 3. `let`/`const`声明的变量不属于顶层对象的属性。
 4. <span style="color: red">*</span>ES2020新增`globalThis`可以在任何环境下获取顶层对象。
+5. `let`不能进行条件式声明
+6. 优先使用`const`，如果需要修改值再使用`let`，不使用`var`
 :::
 块级作用域的优点：
 ```js
@@ -277,6 +279,27 @@ var f = function (v) {
 ### 1. `isFinite`/`isNaN`
 >  Number.isFinite()检测数值是否有限，Number.isNaN检测数值是否为NaN
 ### 2. `parseInt`/`parseFloat`
+* `parseInt`
+```js
+  let num1 = parseInt("1234blue");     // 1234
+  let num2 = parseInt("");             // NaN
+  let num3 = parseInt("0xA");          // 10，解释为十六进制整数
+  let num4 = parseInt(22.5);           // 22
+  let num5 = parseInt("70");           // 70，解释为十进制值
+  let num6 = parseInt("0xf");          // 15，解释为十六进制整数
+  let num7 = parseInt("0xAF", 16);     // 175 16为设置的进制数
+  let num8 = parseInt("AF", 18);       // 195 18 进制
+  let num9 = parseInt("12",3);         // 5 3进制
+```
+* `parseFloat`
+```js
+ let num1 = parseFloat("1234blue");    // 1234，按整数解析
+  let num2 = parseFloat("0xA");        // 0
+  let num3 = parseFloat("22.5");       // 22.5
+  let num4 = parseFloat("22.34.5");    // 22.34
+  let num5 = parseFloat("0908.5");     // 908.5
+  let num6 = parseFloat("3.125e7");    // 31250000
+```
 ### 3. `isInteger`
 > 判断是否为整数
 ### 4. `EPSILON`
@@ -583,15 +606,33 @@ sym.toString() // 'Symbol(My symbol)'
 ```
 
 ### `Symbol`的方法
-1. `for`
-2. `keyfor`
+1. `for`：全局符号注册表
+```js
+let fooGlobalSymbol = Symbol.for('foo');         // 创建新符号
+let otherFooGlobalSymbol = Symbol.for('foo');   // 重用已有符号
+console.log(fooGlobalSymbol === otherFooGlobalSymbol);   // true
+
+// 即使采用相同的符号描述，在全局注册表中定义的符号跟使用Symbol()定义的符号也并不等同
+let localSymbol = Symbol('foo');
+console.log(localSymbol === globalSymbol); // false
+```
+
+2. `keyfor`：查询全局注册表
+```js
+ // 创建全局符号
+let s = Symbol.for('foo');
+console.log(Symbol.keyFor(s));    // foo
+// 创建普通符号
+let s2 = Symbol('bar');
+console.log(Symbol.keyFor(s2));   // undefined
+```
 3. `isConcatSpreadable`
 4. `toPrimitive`
 5. `species`
 6. `iterator`
 7. `hasInstance`
 8. `toStringTag`
-9. `asyncIterator`
+9.  `asyncIterator`
 
 ### `Symbol`的常见应用
 1. 解决属性名称冲突、私有属性
