@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "element-plus": "^2.9.9",
+    "vitepress-plugin-llms": "^1.1.3",
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "devDependencies": {

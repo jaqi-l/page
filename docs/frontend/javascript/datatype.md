@@ -1,3 +1,4 @@
+# 3.2 数据类型
 基本类型:`Undefined` ,`Null`, `Boolean`,`Number`,`String`,`Symbol(ES6)`
 
 引用类型: `Object`,`Array`,`Date`,`Function`

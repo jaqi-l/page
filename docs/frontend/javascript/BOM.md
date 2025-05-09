@@ -1,3 +1,4 @@
+# 3.10 BOM
 ## 3.10.1 基本概念
 BOM是Browser Object Model的缩写，简称浏览器对象模型
 

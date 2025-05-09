@@ -1,3 +1,4 @@
+# 6.15 vuex
 ## 6.15.1 概述
 
 ![lifecycle](/vuex.png)

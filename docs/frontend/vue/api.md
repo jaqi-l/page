@@ -1,3 +1,4 @@
+# 6.11 Api
 ## 6.11.1 全局配置(Vue.config)
 `Vue.config`是一个对象，包含Vue的全局配置。
 * `Vue.config.silent`:是否显示Vue所有的日志与警告

@@ -1,4 +1,5 @@
-## CSS函数
+# 2.9 CSS函数与预编译器
+## 2.9.1 CSS函数
 ### attr
 `attr`返回选择元素的属性值。
 ```css
@@ -105,7 +106,7 @@ color-mix(in hsl longer hue, hsl(120 100% 50%) 20%, white);
 
 ### 三角函数(<span style="color: red">*</span>CSS 2023新增)
 
-## LESS
+## 2.9.2 LESS
 
 #### 导入
 ```less
@@ -224,7 +225,7 @@ less语法在加减运算时会进行单位转换。因此在使用calc属性时
   }
 }
 ```
-## SCSS(SASS)
+## 2.9.3 SCSS(SASS)
 
 #### 导入
 ```scss
@@ -396,7 +397,7 @@ $i: 6;
 ::: tip 扩展函数库：
 [SassMagic](http://w3cplus.github.io/SassMagic/#undefined-function-decimal-round)
 :::
-## Stylus
+## 2.9.4 Stylus
 
 ### 缩排
 `Stylus`语法是基于缩进，空格有重要的意义，使用缩排和凹排代替花括号`{`及`}`
@@ -678,4 +679,4 @@ color = color is defined ? color : white
 `not`    
 `if` `unless`    
 
-## PostCSS
+## 2.9.5 PostCSS

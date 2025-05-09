@@ -1,8 +1,12 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from "vitepress-plugin-mermaid";
+import llmstxt from 'vitepress-plugin-llms'
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
+  vite: {
+    plugins: [llmstxt()]
+  },
   title: "jaqi.page",
   description: "",
   lastUpdated: true,
@@ -131,7 +135,7 @@ export default withMermaid({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.04.30.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.05.09.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -196,7 +200,7 @@ export default withMermaid({
                     link: '/frontend/html/element/SVG'
                   },
                   {
-                    text: '1.2.10 iframe元素',
+                    text: '1.2.11 iframe元素',
                     link: '/frontend/html/element/iframe'
                   }
                 ]
@@ -326,7 +330,10 @@ export default withMermaid({
               {
                 text: '3.17 TypeScript',
                 link: '/frontend/javascript/TypeScript'
-              },
+              }, {
+                text: '3.18 文件系统',
+                link: '/frontend/javascript/File'
+              }
             ]
           },
           {
@@ -391,8 +398,8 @@ export default withMermaid({
                 link: '/frontend/vue/setup'
               },
               {
-                text: '6.13 axios',
-                link: '/frontend/vue/axios'
+                text: '6.13 占位',
+                link: ''
               },
               {
                 text: '6.14 Vue/Cli',
@@ -767,6 +774,14 @@ export default withMermaid({
               {
                 text: '14.2 提示词',
                 link: '/other/ai/prompt',
+              },
+              {
+                text: '14.3 Function Call',
+                link: '/other/ai/FunctionCall',
+              },
+              {
+                text: '14.4 MCP',
+                link: '/other/ai/mcp',
               }
             ]
           }

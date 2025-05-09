@@ -1,3 +1,4 @@
+# 6.1 基本介绍
 ## 6.1.1 前端三大框架
 vue/react/angular
 
@@ -50,7 +51,7 @@ MVVM：Model-View-ViewModel 数据-视图-视图模型。
 > 区别是ViewModel与Model通过双向数据绑定实现
 :::
 ## 6.1.5 引入
-* 通过用`<script>`引入
+* 通过用`<script>`标签引入
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue"></script> 
 <!-- 锁定版本号避免不可预期的风险 -->

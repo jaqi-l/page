@@ -1,4 +1,5 @@
-## 6.15.1 概述
+# 6.17 Pinia
+## 6.17.1 概述
 
 ##### `State`       
 * 是一个保存状态和业务逻辑的实体    
@@ -55,7 +56,7 @@ console.log(piniaStoreA.piniaMsg); //hello juejin
 ```
 
 
-## 6.15.2 核心概念
+## 6.17.2 核心概念
 
 ### `Store`
 * `store`由`defineStore()`定义的:
