@@ -51,10 +51,25 @@ https利用摘要算法、对称加密算法、非对称加密算法来完成的
 [Chrome Developers](https://developer.chrome.com/)
 :::
 
-## 3.2.6 URI基本格式
-URL统一资源定位符，URI统一资源标识符，URN统一资源名称。
-URI的组成：scheme-user-informantion-host-port+query-fragment
-为什么要进行URI编码：避免数据编码歧义。
+## 3.2.6 `URI`、`URL`、`URN`概念
+
+URI = Uniform Resource Identifier 统一资源标志符    
+URL = Uniform Resource Locator 统一资源定位符   
+URN = Uniform Resource Name 统一资源名称（没流行起来，导致几乎目前所有的`URI`都是`URL`）    
+
+`URI`是抽象的定义,不管用什么方法表示，只要能定位一个资源，就叫`URI`.用地址定位叫`URL`，用名称定位叫`URN`
+
+### `URI`的组成   
+`scheme`(协议)-`user`(用户名/密码)-`host`(域名)-`port`(端口)-`path`(文件路径/文件名)-`query`(查询字符串)-`fragment`(片段标识符)
+
+- **`scheme`**：协议类型，http、https、ftp、mailto、telnet等    
+- **`user`**：用户名和密码，格式为`username:password@`，可选    
+- **`host`**：主机名，IP地址或域名    
+- **`port`**：端口号，http默认80端口,https默认443端口,可省略    
+- **`path`**：文件路径，表示资源在服务器上的位置    
+- **`query`**：查询字符串，表示请求参数，格式为`key1=value1&key2=value2`    
+- **`fragment`**：片段标识符，表示资源的某个部分，格式为`#fragment`，可选   
+
 
 ## 3.2.7 HTTP请求行
 HTTP版本：0.9（只支持get方法）、1.0 （常用代理服务器例如nginx默认配置）1.1（1999年发布）、2.0(2015年发布)

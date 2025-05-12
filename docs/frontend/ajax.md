@@ -457,13 +457,38 @@ Web协议相关详见：[Web协议](/other/network/introduction)
 
 
 ### 中文乱码
-1. `encodeURIComponent`编码`decodeURIComponent`解码
-2. `encodeURI`编码、`decodeURI`解码
-`URIComponent`比`URI`编码的范围更大。
+
+#### 1. `escape`<span style="color: red">*已弃用</span>
+
+- **功能**：对字符串进行编码，使字符串在所有计算机上可读。编码后的效果是%XX或%uXXXX这种形式   
+- **编码范围**：除了ASCII字母、数字和特定符号（如`@*_±./`）外，其他字符都会被编码   
+- **使用场景**：由于`escape`函数主要用于对字符串进行编码，而不是对URL进行编码，因此在实际需要对URL进行编码时，应避免使用此方法
+- **解码方法**：`unescape`
+
+#### 2. `encodeURI`
+- **功能**：对URI（统一资源标识符）进行编码   
+- **编码范围**：不会对ASCII字母、数字和一些特定标点符号（如`~!@#$&()=:/,;?+'`）进行编码。同时，也不会对在URI中具有特殊含义的ASCII标点符号（如`;😕?@&=+$,#`）进行编码    
+- **使用场景**：当需要编码整个URI，并且希望URI中的合法字符保持原样时，应使用encodeURI函数。例如，当需要将一个网址作为字符串传递给另一个页面或API时，可以使用`encodeURI`对该网址进行编码   
+- **解码方法**：`decodeURI`
+
+#### 3. `encodeURIComponent`
+
+- **功能**：对URI组件进行编码   
+- **编码范围**：不会对ASCII字母、数字和一些特定标点符号（如`~!.'()`）进行编码。但会对其他用于分隔URI组件的标点符号（如`:;/?@&=+$,#`）进行编码   
+- **使用场景**：当需要将URI的某个组件（如查询字符串中的参数）进行编码，以确保该组件在URI中安全传输时，应使用`encodeURIComponent`函数。例如，在构建包含查询参数的URL时，可以使用`encodeURIComponent`对参数值进行编码
+- **解码方法**：`decodeURIComponent`
+
+::: tip
+1. `escape`函数主要用于对字符串进行编码，不适用于URL编码    
+2. `encodeURI`函数用于编码整个URI，保持URI中的合法字符不变    
+3. `encodeURIComponent`函数用于编码URI的单个组件，确保组件在URI中安全传输   
+:::
+
 ### 文件流转url
 ```js
 let url = URL.createObjectURL(blob);
 ```
+文件转码相关详见：[文件系统](/frontend/javascript/File)
 ### `formData`表单序列化
 ```js
 var formdata = new FormData()
@@ -472,7 +497,7 @@ formdata.append(key,value)
 
 ## 5.7 Alova
 
-* 基于 `Fetch`/`XMLHttpRequest`封装成请求适配器，用户可以自由根据需要选择使用`Fetch`或`XMLHttpRequest`两种方案
+* 基于 `Fetch`/`XMLHttpRequest`封装请求库，用户可以自由根据需要选择使用`Fetch`或`XMLHttpRequest`两种方案
 * 继承了 `axios` 的大部分功能，支持 `Promise` 和 `async/await` 语法，支持 `TypeScript`，并且可以在浏览器和 `Node.js` 中使用
 * 还提供了更强大的功能，如请求拦截器、响应拦截器、请求取消、请求重试、请求超时、请求合并、请求重定向、请求状态管理、请求重试等功能
 

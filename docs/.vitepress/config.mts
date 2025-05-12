@@ -135,7 +135,7 @@ export default withMermaid({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.05.09.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.05.12.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },

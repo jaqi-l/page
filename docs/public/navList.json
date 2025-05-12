@@ -34,6 +34,11 @@
       "description": null
     },
     {
+      "title": "VueUse",
+      "link": "https://vueuse.nodejs.cn/",
+      "description": "Vue hooks 库"
+    },
+    {
       "title": "知乎",
       "link": "https://www.zhihu.com/",
       "description": ""
@@ -66,6 +71,11 @@
     {
       "title": "Element-ui",
       "link": "https://element.eleme.cn/#/zh-CN",
+      "description": ""
+    },
+    {
+      "title": "Element-Plus",
+      "link": "https://cn.element-plus.org/",
       "description": ""
     },
     {
@@ -119,21 +129,6 @@
       "description": ""
     },
     {
-      "title": "ES6 入门教程",
-      "link": "https://es6.ruanyifeng.com/",
-      "description": ""
-    },
-    {
-      "title": "17素材",
-      "link": "https://www.17sucai.com/",
-      "description": ""
-    },
-    {
-      "title": "腾讯位置服务",
-      "link": "https://lbs.qq.com/",
-      "description": ""
-    },
-    {
       "title": "小程序开发文档",
       "link": "https://developers.weixin.qq.com/miniprogram/dev/framework/",
       "description": ""
@@ -176,11 +171,6 @@
     {
       "title": "书火网",
       "link": "https://fire100.top/search",
-      "description": ""
-    },
-    {
-      "title": "大白菜博客",
-      "link": "https://cmsblogs.cn/",
       "description": ""
     },
     {
@@ -447,18 +437,8 @@
       "description": ""
     },
     {
-      "title": "值得买",
-      "link": "https://www.smzdm.com/",
-      "description": ""
-    },
-    {
       "title": "HiFiNi 音乐磁场",
       "link": "https://www.hifini.com/",
-      "description": ""
-    },
-    {
-      "title": "贴 吧",
-      "link": "https://tieba.baidu.com/",
       "description": ""
     },
     {
@@ -501,6 +481,21 @@
     {
       "title": "ChatGPT-Poe",
       "link": "https://poe.com/",
+      "description": ""
+    },
+    {
+      "title": "DeepSeek",
+      "link": "https://www.deepseek.com/",
+      "description": ""
+    },
+    {
+      "title": "豆包",
+      "link": "https://www.doubao.com/",
+      "description": ""
+    },
+    {
+      "title": "扣子",
+      "link": "https://www.coze.cn/home",
       "description": ""
     },
     {
@@ -605,11 +600,6 @@
       "title": "淘宝镜像",
       "link": "http://npm.taobao.org/mirrors/",
       "description": ""
-    },
-    {
-      "title": "processon",
-      "link": "https://www.processon.com/",
-      "description": "思维导图"
     },
     {
       "title": "aconvert在线版格式工厂",
@@ -754,6 +744,11 @@
       "title": "CC宝盒",
       "link": "https://ccbaohe.com/",
       "description": "小火箭共享账户"
+    },
+    {
+      "title": "大白菜博客",
+      "link": "https://cmsblogs.cn/",
+      "description": ""
     }
   ]
 },
