@@ -334,6 +334,15 @@ var f = function (v) {
 > let nodeList = document.querySelectorAll('div');
 > let array = [...nodeList];
 >```
+> * 变量交换
+> ```js
+> let a = 1;
+> let b = 2;
+>  
+> [a, b] = [b, a];
+>  
+> console.log(a,b); // 输出: 2,1
+> ```
 > * Map 和 Set 结构，Generator 函数
 ### 2. `from`   
 > 将类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括 ES6 新增的数据结构 Set 和 Map）。
@@ -415,7 +424,7 @@ var f = function (v) {
 > const arr = ["I", "am", "the", "Walrus"];
 > // 用 "Ape Man" 替换字符串 "Walrus"。
 > const newArr = arr.with(3, "Ape Man");
-> console.log(newArr);
+> console.log(newArr); // ['I', 'am', 'the', 'Ape Man']
 > ```
 
 ## 3.16.8 对象扩展
@@ -465,7 +474,7 @@ var f = function (v) {
 ### 6. `super`关键字
 指向当前对象的原型对象,只能用在对象方法之中。
 ```js
-onst proto = {
+const proto = {
   foo: 'hello'
 };
 
@@ -480,9 +489,10 @@ Object.setPrototypeOf(obj, proto);
 obj.find() // "hello"
 ```
 JavaScript引擎内部，super.foo等同于Object.getPrototypeOf(this).foo（属性）或Object.getPrototypeOf(this).foo.call(this)（方法）。
-
-const proto = {
 ```js
+const proto = {
+  foo: 'hello'
+};
 
 const obj = {
   foo: super.foo // 报错 super用在了属性里
@@ -514,15 +524,24 @@ const obj = {
 >  // 使用链判断运算符写法
 >  const firstName = message?.body?.user?.firstName || 'default';
 > ```
-### 9. `??`Null判断运算符
-> <span style="color: red">*</span>ES2020新增：`??`Null判断运算符
+### 9. `??`非空运算符
+> <span style="color: red">*</span>ES2020新增：`??` 非空运算符
 > ```js
-> // 如果firstName的值是false或0，default会生效
->  const firstName = message?.body?.user?.firstName || 'default';  
-> // firstName的值是null或undefined，default才会生效
+> // 如果firstName的值是null、undefined、为空字符、false、0，default会生效
+> const firstName = message?.body?.user?.firstName || 'default';  
+> // firstName的值是null、undefined，default才会生效
 > const firstName = message?.body?.user?.firstName ?? 'default';  
 > ```
-### 10. `Object.is`
+### 10. `??=`逻辑空赋值
+> <span style="color: red">*</span>ES2020新增：`??=` 非空运算符
+
+```js
+// 仅在 x 是空值（null 或 undefined）时对其赋值
+var x = null
+var y = 5
+console.log(x ??= y) // => 5
+```
+### 11. `Object.is`
 > 判断是否同值相等
 > ```js
 > Object.is('foo', 'foo') // true
@@ -530,7 +549,7 @@ const obj = {
 > Object.is(+0, -0) // false
 > Object.is(NaN, NaN) // true
 > ```
-### 11. `Object.assign`
+### 12. `Object.assign`
 > 将源对象的所有可枚举属性属性合并。
 > ```js
 > Object.assign(source1,source2,source3);
@@ -539,15 +558,15 @@ const obj = {
 > 如果属性同名则后面的覆盖前面的,因此嵌套对象会执行覆盖而不是插入，因此不能处理嵌套对象。
 > 该方法为浅拷贝。
 > :::
-### 12. `Object.getOwnPropertyDescriptors`
+### 13. `Object.getOwnPropertyDescriptors`
 > ES5：`getOwnPropertyDescriptor`返回某个对象属性的描述对象。   
 > <span style="color: red">*</span>ES2017：`getOwnPropertyDescriptors`返回指定对象所有自身属性（非继承属性）的描述对象。   
 > 该方法的引入目的，主要是为了解决Object.assign()无法正确拷贝get属性和set属性的问题。Object。assign方法总是拷贝一个属性的值，而不会拷贝它背后的赋值方法或取值方法。 
-### 13. ` __proto__`属性和`Object.setPrototypeOf`/`Object.getPrototypeOf`方法
+### 14. ` __proto__`属性和`Object.setPrototypeOf`/`Object.getPrototypeOf`方法
 > ` __proto__`属性：用来读取或设置当前对象的原型对象。出于兼容性考虑建议使用一下方法操作原型对象。    
 > `Object.setPrototypeOf`方法用于设置一个对象的原型对象，返回参数对象本身。   
 > `Object.setPrototypeOf`方法用于读取一个对象的原型对象。   
-### 14.  `Object.keys`/`Object.values`/`Object.entries`/`Object.fromEntries`
+### 15.  `Object.keys`/`Object.values`/`Object.entries`/`Object.fromEntries`
 > `Object.keys`返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。   
 > <span style="color: red">*</span>ES2017：`Object.values`返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值。   
 > `Object.entries`返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。    
@@ -565,7 +584,7 @@ const obj = {
 > ])
 > // { foo: "bar", baz: 42 }
 > ```
-### 15. `groupBy`<span style="color: red">*</span>ES2024新增
+### 16. `groupBy`<span style="color: red">*</span>ES2024新增
 允许您基于指定的属性，进行分组，并返回一个新的数组
 > ```js
 > const inventory = [

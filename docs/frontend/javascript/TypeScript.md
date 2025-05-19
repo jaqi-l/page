@@ -727,6 +727,17 @@ const aLink = <HTMLAnchorElement>document.getElementById('link')
 ::: tip 如果判断HTMLElement的子类型
 通过浏览器控制板，选中元素然后console.dir($0)，`[[Prototype]]`即是
 :::
+
+### 非空断言`!.`
+手动指定值一定不为空
+```ts
+function f(x?:number|null) {
+  validateNumber(x); // 自定义函数，确保 x 是数值
+  console.log(x!.toFixed());
+}
+// x的类型是number|null，即可能为空。如果为空，就不存在x.toFixed()方法，因此会报错，使用非空断言可以，指定 x 一定不为空，就不会报错了
+```
+
 ## 3.17.4 扩展类型
 
 ### 联合类型

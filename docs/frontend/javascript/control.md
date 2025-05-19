@@ -175,7 +175,7 @@ function myFunction() {
 ```
 
 :::tip
-####  map与foreach区别：
+map与foreach区别：
 
 1. `map`速度比`for/each`快
 
@@ -185,6 +185,21 @@ function myFunction() {
 
 4. `map`里可以用`return` ,而`for/each`不能用`break`和`return`。
 :::
+
+#### with
+`with`语句的用途是将代码作用域设置为特定的对象
+
+```js
+const obj = { a: 1 };
+with(obj) {
+  console.log(a); 
+}
+```
+
+::: warning
+由于`with`语句影响性能且难于调试其中的代码，通常不推荐在产品代码中使用with语句
+:::
+
 
 ## 3.4.8 跳出 
 
