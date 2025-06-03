@@ -135,7 +135,7 @@ export default withMermaid({
       // }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.05.19.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.06.03.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -772,15 +772,19 @@ export default withMermaid({
                 link: '/other/ai/introduction',
               },
               {
-                text: '14.2 提示词',
+                text: '14.2 大模型',
+                link: '/other/ai/llm',
+              },
+              {
+                text: '14.3 提示词',
                 link: '/other/ai/prompt',
               },
               {
-                text: '14.3 Function Call',
+                text: '14.4 Function Call',
                 link: '/other/ai/FunctionCall',
               },
               {
-                text: '14.4 MCP',
+                text: '14.5 MCP',
                 link: '/other/ai/mcp',
               }
             ]
