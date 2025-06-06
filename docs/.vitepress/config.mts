@@ -17,58 +17,7 @@ export default withMermaid({
   },
   head: [
     ['meta', { name: 'viewport', content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" }],
-    // ['meta', { name: 'algolia-site-verification', content: "7CD6C24DD452B66E" }],
     ["link", { rel: "icon", href: "/favicon.ico" }],
-    // donut
-    // [
-    //   "script",
-    //   {},
-    //   `
-    //           (function () {
-    //       'use strict';
-        
-    //       const SCRIPT_URLs = [
-    //           'https://dldir1.qq.com/WechatWebDev/devPlatform/px.min.js',
-    //           'https://dev.weixin.qq.com/platform-console/proxy/assets/tel/px.min.js',
-    //       ];
-    //       const param = {
-    //           maskMode: 'no-mask', // 隐私策略, all-mask 或 no-mask, 详见：https://dev.weixin.qq.com/docs/analysis/sdk/docs.html
-    //           recordCanvas: true,  // 若要采集canvas, 设为true
-    //           projectId: 'wx70013fa085d4ab77-YEcfdXEgk-7hbenA', // 项目 ID，需替换为体验分析项目 ID
-    //           iframe: true, // 是否采集 iframe 页面
-    //           console: true, // 是否采集 console 输出的错误日志
-    //           network: true, // 是否采集网络错误
-    //       };
-    //       function loadScript(url) {
-    //           return new Promise((resolve, reject) => {
-    //               const scriptEle = document.createElement('script');
-    //               scriptEle.type = 'text/javascript';
-    //               scriptEle.async = true;
-    //               scriptEle.src = url;
-    //               scriptEle.onload = () => {
-    //                   resolve(url);
-    //               };
-    //               scriptEle.onerror = () => {
-    //                   reject(new Error('Script load error'));
-    //               };
-    //               document.head.appendChild(scriptEle);
-    //           });
-    //       }
-    //       async function main() {
-    //           try {
-    //               sessionStorage.setItem('wxobs_start_timestamp', String(Date.now()));
-    //               const fastestUrl = await Promise.race(SCRIPT_URLs.map(url => loadScript(url)));
-    //               window.__startPX && window.__startPX(param);
-    //           }
-    //           catch (error) {
-    //               console.error('Error loading scripts:', error);
-    //           }
-    //       }
-    //       main();
-        
-    //     })();
-    //   `
-    // ],
   ],
   themeConfig: {
     returnToTopLabel: '回到顶部',
@@ -84,58 +33,58 @@ export default withMermaid({
       next: '下一页'
     },
     search: {
-      provider: 'local',
-      // options: {
-      //   appId: 'AVSL1P7PXW',
-      //   apiKey: '5368851edef55ba7c73cdec7e40c2399',
-      //   indexName: 'www.jaqi.top',
-      //   locales: {
-      //     zh: {
-      //       placeholder: "搜索文档",
-      //       translations: {
-      //         button: {
-      //           buttonText: "搜索文档",
-      //           buttonAriaLabel: "搜索文档"
-      //         },
-      //         modal: {
-      //           searchBox: {
-      //             resetButtonTitle: "清除查询条件",
-      //             resetButtonAriaLabel: "清除查询条件",
-      //             cancelButtonText: "取消",
-      //             cancelButtonAriaLabel: "取消"
-      //           },
-      //           startScreen: {
-      //             recentSearchesTitle: "搜索历史",
-      //             noRecentSearchesText: "没有搜索历史",
-      //             saveRecentSearchButtonTitle: "保存至搜索历史",
-      //             removeRecentSearchButtonTitle: "从搜索历史中移除",
-      //             favoriteSearchesTitle: "收藏",
-      //             removeFavoriteSearchButtonTitle: "从收藏中移除"
-      //           },
-      //           errorScreen: {
-      //             titleText: "无法获取结果",
-      //             helpText: "你可能需要检查你的网络连接"
-      //           },
-      //           "footer": {
-      //             selectText: "选择",
-      //             navigateText: "切换",
-      //             closeText: "关闭",
-      //             searchByText: "搜索提供者"
-      //           },
-      //           noResultsScreen: {
-      //             noResultsText: "无法找到相关结果",
-      //             suggestedQueryText: "你可以尝试查询",
-      //             reportMissingResultsText: "你认为该查询应该有结果？",
-      //             reportMissingResultsLinkText: "点击反馈"
-      //           }
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
+      provider: 'algolia',
+      options: {
+        appId: 'K9PM45UE0N',
+        apiKey: 'ca4f7601cb2c62d024fd074cad1c35ce',
+        indexName: 'jaqi',
+        locales: {
+          zh: {
+            placeholder: "搜索文档",
+            translations: {
+              button: {
+                buttonText: "搜索文档",
+                buttonAriaLabel: "搜索文档"
+              },
+              modal: {
+                searchBox: {
+                  resetButtonTitle: "清除查询条件",
+                  resetButtonAriaLabel: "清除查询条件",
+                  cancelButtonText: "取消",
+                  cancelButtonAriaLabel: "取消"
+                },
+                startScreen: {
+                  recentSearchesTitle: "搜索历史",
+                  noRecentSearchesText: "没有搜索历史",
+                  saveRecentSearchButtonTitle: "保存至搜索历史",
+                  removeRecentSearchButtonTitle: "从搜索历史中移除",
+                  favoriteSearchesTitle: "收藏",
+                  removeFavoriteSearchButtonTitle: "从收藏中移除"
+                },
+                errorScreen: {
+                  titleText: "无法获取结果",
+                  helpText: "你可能需要检查你的网络连接"
+                },
+                "footer": {
+                  selectText: "选择",
+                  navigateText: "切换",
+                  closeText: "关闭",
+                  searchByText: "搜索提供者"
+                },
+                noResultsScreen: {
+                  noResultsText: "无法找到相关结果",
+                  suggestedQueryText: "你可以尝试查询",
+                  reportMissingResultsText: "你认为该查询应该有结果？",
+                  reportMissingResultsLinkText: "点击反馈"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.06.05.2 V3'
+      copyright: 'jaqi.note © jaqi.l @25.06.06.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
