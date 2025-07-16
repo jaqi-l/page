@@ -221,11 +221,6 @@
   "description": "图库、摄影图、视频素材、模板",
   "children": [
     {
-      "title": "图虫",
-      "link": "https://tuchong.com/",
-      "description": "优质摄影师社区"
-    },
-    {
       "title": "500PX",
       "link": "https://500px.com.cn/jaqi",
       "description": "全球领先的摄影社区"
@@ -626,6 +621,11 @@
       "title": "Z-Library",
       "link": "https://z-library.sk/",
       "description": "电子书资源库"
+    },
+    {
+      "title": "Circuit JS",
+      "link": "https://www.eetree.cn/circuitjs/circuitjs.html",
+      "description": "模拟电路"
     }
   ]
 },

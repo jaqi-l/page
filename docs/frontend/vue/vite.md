@@ -3,9 +3,13 @@
 
 `Vite` 基于 `Rollup`(打包和模块化) 和 `esbuild`(预构建) 实现的构建工具
 
+在开发时候： `Vite`  以原生 `ESM` 方式提供源码。这实际上是让浏览器接管了打包程序的部分工作：`Vite`  只需要在浏览器请求源码时进行转换并按需提供源码。根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。    
+
+在构建时，`Vite` 不会在生产构建中使用 `esbuild` 作为打包工具，而是使用 `Rollup` 作为打包工具。因为 `Vite` 目前的插件 API 与使用 `esbuild` 作为打包器并不兼容。后续 `Rollup` 会取代 `Rollup` 和 `esbuild` 作为打包器,并消除开发和构建之间的不一致性。    
+
 ### 安装
 ```zsh
-    npm install vite
+    pnpm install vite
 ```
 ### 项目创建
 ```zsh
@@ -14,7 +18,15 @@
 
 ## 6.16.2 功能
 
-### ES Modules
+### TypeScript
+
+`Vite` 天然支持引入 `.ts` 文件。但 `Vite` 并不执行任何类型检查 `.ts` 文件，只会使用 `esbuild` 将 `TypeScript` 转译到 `JavaScript`。
+
+详见：[3.17.4 vite项目配置案例](/frontend/javascript/TypeScript#vite项目配置案例)
+
+### JSX
+`.jsx` 和 `.tsx` 文件同样开箱即用。`JSX` 的转译同样是通过 `esbuild`
+
 
 ### CSS Modules
 `Vite` 可以导入以`.module.css`为后缀的 `CSS` 文件
@@ -32,7 +44,7 @@ document.getElementById('foo').className = classes.red
 ```
 
 ::: tip
-导入的`CSS Modules`样式会自动注入到页面中，可以通过 `?inline` 参数来关闭
+导入的`CSS Modules`样式会自动注入到页面中，可以通过 `?inline` 参数来关闭（模块被导入，但是样式并没有被注入到页面）
 ```js
 import './foo.css' // 样式将会注入页面
 import otherStyles from './bar.css?inline' // 样式不会注入页面
@@ -41,7 +53,6 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 
 ### 静态资源处理
 
-#### 图片
 ```js
 import imgUrl from './img.png'
 document.getElementById('hero-img').src = imgUrl
@@ -59,7 +70,7 @@ import Worker from './worker.js?worker'
 import InlineWorker from './worker.js?worker&inline'
 ```
 
-#### JSON
+### JSON
 ```js
 // 导入整个对象
 import json from './example.json'
@@ -67,7 +78,7 @@ import json from './example.json'
 import { field } from './example.json'
 ```
 
-#### Glob
+### Glob
 `Vite` 支持使用特殊的 `import.meta.glob` 函数从文件系统导入多个模块
 
 ```js
@@ -87,7 +98,7 @@ const modules = {
   './dir/bar.js': () => import('./dir/bar.js'),
 }
 ```
-* 默认导入的文件是懒加载的，如果想直接导入通过附加参数设置
+* 默认导入的文件是懒加载的，如果想直接导入通过附加参数设置 `eager: true`
 ```js
 const modules = import.meta.glob('./dir/*.js', { eager: true })
 
@@ -137,15 +148,33 @@ const modules = {
 }
 ```
 
-#### 动态导入
+### 动态导入
+`Vite` 依赖 `Rollup` 的 `dynamic-import-vars` 插件解析动态导入，但该插件仅支持静态字面量或有限变量格式，若路径包含字符串模板、正则或复杂表达式，`Vite` 无法分析路径，导致构建失败或运行时模块加载失败。
 
 ```js
 const module = await import(`./dir/${file}.js`)
 ```
 
-#### WebAssembly
+当动态导入路径包含以下情况时需使用 `@vite-ignore`/`vite-ignore`：
+* 字符串模板拼接路径：`import(./pages/${page}/index.jsx)`
+* 路径变量来自运行时计算（如用户输入、API 响应）  
+* 路径结构过于复杂，超出 `Rollup` 解析限制（如多级嵌套目录）
 
-#### Web Workers
+```js
+// 原始代码（打包时报错）
+const Component = () => import(`../pages/${routePath}/index.jsx`); 
+
+// 修复后
+/* @vite-ignore */
+const Component = () => import(`../pages/${routePath}/index.jsx`);
+
+// vite-ignore属性
+<img src="./images${routePath}/vite-ignore.png" vite-ignore>
+```
+
+### WebAssembly
+
+### Web Workers
 
 * 通过构造器导入
 ```js
@@ -157,6 +186,7 @@ import MyWorker from './worker?worker'
 
 const worker = new MyWorker()
 ```
+### 内容安全策略（CSP）
 
 ## 6.16.3 配置
 
@@ -425,6 +455,8 @@ export default defineConfig({
     // -m, --mode <mode>	设置环境模式 (string)
     // -h, --help	显示可用的 CLI 选项
     // -v, --version	显示版本号
+    // --profile 启动内置的 Node.js 调试器
+    // --configLoader 使用 bundle 来采用 esbuild 打包配置，或是 runner（实验性）来在运行时处理，默认是 bundle
     "build": "vite build --mode production",
     // build 模式配置
     // --target <target>	编译目标（默认为："modules"）(string)
@@ -471,28 +503,7 @@ export default defineConfig({
 }
 ```
 
-## 6.16.4 TypeScript
-
-* 安装依赖：
-```zsh
-pnpm install typescript -D
-pnpm install vue-tsc -D
-```
-
-* 配置`tsconfig.json`：   
-
-详见：[3.17.4 vite项目配置案例](/frontend/javascript/TypeScript#vite项目配置案例)
-
-* * 配置`package.json`：
-```json
-  "main": "src/main.ts",
-  "module": "src/main.ts",
-  "scripts": {
-    "dev": "vue-tsc && vite", // 运行时进行类型检查
-    "build": "vue-tsc && vite build " // 打包时进行类型检查
-  },
-```
 
 :::tip
-Vite 4.x
+Vite 7.x
 :::

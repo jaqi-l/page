@@ -1364,7 +1364,8 @@ type B = Uncapitalize<A>;
 }
 ```
 
-::: tip 让 `TypeScript` 识别 `Vue` 单文件组件
+::: tip 让 `TypeScript` 识别 `Vue` 单文件组件   
+`Vite` 默认的类型定义是写给它的 `Node.js` API 的，所以需要手动添加 `Vue` 的类型定义。     
 方法一：`tsconfig.json`文件中设置
 ```js
 {
@@ -1373,7 +1374,7 @@ type B = Uncapitalize<A>;
   }
 }
 ```
-方法二：`vite-env.d.ts` 文件中定义（建议使用此方法）
+方法二：`vite-env.d.ts` 文件中定义（建议使用此方法）    
 ```ts
 /// <reference types="vite/client" />   
 
