@@ -80,7 +80,7 @@ export default withMermaid({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.07.16.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.07.25.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
@@ -704,6 +704,10 @@ export default withMermaid({
               {
                 text: '13.7 UI规范',
                 link: '/other/specification/ui'
+              },
+              {
+                text: '13.8 代码组织模式',
+                link: '/other/specification/COM'
               }
             ]
           },

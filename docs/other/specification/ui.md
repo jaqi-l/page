@@ -87,7 +87,7 @@
  
 #div1 {
   background-color: var(--main-bg-color);
-  color:  var(--main-text-color);
+  color: var(--main-text-color);
 }
 ```
 
@@ -100,10 +100,10 @@
 
 >定义字号类
 
-`.h1`：字号、颜色、内边距（行高）、字体粗细
-`.h2`：字号、颜色、内边距（行高）、字体粗细
-`.h3`：字号、颜色、内边距（行高）、字体粗细
-`.h4`：字号、颜色、内边距（行高）、字体粗细
+`.h1`：字号、颜色、内边距（行高）、字体粗细   
+`.h2`：字号、颜色、内边距（行高）、字体粗细   
+`.h3`：字号、颜色、内边距（行高）、字体粗细   
+`.h4`：字号、颜色、内边距（行高）、字体粗细   
 
 ```css
 .h1{
@@ -137,12 +137,13 @@
 
 ## 其它
 
-gif 图太大：复杂运动才分运动和静止图片，简单运动拆封结构使用 `css` 动画实现
+gif 图太大：复杂运动拆分运动和静止图片，简单运动拆分结构使用 `css` 动画实现
 ## 标注
 
 1. 所有撑满横屏的模块，不需要标注宽度，只需要标注高度   
 2. 非撑满横屏的模块，不需要标注宽度，只需要外边距和高度，宽度自适应（100% - 2*外边距）
 
 
-参考https://zhuanlan.zhihu.com/p/80343288   
-https://developers.weixin.qq.com/miniprogram/design/
+## 参考:
+[移动端UI设计规范](https://zhuanlan.zhihu.com/p/80343288)   
+[微信小程序设计指南](https://developers.weixin.qq.com/miniprogram/design/)

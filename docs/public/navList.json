@@ -86,7 +86,12 @@
     {
       "title": "Uview",
       "link": "http://www.uviewui.com/",
-      "description": "uni-app生态优秀的UI框架"
+      "description": "uni-app生态优秀的UI框架 for Vue2.x(已停止维护)"
+    },
+    {
+      "title": "uv-ui",
+      "link": "https://www.uvui.cn/",
+      "description": "uni-app生态优秀的UI框架 for Vue2.x"
     },
     {
       "title": "Vant",
@@ -601,6 +606,11 @@
       "title": "iloveimg",
       "link": "https://www.iloveimg.com/zh-cn",
       "description": "在线图片处理工具"
+    },
+    {
+      "title": "ilovepdf",
+      "link": "https://www.ilovepdf.com/zh-cn",
+      "description": "在线PDF处理工具"
     },
     {
       "title": "jsv9000",

@@ -228,9 +228,46 @@ less语法在加减运算时会进行单位转换。因此在使用calc属性时
 ## 2.9.3 SCSS(SASS)
 
 #### 导入
+
+* `@import` 已弃用(1.80.0 以下版本)
 ```scss
+// 1.80.0 以下版本
 @import "library.scss";
 ```
+
+
+* `@use` (1.80.0 以上版本) ，不会“链式传递”变量，但可以设置变量    
+
+```scss
+@use "library.scss";
+@use "library.scss" as theme; // 别名导入
+// 使用
+.cover-title {
+  font-size: theme.$font-lg;
+  color: theme.$color;
+}
+
+// 导入时设置变量
+@use "library.scss" as theme with (
+  $color: red
+);
+
+```
+
+* `@forward` 转发其他 `Sass` 文件的内容，不会直接导入，如果当前文件需要使用则需要使用 `@use` 导入
+```scss
+@forward "library.scss";
+@forward "library.scss" as theme; // 别名转发所有变量
+
+@forward "../theme.scss" show $font-lg ;  // 转发指定变量 隐藏其他变量
+
+@forward "../theme.scss" hide $font-lg ;  // 隐藏指定变量
+
+@forward "library.scss" as theme with (
+  $color: red
+);
+```
+
 #### 变量
 ```scss
 $width: 10px;
