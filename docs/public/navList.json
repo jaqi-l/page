@@ -86,12 +86,12 @@
     {
       "title": "Uview",
       "link": "http://www.uviewui.com/",
-      "description": "uni-app生态优秀的UI框架 for Vue2.x(已停止维护)"
+      "description": "uni-app生态的UI框架 for Vue2.x(已停止维护)"
     },
     {
       "title": "uv-ui",
       "link": "https://www.uvui.cn/",
-      "description": "uni-app生态优秀的UI框架 for Vue2.x"
+      "description": "uni-app生态的UI框架 for Vue3.x"
     },
     {
       "title": "Vant",

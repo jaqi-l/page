@@ -1,13 +1,13 @@
 ## 初始化 
 
-* `init`初始化仓库
+* `init` 初始化仓库
 ```zsh
 git init # 在当前目录新建一个Git代码库
 
 git init [projectName] # 新建一个目录，将其初始化为Git代码库
 ``` 
 
-* `config`仓库配置
+* `config` 仓库配置
 ```zsh
 git config --list # 显示当前仓库的Git配置
 
@@ -24,13 +24,13 @@ ssh-keygen -t rsa -C "[email address]" # 创建 SSH Key
 
 vi  ~/.ssh/id_rsa.pub # 查看 SSH Key
 ``` 
-## `clone`克隆代码       
+## `clone` 克隆代码       
 从当前地址的`master`分支克隆的到本地`ProjectName`文件夹
 ```zsh
 git clone https://gitHub.com/ ProjectName -b master
 ```
 
-## `remote`设置远程仓库地址
+## `remote` 设置远程仓库地址
 ```zsh
 git remote -v  # 查看全部远程仓库
 
@@ -41,11 +41,11 @@ git remote set-url origin https://gitHub.com/  # 修改远程仓库origin的地�
 git remote rm origin  # 删除origin仓库   
 ```
 
-## `status`查看工作区、暂存区、本地仓库的状态
+## `status` 查看工作区、暂存区、本地仓库的状态
 ```zsh
 git status
 ```
-## `add`添加的暂存区
+## `add` 添加的暂存区
 ```zsh
 git add .  # 添加所有modified（修改）、new（新增）的文件，不包括delete（删除）的文件
 
@@ -58,7 +58,7 @@ git add -f dist # 添加dist文件到暂存区
 git add -p # 添加所有文件并根据变化分次提交
 ```
 
-## `rm`将文件从暂存区和工作区中删除
+## `rm` 将文件从暂存区和工作区中删除
 ```zsh
 git rm runoob.txt   # 从暂存区和工作区中删除 runoob.txt 文件
 
@@ -69,12 +69,12 @@ git rm --cached runoob.txt  # 从追踪清单和的暂存区中删除，仍保�
 git rm –r *  # 从暂存区和工作区中递归删除该目录下全部文件
 ```
 
-## `mv`移动或重命名一个文件、目录或软连接
+## `mv` 移动或重命名一个文件、目录或软连接
 ```zsh
 git mv  README  README.md  # 改名README ->README.md
 ```
 
-## `diff`比较暂存区和工作区的差异
+## `diff` 比较暂存区和工作区的差异
 ```zsh
 git diff # 显示暂存区和工作区的差异
 
@@ -87,7 +87,7 @@ git diff [first-branch]...[second-branch] # 显示两次提交之间的差异
 git diff --shortstat "@{0 day ago}" # 显示今天你写了多少行代码
 ```
 
-## `commit`提交说明
+## `commit` 提交说明
 ```zsh
 git commit -m"提交的情况说明"
 
@@ -103,7 +103,7 @@ git commit --amend -m [message]
 
 git commit --amend [file1] [file2] ... # 重做上一次commit，并包括指定文件的新变化
 ```
-## `fetch`拉取分支
+## `fetch` 拉取分支
 ```zsh
 git fetch # 拉取远程所以分支的最新代码
 
@@ -111,7 +111,7 @@ git fetch https://gitHub.com/ master # 拉取当前地址的master分支到本�
 
 git fetch origin master # 拉取origin仓库master分支到本地
 ```
-## `merge`合并分支
+## `merge` 合并分支
 ```zsh
 git merge dev # 合并本地dev分支，并创建新的提交commit
 
@@ -129,7 +129,7 @@ git merge --abort   # 取消本次合并
 不要在公共分支使用`rebase`,因为往后放的这些`commit`都是新的,这样其他从这个公共分支拉出去的人，都需要再`rebase`,相当于你`rebase`东西进来，就都是新的`commit`了
 :::
 
-## `pull`拉去并合并分支
+## `pull` 拉取并合并分支
 ```zsh
 git pull # 拉取当前分支并与当前分支合并
 
@@ -144,7 +144,7 @@ git push origin --delete dev # 直接删除远程dev分支，谨慎使用！
 3. `git config pull.ff only`会将本地分支移到远程分支的最新提交上，而不会创建新的合并提交或执行变基操作    
 :::
 
-## `push`提交分支
+## `push` 提交分支
 ```zsh
 git pull origin dev # 提交到远程dev分支的代码
 
@@ -153,7 +153,7 @@ git push [remote] --force # 强行推送当前分支到远程仓库，即使有�
 git push [remote] --all # 推送所有分支到远程仓库
 ```
 
-## `checkout`切换分支
+## `checkout` 切换分支
 ```zsh
 git checkout -b dev master # 在本地基于master创建dev分支，并切换到dev分支，提交后远程才会生效
 
@@ -173,7 +173,7 @@ git checkout 1.js
 如果远程有新增分支，在切换分支之前,需要先`fetch`拉取一下全部分支
 :::
 
-## `branch`查看分支
+## `branch` 查看分支
 ```zsh
 git branch # 查看本地全部分支，*为当前分支
 
@@ -186,8 +186,7 @@ git branch dev # 在本地创建dev分支，提交后远程才会生效。注意
 git branch -d dev # 删除本地分支
 
 git branch -d -r dev # 删除远程分支，删除后还需推送到服务器
-
-git push origin:dev  # 删除后推送至服务器
+git branch origin:dev  # 删除后推送至服务器
 
 git branch -m [oldname] [newname] # 重命名本地分支，如果oldname已存在于远程分支，那么会新建一个newname兵提交，且不会影响oldname分支
 
@@ -199,7 +198,7 @@ git branch --set-upstream-to=[origin/remote-branch] [branch] # 修改分支的�
 1. 如果远程有新增分支，在查看远程分支之前,需要先`fetch`拉去一下全部分支
 :::
 
-## `log`查看版本历史
+## `log` 查看版本历史
 ```zsh
 git log 
 
@@ -214,17 +213,17 @@ git log --follow [file]
 git whatchanged [file]
 ```
 
-## `blame`查看指定文件修改记录
+## `blame` 查看指定文件修改记录
 ```zsh
 git blame [file]
 ```
 
-## `reflog`查看提交记录
+## `reflog` 查看提交记录
 ```zsh
 git reflog 
 ```
 
-## `reset`撤销本地提交
+## `reset` 撤销本地提交
 ```zsh
 git reset --hard [commit] # 撤销到指定的commit版本
 
@@ -244,7 +243,7 @@ git reset HEAD [file] # 撤销当前文件的提交
 git revert [commit] # 保留当前版本，创建一个新的commit并回滚到指定的commit版本，需要填写commit
 ```
 
-## `stash`本地代码暂存
+## `stash` 本地代码暂存
 ```zsh
 git stash save "[暂存名称]" # 暂存 
 
@@ -263,7 +262,7 @@ git stash clear # 删除全部暂存
 git stash show # 查看暂存列表中最新保存的stash和当前目录的差异
 ```
 
-## `tag`标签
+## `tag` 标签
 ```zsh
 git tag # 查看标签
 
@@ -275,6 +274,62 @@ git push --tags  # 推送标签
 
 git checkout [标签名] # 切换标签
 ```
+
+
+## `describe` 生成可读性更强的版本号
+```zsh
+git describe # 基于最近的 tag，生成当前 commit 的描述（如 v1.0-2-g2414721）
+git describe --tags # 同上，显示所有 tag（包括轻量标签）
+git describe --abbrev=0 # 只显示最近的 tag，不显示 commit 信息
+git describe --always # 即使没有 tag，也显示 commit 的简短 hash
+git describe --long # 显示完整的 tag-commit 距离信息
+```
+> 通常用于生成更易读的版本号，常见于自动化发布脚本。
+
+## `rev-parse` 解析和转换 Git 对象
+```zsh
+git rev-parse HEAD # 显示当前分支最新 commit 的 hash 值
+git rev-parse --short HEAD # 显示短 hash
+git rev-parse --abbrev-ref HEAD # 显示当前分支名
+git rev-parse --show-toplevel # 显示仓库的根目录绝对路径
+git rev-parse origin/master # 显示远程分支的 commit hash
+```
+> 常用于脚本中获取分支名、commit hash、仓库路径等信息。
+
+## `switch` 切换分支 <Badge type="tip" text="^2.23" />
+`git switch` 用于切换分支，是对 `git checkout` 分支切换功能的专门细化，语义更清晰。
+
+```zsh
+git switch dev                # 切换到已有的 dev 分支
+git switch -c feature/login   # 新建并切换到 feature/login 分支（等价于 git checkout -b）
+git switch -                  # 切换到上一个分支
+```
+**区别：**
+- `git switch` 只用于分支切换，不会用于文件还原，避免误操作。
+- `git checkout` 既能切分支又能还原文件，语义不清晰，容易误用。
+
+## `restore` 恢复或撤销文件的更改 <Badge type="tip" text="^2.23" />
+`git restore` 用于还原工作区或暂存区的文件内容，是对 `git checkout` 文件还原功能的专门细化。
+
+```zsh
+git restore index.js                # 撤销工作区 index.js 的修改（还原为暂存区内容）
+git restore --staged index.js       # 撤销暂存区 index.js 的修改（还原为 HEAD 内容）
+git restore .                       # 撤销所有文件的修改
+```
+**区别：**
+- `git restore` 只用于文件内容的恢复，不涉及分支切换。
+- `git checkout` 既能切分支又能还原文件，命令不直观。
+
+---
+
+**对比总结：**
+
+| 操作           | 旧命令（`checkout`/`reset`）         | 新命令（`switch`/`restore`）         |
+| -------------- | ------------------------- | ---------------------- |
+| 切换分支       | git checkout dev          | git switch dev         |
+| 新建并切分支   | git checkout -b feature   | git switch -c feature  |
+| 撤销工作区文件   | git checkout -- file      | git restore file       |
+| 撤销暂存区文件 | git reset HEAD file       | git restore --staged file |
 
 ## `.gitignore`
 > ##### 常用的规则
@@ -296,7 +351,7 @@ git checkout [标签名] # 切换标签
 
 `ls`显示当前目录所以文件
 
-`ls-a`显示所有文件包括隐藏的
+`ls -a`显示所有文件包括隐藏的
 
 `mkdir`创建目录（文件夹）
 

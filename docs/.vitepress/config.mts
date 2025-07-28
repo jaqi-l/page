@@ -1,11 +1,22 @@
 import { defineConfig } from 'vitepress'
-import { withMermaid } from "vitepress-plugin-mermaid";
+import { MermaidMarkdown, MermaidPlugin } from "vitepress-plugin-mermaid";
 import llmstxt from 'vitepress-plugin-llms'
 
 // https://vitepress.dev/reference/site-config
-export default withMermaid({
+export default defineConfig({
+  markdown: {
+    config(md) {
+      md.use(MermaidMarkdown); // add this
+    },
+  },
   vite: {
-    plugins: [llmstxt()]
+    plugins: [llmstxt(), MermaidPlugin()],
+    optimizeDeps: { // include mermaid
+      include: ['mermaid'],
+    },
+    ssr: {
+      noExternal: ['mermaid'],
+    },
   },
   title: "jaqi.page",
   description: "",
@@ -80,7 +91,7 @@ export default withMermaid({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.07.25.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.07.28.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
