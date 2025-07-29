@@ -227,16 +227,23 @@ less语法在加减运算时会进行单位转换。因此在使用calc属性时
 ```
 ## 2.9.3 SCSS(SASS)
 
+[SCSS](https://www.sasscss.com/)
+
+### SASS 与 SCSS
+SCSS 语法（ .scss ）最为常用。它是 CSS 的超集，这意味着所有有效的 CSS 也是有效的 SCSS。    
+缩进语法（ .sass ）则不太常见：它使用缩进来嵌套语句，使用换行符而不是分号来分隔它们。
+
+
 #### 导入
 
-* `@import` 已弃用(1.80.0 以下版本)
+* `@import` <Badge type="danger" text="1.80.0 已弃用" />
 ```scss
 // 1.80.0 以下版本
 @import "library.scss";
 ```
 
 
-* `@use` (1.80.0 以上版本) ，不会“链式传递”变量，但可以设置变量    
+* `@use` <Badge type="tip" text="^1.80.0" /> ，不会“链式传递”变量，但可以设置变量    
 
 ```scss
 @use "library.scss";
@@ -271,7 +278,7 @@ less语法在加减运算时会进行单位转换。因此在使用calc属性时
 #### 变量
 ```scss
 $width: 10px;
-$height: @width + 10px;
+$height: $width + 10px;
 
 #header {
   width: $width;
@@ -297,7 +304,7 @@ $side : left;
   &:after {
     content: "";
   }
-//  属性的嵌套
+  //  属性的嵌套
   border: {
     color: red;
   }
@@ -350,6 +357,23 @@ div {
 div {
     @include left(20px);
 }
+
+
+@mixin theme($theme: DarkGray) {
+  background: $theme;
+  box-shadow: 0 0 1px rgba($theme, .25);
+  color: #fff;
+}
+
+.info {
+  @include theme;
+}
+.alert {
+  @include theme($theme: DarkRed);
+}
+.success {
+  @include theme($theme: DarkGreen);
+}
 ```
 
 * 指定选择器的参数、要注入样式
@@ -366,18 +390,202 @@ div {
 }
 
 // 渲染结果
-// .test {
-//  background-color: blue;
-//  color: red;
-// }
+.test {
+  background-color: blue;
+  color: red;
+}
 ```
 
-#### 颜色函数
+#### 运算符 
+- `+`、`-`、`*`、`%`、`/`  
+常见的数学运算符，示例：
+
+```scss
+  $a: 10px + 5px;   // 15px
+  $b: 20px - 5px;   // 15px
+  $c: 2 * 8;        // 16
+  $d: 10 % 3;       // 1
+  $e: 20px / 2;     // 10px
+```
+
+::: warning
+`/` 在 SCSS 中既是除法运算符，也是 CSS 的分隔符。建议用 `math.div()` 进行除法运算，避免歧义。
+:::
+
+- 关系与比较运算符：`==`、`!=`、`>`、`<`、`>=`、`<=`
+```scss
+  $is-equal: 5 == 5;      // true
+  $is-greater: 10 > 5;    // true
+  $is-less: 3 < 2;        // false
+```
+
+- 逻辑运算符：`and`、`or`、`not`
+```scss
+  $a: true and false;      // false
+  $b: true or false;       // true
+  $c: not false;           // true
+```
+
+- 字符串插值
+```scss
+  $side: left;
+  .rounded {
+    border-#{$side}-color: red; // border-left-color: red;
+  }
+```
+
+- 单位自动转换
+```scss
+  $len: 1in + 10mm; // 1.3937in
+```
+
+#### `math` 
+数学模块，提供数学运算函数。
+
+- **math.div($number1, $number2)**  
+除法，推荐用法（`/` 会被当作 CSS 运算符）
+```scss
+  @use 'sass:math';
+  width: math.div(600px, 960px) * 100%; // 62.5%
+```
+- **math.round($number)**  
+四舍五入
+```scss
+  @use 'sass:math';
+  $value: math.round(2.6); // 3
+```
+- **math.max($numbers...)**  
+取最大值
+```scss
+  @use 'sass:math';
+  $max: math.max(1, 5, 3); // 5
+```
+
+#### `color`
+颜色处理模块，支持颜色调整、混合等。
+
+- **color.scale($color, $lightness: 20%)**  
+调整颜色的亮度、饱和度等。
+```scss
+  @use 'sass:color';
+  $new: color.scale(#f00, $lightness: 20%);
+```
+- **color.mix($color1, $color2, $weight: 50%)**  
+混合两种颜色
+```scss
+  @use 'sass:color';
+  $mix: color.mix(#f00, #00f, 30%);
+```
+- **color.adjust($color, $red: 10, $blue: -10)**  
+调整颜色通道
+```scss
+  @use 'sass:color';
+  $adj: color.adjust(#f00, $green: 50);
+```
+
+- **lighten($color, $amount)**  
+使颜色变亮。`$amount` 为变亮的百分比。常用于提升背景色或强调色的明度。
 ```scss
   lighten(#cc3, 10%) // #d6d65c
+```
+- **darken($color, $amount)**  
+使颜色变暗。`$amount` 为变暗的百分比。常用于降低颜色的明度，使其更适合作为阴影或边框色。
+```scss
   darken(#cc3, 10%) // #a3a329
+```
+- **grayscale($color)**  
+将颜色转换为灰度（无彩色）。常用于图片滤镜或需要去色的场景。
+```scss
   grayscale(#cc3) // #808080
+```
+- **complement($color)**  
+获取颜色的补色（色轮上相对的颜色）。常用于配色设计，增强对比度。
+```scss
   complement(#cc3) // #33c
+ ```
+
+#### `meta`
+元编程相关模块，用于判断类型、变量等。
+
+- **meta.type-of($value)**  
+获取值的类型
+```scss
+  @use 'sass:meta';
+  $type: meta.type-of(42); // number
+```
+- **meta.global-variable-exists($name)**  
+判断全局变量是否存在
+```scss
+  @use 'sass:meta';
+  @if meta.global-variable-exists(color) { ... }
+```
+
+#### `selector`
+选择器处理相关模块。
+
+- **selector.nest($selectors...)**  
+  嵌套选择器
+```scss
+  @use "sass:selector";
+  $sel: selector.nest(".foo", "&:hover"); // .foo:hover
+  // 使用
+  #{$sel} {
+		color: red;
+	}
+```
+- **selector.append($selectors...)**  
+追加选择器
+```scss
+  @use "sass:selector";
+  $sel: selector.append(".foo", ".bar"); // .foo.bar
+  // 使用
+  #{$sel} {
+		color: red;
+	}
+```
+
+#### `string`
+字符串处理相关模块。
+
+- **string.length($string)**  
+字符串长度
+```scss
+  @use 'sass:string';
+  $len: string.length("hello"); // 5
+```
+- **string.insert($string, $insert, $index)**  
+插入字符串
+```scss
+  @use 'sass:string';
+  $str: string.insert("hello", " world", 6); // "hello world"
+```
+- **string.to-upper-case($string)**  
+转大写
+```scss
+  @use 'sass:string';
+  $up: string.to-upper-case("abc"); // "ABC"
+```
+
+#### `list`
+列表处理相关模块
+
+- **list.length($list)**  
+列表长度
+```scss
+  @use 'sass:list';
+  $len: list.length(1 2 3); // 3
+```
+- **list.join($list1, $list2, $separator: auto)**  
+合并列表
+```scss
+  @use 'sass:list';
+  $joined: list.join(1 2, 3 4); // 1 2 3 4
+```
+- **list.nth($list, $n)**  
+取第 n 个元素
+```scss
+  @use 'sass:list';
+  $item: list.nth(a b c, 2); // b
 ```
 
 #### 控制语句
