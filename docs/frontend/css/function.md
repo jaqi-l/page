@@ -254,14 +254,35 @@ SCSS 语法（ .scss ）最为常用。它是 CSS 的超集，这意味着所有
   color: theme.$color;
 }
 
-// 导入时设置变量
+// 导入时设置变量 ，with的作用是覆盖转发模块的默认值
 @use "library.scss" as theme with (
   $color: red
 );
 
 ```
 
-* `@forward` 转发其他 `Sass` 文件的内容，不会直接导入，如果当前文件需要使用则需要使用 `@use` 导入
+* `@forward` 转发其他 `Sass` 文件的内容，不会直接导入，如果当前文件需要使用则需要使用 `@use` 导入   
+> 核心价值是：允许将 Sass 库拆分到多个文件中管理，同时让用户只需加载一个入口文件即可使用所有转发的成员，简化库的使用流程
+
+```scss
+// src/_list.scss（被转发的模块）
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// bootstrap.scss（入口文件，转发模块）
+// bootstrap.scss 文件内无法使用转发的模块
+@forward "src/list"; // 转发 src/_list.scss 中的成员
+
+// styles.scss（用户文件，使用入口文件）
+@use "bootstrap"; // 加载入口文件
+li {
+  @include bootstrap.list-reset; // 使用被转发的 mixin
+}
+```
+
 ```scss
 @forward "library.scss";
 @forward "library.scss" as theme; // 别名转发所有变量
@@ -393,6 +414,125 @@ div {
 .test {
   background-color: blue;
   color: red;
+}
+```
+
+#### `@at-root`
+让其内部的样式规则或选择器跳过正常的嵌套层级，直接输出到文档的根级别，常见于结合父选择器 `&` 或选择器函数（如 `selector.unify()`）进行复杂选择器组合时
+
+```scss
+.card {
+  padding: 16px;
+
+  // 用 @at-root 让子元素成为顶级选择器
+  @at-root .card_title { 
+    font-size: 18px;
+  }
+
+  // 用 @at-root 让修饰符成为顶级选择器
+  @at-root .card_large { 
+    padding: 24px;
+  }
+}
+
+.card {
+  padding: 16px;
+}
+.card_title {
+  font-size: 18px;
+}
+
+.card_large {
+  padding: 24px;
+}
+
+
+// 不使用`@at-root`的效果
+
+.card {
+  padding: 16px;
+
+  // 用 @at-root 让子元素成为顶级选择器
+  .card_title { 
+    font-size: 18px;
+  }
+
+  // 用 @at-root 让修饰符成为顶级选择器
+  .card_large { 
+    padding: 24px;
+  }
+}
+
+.card {
+  padding: 16px;
+}
+.card .card_title {
+  font-size: 18px;
+}
+.card .card_large {
+  padding: 24px;
+}
+```
+
+- `with`/`without`    
+> 可选值：    
+>> `rule`:普通样式规则（如 `.class { ... }` 或 `a { color: red; }`）   
+>> `media`:媒体查询规则（`@media`）    
+>> `supports`:特性检测规则（`@supports`）    
+>> `all`:所有 at-rules（包括` @media`、`@supports`、`@keyframes` 等）    
+```scss
+.card {
+  display: flex;
+
+  // .title的样式跳出父级嵌套
+  @at-root (with: rule) {
+    .title {
+      font-size: 20px;
+    }
+  }
+}
+
+// 编译结果
+.card {
+  display: flex;
+}
+.card .title {
+  font-size: 20px;
+}
+
+
+.card {
+  display: flex;
+  
+  // 排除.title的样式跳出父级嵌套
+  @at-root (without: rule) {
+    .title {
+      font-size: 20px;
+    }
+  }
+}
+
+.card {
+  display: flex;
+}
+.title {
+  font-size: 20px;
+}
+```
+
+```scss
+@media print {
+  .page {
+    width: 8in;
+
+    @at-root (without: media) { // 排除 media 规则，样式直接在根级别
+      color: #111;
+    }
+
+    @at-root (with: rule) { // 仅保留样式规则，排除其他 at-rules
+      font-size: 1.2em;
+    }
+  }
 }
 ```
 
@@ -642,6 +782,25 @@ $i: 6;
 ::: tip 扩展函数库：
 [SassMagic](http://w3cplus.github.io/SassMagic/#undefined-function-decimal-round)
 :::
+
+#### 调试工具 `@error`、`@warn`、`@debug`
+
+- **@error**  
+抛出错误并终止编译
+```scss
+  @error "在控制台打印错误";
+```
+- **@warn**  
+输出警告但不终止编译
+```scss
+  @warn "在控制台打印警告";
+```
+- **@debug**  
+输出调试信息用于开发
+```scss
+  @debug "进入调试模式";
+```
+
 ## 2.9.4 Stylus
 
 ### 缩排
