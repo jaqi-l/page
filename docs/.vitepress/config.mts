@@ -91,12 +91,12 @@ export default defineConfig({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.07.30.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.08.01.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
-      { text: '前端文档', link: '/frontend/' },
-      { text: '其他文档', link: '/other/' },
+      { text: '前端文档', link: '/frontend/html/introduction' },
+      { text: '其他文档', link: '/other/linux/introduction' },
       { text: 'jaqi.server', link: 'https://jaqi.synology.me:5001/' },
       { text: 'jaqi.csnd', link: 'https://blog.csdn.net/ljq547152849' },
     ],
@@ -385,7 +385,46 @@ export default defineConfig({
           },
           {
             text: '第八章：小程序',
-            link: '/frontend/miniprogram'
+            link: '/frontend/miniprogram/introduction',
+            collapsed: true,
+            items: [
+              {
+                text: '8.1 概览',
+                link: '/frontend/miniprogram/introduction'
+              },
+              {
+                text: '8.2 wxml 特性',
+                link: '/frontend/miniprogram/wxml'
+              },
+              {
+                text: '8.3 wxss 特性',
+                link: '/frontend/miniprogram/wxss'
+              },
+              {
+                text: '8.4 wxs 特性',
+                link: '/frontend/miniprogram/wxs'
+              },
+              {
+                text: '8.5 运行机制',
+                link: '/frontend/miniprogram/runtime'
+              },
+              {
+                text: '8.6 路由',
+                link: '/frontend/miniprogram/router'
+              },
+              {
+                text: '8.7 事件',
+                link: '/frontend/miniprogram/event'
+              },
+              {
+                text: '8.8 组件',
+                link: '/frontend/miniprogram/component'
+              },
+              {
+                text: '8.9 API',
+                link: '/frontend/miniprogram/api'
+              }
+            ]
           },
           {
             text: '第九章：React',

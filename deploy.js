@@ -31,6 +31,7 @@ readFile.on('data', (data) => {
 
   shell.exec('./shell.sh')
 
-  shell.exit(1)
+  // Exit successfully after deployment
+  shell.exit(0)
 
 })
