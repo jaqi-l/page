@@ -1360,7 +1360,353 @@
 
 ##  8.8.6 地图组件
 ### map
-##  8.8.7 Canvas
+
+**功能**：地图组件，提供了地图展示、交互、叠加点线面及文字等功能，同时支持个性化地图样式
+
+**基础属性**：
+- `longitude` (number) - 中心经度，必填，浮点数，范围 -180 ~ 180
+- `latitude` (number) - 中心纬度，必填，浮点数，范围 -90 ~ 90
+- `scale` (number) - 缩放级别，默认值：16，范围 3 ~ 20
+- `min-scale` (number) - 最小缩放级别，默认值：3，范围 3 ~ 20
+- `max-scale` (number) - 最大缩放级别，默认值：20，范围 3 ~ 20
+- `markers` (array) - 标记点，数组类型
+- `covers` (array) - 即将移除，请使用 markers
+- `polyline` (array) - 路线，数组类型
+- `polygons` (array) - 多边形，数组类型
+- `circles` (array) - 圆，数组类型
+- `controls` (array) - 控件（即将废弃，建议使用 cover-view 代替）
+- `include-points` (array) - 缩放视野以包含所有给定的坐标点
+- `show-location` (boolean) - 显示带有方向的当前定位点，默认值：false
+- `subkey` (string) - 地图能力【个性化地图】使用的key，不支持动态修改
+- `layer-style` (number) - 地图能力【个性化地图】配置的 style，默认值：1
+- `rotate` (number) - 旋转角度，范围 0 ~ 360，地图正北和设备 y 轴角度的夹角，默认值：0
+- `skew` (number) - 倾斜角度，范围 0 ~ 40，关于 z 轴的倾角，默认值：0
+- `enable-3D` (boolean) - 开启 3D 楼块效果，默认值：false
+- `show-compass` (boolean) - 显示指南针，默认值：false
+- `show-scale` (boolean) - 显示比例尺，工具暂不支持，默认值：false
+- `enable-overlooking` (boolean) - 开启俯视，默认值：false
+- `enable-auto-max-overlooking` (boolean) - 开启最大俯视角，俯视角度从 45 度拓展到 75 度，默认值：false
+- `enable-zoom` (boolean) - 是否支持缩放，默认值：true
+- `enable-scroll` (boolean) - 是否支持拖动，默认值：true
+- `enable-rotate` (boolean) - 是否支持旋转，默认值：false
+- `enable-satellite` (boolean) - 是否开启卫星图，默认值：false
+- `enable-traffic` (boolean) - 是否开启实时路况，默认值：false
+- `enable-poi` (boolean) - 是否展示 POI 点，默认值：true
+- `enable-building` (boolean) - 是否展示建筑物
+- `setting` (object) - 设置，对象类型
+
+**事件**：
+- `bindtap` (eventhandle) - 点击地图时触发    
+- `bindmarkertap` (eventhandle) - 点击标记点时触发，`e.detail = {markerId}`
+- `bindlabeltap` (eventhandle) - 点击label时触发，`e.detail = {markerId}`
+- `bindcontroltap` (eventhandle) - 点击控件时触发，`e.detail = {controlId}`
+- `bindcallouttap` (eventhandle) - 点击标记点对应的气泡时触发，`e.detail = {markerId}`
+- `bindupdated` (eventhandle) - 在地图渲染更新完成时触发
+- `bindregionchange` (eventhandle) - 视野发生变化时触发
+- `bindpoitap` (eventhandle) - 点击地图poi点时触发，`e.detail = {name, longitude, latitude}`
+- `bindpolylinetap` (eventhandle) - 点击地图路线时触发，`e.detail = {longitude, latitude}`
+- `bindabilitysuccess` (eventhandle) - 地图能力生效时触发，`e.detail = {ability, errCode, errMsg}`
+- `bindabilityfail` (eventhandle) - 地图能力失败时触发，`e.detail = {ability, errCode, errMsg}`
+- `bindauthsuccess` (eventhandle) - 地图鉴权结果成功时触发，`e.detail = {errCode, errMsg}`
+- `bindinterpolatepoint` (eventhandle) - MapContext.moveAlong 插值动画时触发，`e.detail = {markerId, longitude, latitude, animationStatus: "interpolating" | "complete"}`
+- `binderror` (eventhandle) - 组件错误时触发，例如创建或鉴权失败，`e.detail = {longitude, latitude}`
+
+**marker 标记点属性**：
+- `id` (number) - 标记点 id，marker 点击事件回调会返回此 id
+- `clusterId` (Number) - 聚合簇的 id，自定义点聚合簇效果时使用
+- `joinCluster` (Boolean) - 是否参与点聚合，默认不参与点聚合
+- `latitude` (number) - 纬度，必填，浮点数，范围 -90 ~ 90
+- `longitude` (number) - 经度，必填，浮点数，范围 -180 ~ 180
+- `title` (string) - 标注点名，点击时显示，callout 存在时将被忽略
+- `zIndex` (number) - 显示层级
+- `iconPath` (string) - 显示的图标，必填，项目目录下的图片路径，支持网络路径、本地路径、代码包路径
+- `rotate` (number) - 旋转角度，顺时针旋转的角度，范围 0 ~ 360，默认为 0
+- `alpha` (number) - 标注的透明度，默认 1，无透明，范围 0 ~ 1
+- `width` (number/string) - 标注图标宽度，默认为图片实际宽度
+- `height` (number/string) - 标注图标高度，默认为图片实际高度
+- `callout` (Object) - 标记点上方的气泡窗口，支持的属性见下表，可识别换行符
+- `customCallout` (Object) - 自定义气泡窗口，支持的属性见下表
+- `label` (Object) - 为标记点旁边增加标签，支持的属性见下表，可识别换行符
+- `anchor` (Object) - 经纬度在标注图标的锚点，默认底边中点，`{x, y}`，x 表示横向(0-1)，y 表示竖向(0-1)。`{x: .5, y: 1}` 表示底边中点
+- `aria-label` (string) - 无障碍访问，（属性）元素的额外描述
+- `collisionRelation` (string) - 碰撞关系   
+- `collision` (string) - 碰撞类型   
+
+**marker 上的气泡 callout**：
+- `content` (string) - 文本
+- `color` (string) - 文本颜色
+- `fontSize` (number) - 文字大小
+- `borderRadius` (number) - 边框圆角
+- `borderWidth` (number) - 边框宽度
+- `borderColor` (string) - 边框颜色
+- `bgColor` (string) - 背景色
+- `padding` (number) - 文本边缘留白
+- `display` (string) - 'BYCLICK':点击显示; 'ALWAYS':常显
+- `textAlign` (string) - 文本对齐方式。有效值: left, right, center
+- `anchorX` (number) - label的坐标，原点是 marker 对应的经纬度
+- `anchorY` (number) - label的坐标，原点是 marker 对应的经纬度
+- `collision` (string) - 碰撞类型
+**marker 上的自定义气泡 customCallout**：
+- `display` (string) - 自定义气泡窗口的显示方式，有效值: 'BYCLICK' | 'ALWAYS'
+- `anchorY` (number) - 自定义气泡窗口的锚点，原点是 marker 对应的经纬度
+- `anchorX` (number) - 自定义气泡窗口的锚点，原点是 marker 对应的经纬度
+
+**marker 上的气泡 label**：
+- `content` (string) - 文本
+- `color` (string) - 文本颜色
+- `fontSize` (number) - 文字大小
+- `anchorX` (number) - label的坐标，原点是 marker 对应的经纬度
+- `anchorY` (number) - label的坐标，原点是 marker 对应的经纬度
+- `borderWidth` (number) - 边框宽度
+- `borderColor` (string) - 边框颜色
+- `borderRadius` (number) - 边框圆角
+- `bgColor` (string) - 背景色
+- `padding` (number) - 文本边缘留白
+- `textAlign` (string) - 文本对齐方式。有效值: left, right, center
+- `collision` (string) - 碰撞类型
+
+**polyline 路线属性**：
+- `points` (array) - 经纬度数组，必填，`[{latitude: 0, longitude: 0}]`
+- `color` (string) - 线的颜色，十六进制
+- `colorList` (array) - 彩虹线，存在时忽略 color 值
+- `width` (number) - 线的宽度
+- `dottedLine` (boolean) - 是否虚线，默认 false
+- `arrowLine` (boolean) - 带箭头的线，默认 false，开发者工具暂不支持该属性
+- `arrowIconPath` (string) - 更换箭头图标，在 arrowLine 为 true 时生效
+- `borderColor` (string) - 线的边框颜色
+- `borderWidth` (number) - 线的厚度
+- `level` (string) - 压盖关系，默认为 abovelabels
+- `textStyle` (TextStyle) - 文字样式，折线上文本样式
+- `segmentTexts` (`Array<SegmentText>`) - 分段文本，折线上文本内容和位置
+
+注：textStyle 与 segmentTexts 结合可在折线线段上面绘制文字，用来显示路名。
+
+**SegmentText 分段文本属性**：
+- `name` (string) - 名称
+- `startIndex` (number) - 起点
+- `endIndex` (number) - 终点
+
+**TextStyle 文字样式属性**：
+- `textColor` (string) - 文字颜色
+- `strokeColor` (number) - 描边颜色
+- `fontSize` (number) - 文本大小
+
+**control 控件属性**：
+- `id` (number) - 控件 id
+- `position` (string) - 控件在地图的位置，有效值: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+- `iconPath` (string) - 显示的图标，项目目录下的图片路径
+- `clickable` (boolean) - 是否可点击，默认 false
+
+**position 位置属性**：
+- `left` (number/string) - 距离左边的距离
+- `top` (number/string) - 距离上边的距离
+- `width` (number/string) - 宽度
+- `height` (number/string) - 高度
+
+**bindregionchange 事件详情**：
+- `type` (string) - 视野变化类型，有效值: 'begin' | 'end'
+- `detail` (object) - 视野变化详情 拖动地图导致(drag)、缩放导致(scale)、调用接口导致(update)
+
+**polygon 多边形属性**：
+- `points` (array) - 经纬度数组，必填，`[{latitude: 0, longitude: 0}]`
+- `strokeWidth` (number) - 描边的宽度
+- `strokeColor` (string) - 描边的颜色，十六进制
+- `fillColor` (string) - 填充颜色，十六进制
+- `zIndex` (number) - 设置多边形 Z 轴数值
+- `level` (string) - 压盖关系，默认为 abovelabels
+
+**circles 圆属性**：
+- `latitude` (number) - 纬度，必填，浮点数，范围 -90 ~ 90
+- `longitude` (number) - 经度，必填，浮点数，范围 -180 ~ 180
+- `color` (string) - 描边的颜色，十六进制
+- `fillColor` (string) - 填充颜色，十六进制
+- `radius` (number) - 半径，必填
+- `strokeWidth` (number) - 描边的宽度
+- `level` (string) - 压盖关系，默认为 abovelabels
+
+**比例尺对照表**：
+| scale | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+|-------|---|---|---|---|---|---|---|----|----|
+| 比例 | 1000km | 500km | 200km | 100km | 50km | 25km | 20km | 10km | 5km |
+| scale | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
+| 比例 | 2km | 1km | 500m | 200m | 100m | 50m | 20m | 10m | 5m |
+
+**注意事项**：
+- 地图组件使用的经纬度是火星坐标系，调用 `wx.getLocation` 接口需要指定 `type` 为 `gcj02`
+- 地图中的颜色值需使用6位（8位）十六进制表示，8位时后两位表示alpha值，如：#000000AA
+- 地图组件的经纬度必填，如果不填经纬度则默认值是北京的经纬度
+- 从 2.8.0 起 map 支持同层渲染，更多请参考原生组件使用限制
+- 个性化地图暂不支持工具中调试，请先使用微信客户端进行测试
+- 若当前组件所在的页面或全局开启了 `enablePassiveEvent` 配置项，该内置组件可能会出现非预期表现
+
+**相关 API**：
+- `wx.createMapContext` - 创建 map 上下文 MapContext 对象
+- `wx.getLocation` - 获取当前的地理位置、速度
+- `wx.chooseLocation` - 打开地图选择位置
+## 8.8.7 Canvas
+
+### 属性说明
+
+| 属性 | 类型 | 默认值 | 必填 | 说明 | 最低版本 |
+|------|------|--------|------|------|----------|
+| type | string | - | 否 | 指定 canvas 类型，支持 2d (2.9.0) 和 webgl (2.7.0) | 2.7.0 |
+| canvas-id | string | - | 否 | canvas 组件的唯一标识符，若指定了 type 则无需再指定该属性 | 1.0.0 |
+| disable-scroll | boolean | false | 否 | 当在 canvas 中移动时且有绑定手势事件时，禁止屏幕滚动以及下拉刷新 | 1.0.0 |
+| bindtouchstart | eventhandle | - | 否 | 手指触摸动作开始 | 1.0.0 |
+| bindtouchmove | eventhandle | - | 否 | 手指触摸后移动 | 1.0.0 |
+| bindtouchend | eventhandle | - | 否 | 手指触摸动作结束 | 1.0.0 |
+| bindtouchcancel | eventhandle | - | 否 | 手指触摸动作被打断，如来电提醒，弹窗 | 1.0.0 |
+| bindlongtap | eventhandle | - | 否 | 手指长按 500ms 之后触发，触发了长按事件后进行移动不会触发屏幕的滚动 | 1.0.0 |
+| binderror | eventhandle | - | 否 | 当发生错误时触发 error 事件，detail = {errMsg} | 1.0.0 |
+
+### Canvas 类型
+
+#### 1. Canvas 2D (推荐)
+
+从 2.9.0 开始支持的新接口，使用标准的 Canvas 2D API。
+
+**WXML 示例**：
+```xml
+<canvas type="2d" id="myCanvas"></canvas>
+```
+
+**JS 示例**：
+```javascript
+Page({
+  onReady() {
+    const query = wx.createSelectorQuery()
+    query.select('#myCanvas')
+      .fields({ node: true, size: true })
+      .exec((res) => {
+        const canvas = res[0].node
+        const ctx = canvas.getContext('2d')
+
+        // 设置画布尺寸，考虑设备像素比
+        const dpr = wx.getSystemInfoSync().pixelRatio
+        canvas.width = res[0].width * dpr
+        canvas.height = res[0].height * dpr
+        ctx.scale(dpr, dpr)
+
+        // 绘制图形
+        ctx.fillStyle = '#ff0000'
+        ctx.fillRect(0, 0, 100, 100)
+      })
+  }
+})
+```
+
+#### 2. WebGL
+
+从 2.7.0 开始支持 WebGL 渲染。
+
+**WXML 示例**：
+```xml
+<canvas type="webgl" id="myCanvas"></canvas>
+```
+
+**JS 示例**：
+```javascript
+Page({
+  onReady() {
+    const query = wx.createSelectorQuery()
+    query.select('#myCanvas').node().exec((res) => {
+      const canvas = res[0].node
+      const gl = canvas.getContext('webgl')
+      
+      // 设置清除颜色
+      gl.clearColor(1, 0, 1, 1)
+      gl.clear(gl.COLOR_BUFFER_BIT)
+    })
+  }
+})
+```
+
+### 常用绘制方法
+
+#### Canvas 2D API
+
+```javascript
+// 矩形
+ctx.fillRect(x, y, width, height)  // 填充矩形
+ctx.strokeRect(x, y, width, height) // 描边矩形
+
+// 圆形
+ctx.beginPath()
+ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)
+ctx.fill() // 或 ctx.stroke()
+
+// 线条
+ctx.beginPath()
+ctx.moveTo(x, y)
+ctx.lineTo(x, y)
+ctx.stroke()
+
+// 文本
+ctx.font = '16px sans-serif'
+ctx.fillText(text, x, y)
+ctx.strokeText(text, x, y)
+
+// 图片
+const img = canvas.createImage()
+img.src = 'path/to/image.png'
+img.onload = () => {
+  ctx.drawImage(img, x, y, width, height)
+}
+```
+
+#### 旧版 API
+
+```javascript
+// 矩形
+context.rect(x, y, width, height)
+context.fillRect(x, y, width, height)
+context.strokeRect(x, y, width, height)
+
+// 圆形
+context.arc(x, y, radius, startAngle, endAngle, anticlockwise)
+
+// 线条
+context.moveTo(x, y)
+context.lineTo(x, y)
+
+// 文本
+context.setFontSize(size)
+context.fillText(text, x, y)
+
+// 图片
+context.drawImage(imageResource, dx, dy, dWidth, dHeight)
+
+// 提交绘制
+context.draw()
+```
+
+### 注意事项
+
+1. **默认尺寸**：canvas 标签默认宽度 300px、高度 150px
+2. **ID 唯一性**：同一页面中的 canvas-id 不可重复
+3. **原生组件限制**：请注意原生组件使用限制
+4. **硬件加速**：开发者工具中默认关闭了 GPU 硬件加速，可在设置中开启
+5. **WebGL 透明背景**：支持通过 `getContext('webgl', { alpha: true })` 获取透明背景
+6. **真机调试**：WebGL 暂不支持真机调试，建议使用真机预览
+7. **Canvas 2D 尺寸**：需要显式设置画布宽高，默认：300×150，最大：1365×1365
+8. **性能问题**：避免设置过大的宽高，在安卓下会有 crash 的问题
+9. **事件支持**：iOS 暂不支持 pointer-events
+10. **配置项影响**：在 mac 或 windows 小程序下，若开启了 `enablePassiveEvent` 配置项，可能出现非预期表现
+11. **鸿蒙 OS**：暂不支持外接纹理
+
+### 相关 API
+
+- `wx.createSelectorQuery()` - 创建选择器查询对象
+- `wx.getSystemInfoSync()` - 获取系统信息
+- `wx.createCanvasContext()` - 创建 canvas 上下文（旧版）
+- `wx.canvasToTempFilePath()` - 将 canvas 导出为图片
+- `wx.canvasGetImageData()` - 获取 canvas 区域隐含的像素数据
+- `wx.canvasPutImageData()` - 将像素数据绘制到 canvas
+
+### 渲染框架支持
+
+- **Skyline**：使用最新 Nightly 工具调试
+- **WebView**：传统渲染框架
 ## 8.8.8 开发能力
 * open-data
 * web-view
