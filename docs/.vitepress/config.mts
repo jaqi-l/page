@@ -91,7 +91,7 @@ export default defineConfig({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @25.08.29.1 V3'
+      copyright: 'jaqi.note © jaqi.l @25.09.04.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },

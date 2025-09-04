@@ -331,6 +331,207 @@ git restore .                       # 撤销所有文件的修改
 | 撤销工作区文件   | git checkout -- file      | git restore file       |
 | 撤销暂存区文件 | git reset HEAD file       | git restore --staged file |
 
+## `submodule` 子模块
+
+`git submodule` 命令用于管理包含其他 Git 仓库的项目，适用于大型项目或需要集成外部库的场景。通过子模块，你可以将外部库作为项目的一部分管理，而不必直接合并到主仓库中
+
+### 1. 初始化子模块
+```bash
+# 根据 `.gitmodules` 配置，初始化所有子模块，但不会下载内容，
+git submodule init
+```
+### 2. 根据子模块的引用，拉取子模块的内容
+```bash
+# 从子模块的远程仓库拉取内容，只是拉取，不会更新子项目的提交
+# 通常在初始化项目后使用
+git submodule update
+
+# 相当于 git submodule init + git submodule update
+git submodule update --init --recursive
+```
+### 3. 更新子模块的引用，并拉取
+```bash
+# 递归更新所有子模块（包括子模块的子模块）并拉取最新更改
+# --recursive 递归更新，--remote 从远程仓库拉取最新更改
+git submodule update --recursive --remote
+```
+
+### 4. 添加子模块
+```bash
+# 将指定仓库作为子模块添加到当前仓库
+# <repo-url> 是子模块仓库地址，<path> 是子模块在主仓库中的路径（可选）
+git submodule add <repo-url> [<path>]
+
+# 示例
+git submodule add https://github.com/example/jaqi.git submodule-1
+
+# 示例 添指定分支的子模块
+git submodule add -b master https://github.com/example/jaqi.git submodule-1
+```
+
+### 5. 移除子模块
+```bash
+# 从 .git/config 文件中移除子模块
+git submodule deinit <path>
+
+# 从主仓库中删除子模块引用
+git rm <path>
+
+# 删除子模块的本地缓存
+rm -rf .git/modules/<path>
+```
+- 说明：需要三个步骤完成子模块的完全移除
+
+### 6. 列出子模块
+```bash
+# 列出当前仓库中的所有子模块及其状态
+git submodule
+```
+- 说明：显示子模块的提交哈希、路径等信息
+
+### 7. 检查子模块状态
+```bash
+# 显示子模块的当前状态
+git submodule status
+```
+- 说明：包括当前提交哈希、路径以及是否有未提交的更改
+
+### 克隆包含子模块的项目
+当克隆一个包含子模块的项目时，需要初始化并更新子模块：
+如果 子模块领先于主模块引用的子模块提交，该方法不会更新主模块的子模块引用，需要手动更新。
+```bash
+# repo-url 是主模块的 git 地址
+git clone <repo-url>
+cd <repo-dir>
+git submodule init
+git submodule update
+
+# 或者使用一步命令
+git clone --recurse-submodules <repo-url>
+```
+
+### 在主模块中修改子模块的内容
+
+主项目（父仓库）中存储的是子模块的 特定提交哈希（commit ID） ，而不是对子模块分支的直接引用
+
+> 在主项目中无法直接修改子模块的内容 ：
+> - 当你克隆包含子模块的项目时，子模块目录会处于“分离头指针（detached HEAD）”状态，指向主项目中记> 录的特定提交。
+> - 在这种状态下，你可以查看子模块的内容，但任何修改都不会自动关联到子模块的任何分支。
+
+> 关键原因 ：
+> - 主项目仅记录子模块的特定提交，而不跟踪子模块的分支变化。
+> - 若不切换到子模块的分支就进行修改，这些修改将处于“游离”状态，无法被正确提交到子模块的版本历史中。
+> - 修改子模块后，必须同时更新主项目中对子模块的引用提交，否则其他克隆该项目的开发者将无法获取到最新的子模块修改。
+
+```bash
+# 1. 进入子模块目录
+cd <submodule-path>
+
+# 2. 切换到子模块的目标分支（如main或master）
+git switch <branch-name>
+
+# 3. 进行必要的修改
+git add .
+git commit -m "Update submodule"
+
+# 4. 推送修改到子模块的远程仓库
+git push
+
+# 5. 返回主项目，更新对子模块的引用
+cd ..
+git add <submodule-path>
+git commit -m "Update submodule reference"
+git push
+```
+
+
+### `.gitmodules` 配置文件
+
+`.gitmodules` 是一个 Git 配置文件，用于存储项目中子模块的映射信息。当你添加子模块时，Git 会自动创建或更新这个文件。该文件会被版本控制，与项目一起提交和推送，确保其他开发者克隆项目时能正确获取子模块。
+
+#### 文件结构与格式
+
+`.gitmodules` 文件采用标准的 Git 配置文件格式，由多个子模块配置块组成。每个子模块配置块包含子模块的名称、路径和仓库 URL 等信息。
+
+**基本格式示例：**
+```ini
+[submodule "DbConnector"]
+    path = DbConnector
+    url = https://github.com/example/DbConnector.git
+
+[submodule "Utils"]
+    path = lib/utils
+    url = https://github.com/example/Utils.git
+    branch = main
+```
+
+#### 主要配置项说明
+
+| 配置项 | 说明 | 是否必需 |
+|--------|------|---------|
+| `submodule` 后的名称 | 子模块的唯一标识符，通常与子模块仓库名相同 | 必需 |
+| `path` | 子模块在主仓库中的相对路径 | 必需 |
+| `url` | 子模块的远程仓库地址 | 必需 |
+| `branch` | 指定跟踪的分支（默认为 `master` 或 `main`） | 可选 |
+| `ignore` | 忽略子模块状态的方式（默认为 `none`） | 可选 |
+| `update` | 更新子模块的策略（默认为 `checkout`） | 可选 |
+
+#### 手动编辑 `.gitmodules` 文件
+
+在某些情况下，你可能需要手动编辑 `.gitmodules` 文件：
+
+1. **修改子模块的 URL**：当子模块仓库地址变更时
+2. **调整子模块的路径**：当需要移动子模块在项目中的位置时
+3. **添加额外的配置项**：如指定跟踪的分支
+
+**编辑后需要执行的操作：**
+```bash
+# 使修改生效
+git submodule sync
+
+# 更新子模块
+git submodule update --init --recursive
+```
+
+#### 配置示例详解
+
+**1. 基本配置**
+```ini
+[submodule "vue"]
+    path = src/vue
+    url = https://github.com/vuejs/vue.git
+```
+- 说明：添加 Vue.js 作为子模块，放置在 `src/vue` 目录下
+
+**2. 指定分支和更新策略**
+```ini
+[submodule "react"]
+    path = lib/react
+    url = https://github.com/facebook/react.git
+    branch = main
+    update = rebase
+    ignore = dirty
+```
+- 说明：
+  - 跟踪 `main` 分支
+  - 更新时使用 `rebase` 策略
+  - 忽略子模块中的未提交更改
+
+#### 注意事项
+
+- `.gitmodules` 文件会被版本控制，修改后需要提交和推送
+- 其他开发者克隆仓库后，Git 会根据 `.gitmodules` 文件中的信息拉取子模块
+- 如果需要为本地修改子模块 URL（例如使用 SSH 而非 HTTPS），可以使用 `git config` 命令在本地覆盖配置：
+  ```bash
+  git config submodule.<子模块名>.url <新的 URL>
+  ```
+  这种本地修改不会影响 `.gitmodules` 文件
+
+### 注意事项
+- 子模块的 `.gitmodules` 文件会被版本控制，包含子模块的 URL 和路径映射
+- 子模块在主仓库中被视为一个特定的提交，而不是跟踪其内容变化
+- 推送主仓库时不会自动推送子模块的更改，需要单独推送
+
 ## `.gitignore`
 > ##### 常用的规则
 >> mtk 忽略当前目录下整个mtk文件夹      
