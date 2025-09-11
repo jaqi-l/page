@@ -755,6 +755,16 @@
       "title": "大白菜博客",
       "link": "https://cmsblogs.cn/",
       "description": "Java技术博客"
+    },
+    {
+      "title": "disk-drill",
+      "link": "https://www.disk-drill.com/",
+      "description": "磁盘恢复工具"
+    },
+    {
+      "title": "xmac",
+      "link": "https://xmac.cc/",
+      "description": "Mac应用分享平台"
     }
   ]
 },
