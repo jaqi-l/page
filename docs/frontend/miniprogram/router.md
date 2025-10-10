@@ -311,75 +311,26 @@ Page({
 ## 8.6.6 自定义路由
 
 ```js
-// 获取路由实例
-const router = wx.router
-
-// 添加路由构建器
-router.addRouteBuilder((route) => {
-  // 自定义路由逻辑
-  if (route.path === '/pages/custom/custom') {
-    // 修改路由参数
-    route.query.customParam = 'customValue'
+// 定义自定义效果，从右侧推入
+const slideRouteBuilder = (customRouteContext) => {
+  const { primaryAnimation } = customRouteContext
+  const handlePrimaryAnimation = () => {
+    'worklet'
+    const transX = windowWidth * (1 - primaryAnimation.value)
+	   return {
+		   transform: `translateX(${transX}px)`,
+	   }
   }
-  return route
-})
-
-// 获取路由上下文
-const context = router.getRouteContext()
-console.log('当前路由上下文', context)
-
-// 移除路由构建器
-router.removeRouteBuilder()
-```
-
-### 路由拦截示例-token
-```js
-// app.js 中配置自定义路由
-App({
-  onLaunch() {
-    // 配置自定义路由
-    wx.router.addRouteBuilder((route) => {
-      // 路由拦截和处理
-      if (route.path.includes('/pages/auth/')) {
-        // 检查登录状态
-        if (!wx.getStorageSync('token')) {
-          // 重定向到登录页
-          return {
-            path: '/pages/login/login',
-            query: { redirect: route.path }
-          }
-        }
-      }
-      return route
-    })
+  return {
+    handlePrimaryAnimation
   }
-})
-```
-
-### 路由拦截示例-权限
-```js
-// 路由拦截器
-const routeInterceptor = (route) => {
-  // 权限检查
-  if (route.path === '/pages/admin/admin') {
-    const userRole = wx.getStorageSync('userRole')
-    if (userRole !== 'admin') {
-      wx.showToast({
-        title: '无权限访问',
-        icon: 'none'
-      })
-      return false // 阻止路由
-    }
-  }
-  
-  // 参数处理
-  if (route.query.id) {
-    route.query.id = parseInt(route.query.id)
-  }
-  
-  return route
 }
 
-// 添加拦截器
-wx.router.addRouteBuilder(routeInterceptor)
+wx.router.addRouteBuilder('slide', slideRouteBuilder)
+
+// 使用自定义路由
+wx.navigateTo({
+  url: 'xxx',
+  routeType: 'slide'
+})
 ```

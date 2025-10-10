@@ -589,6 +589,16 @@ git submodule update --init --recursive
 
 [Git在线演示](https://learngitbranching.js.org/?locale=zh_CN)       
 [Git命令大全](https://gitee.com/all-about-git)
+
+## `.gitkeep`
+`.gitkeep` 是一个空的文件，用于在 Git 仓库中保持目录的存在。当你创建一个空的目录时，Git 不会跟踪这个目录，除非你在这个目录中添加一个 `.gitkeep` 文件。
+```bash
+touch .gitkeep
+```
+- 说明：当你创建一个空的目录时，Git 不会跟踪这个目录，除非你在这个目录中添加一个 `.gitkeep` 文件。
+- 当你删除这个文件时，Git 会开始跟踪这个目录。
+- 当你添加这个文件时，Git 会开始跟踪这个目录。
+
 ## 与svn命令的对比
 | 作用 | git | svn |
 | ---- | ---- | ---- |
