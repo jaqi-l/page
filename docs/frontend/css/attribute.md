@@ -1,7 +1,7 @@
 # 2.3 CSS属性
 ## 2.3.1字体属性
 
-`font-size`:规定文本的字体尺寸：
+### `font-size`:规定文本的字体尺寸：
 > `px`     
 > `%`:相对父元素       
 > `vh`:相对视口     
@@ -18,26 +18,26 @@
 > `arger`:相对父元素    
 
 
-`font-variant`:规定是否以小型大写字母的字体显示文本：
+### `font-variant`:规定是否以小型大写字母的字体显示文本：
 > `normal`:（默认值）浏览器会显示一个标准的字体  
 > `small-caps` 浏览器会显示小型大写字母的字体 
 > 
 
-`font-style`:规定文本的字体样式：
+### `font-style`:规定文本的字体样式：
 > `normal`:（默认值）浏览器会显示一个标准的字体  
 > `italic`:浏览器会显示一个斜体的字体样式  
 > `oblique`:浏览器会显示一个倾斜的字体样式
 
-`font-weight`:规定字体的粗细：
+### `font-weight`:规定字体的粗细：
 > `normal`:（默认值）定义标准的字符    
 > `bold`:定义粗体字符    
 > `bolder`:定义更粗的字符   
 > `lighter`:定义更细的字符    
 > `100-900`定义由粗到细的字符。`400`等同于`normal`，而`700`等同于`bold`
 
-`font-family`:规定文本的字体系列：
+### `font-family`:规定文本的字体系列：
 
-`font`:在一个声明中设置所有字体属性：
+### `font`:在一个声明中设置所有字体属性：
 
 这个简写属性用于一次设置元素字体的两个或更多方面。
 
@@ -127,9 +127,9 @@ html中应用：
 :::
 ## 2.3.2文本属性
 
-`color`:设置文本颜色
+### `color`:设置文本颜色
 
-`text-align`:设置文本的水平对齐方式
+### `text-align`:设置文本的水平对齐方式
 > `left`:（默认值）左对齐    
 > `right`:右对齐   
 > `center`:居中对齐    
@@ -137,27 +137,27 @@ html中应用：
 
 CSS3中新增了start和end属性值，在通常情况下，start等于left，end等于right
 
-`text-align-last`:设置行末的水平对齐方式
+### `text-align-last`:设置行末的水平对齐方式
 > `left`:（默认值）左对齐    
 > `right`:右对齐   
 > `center`:居中对齐    
 > `justify`:两端对齐
 
 
-`line-height`:设置行高
+### `line-height`:设置行高
 > `normal`:（默认值）    
 > `数字`    
 > `%`    
 > `px`   
 > `rem`
 
-`text-indent`:设置文本的首行缩进
+### `text-indent`:设置文本的首行缩进
 > `%`    
 > `px`    
 > `em`    
 > `rem`
 
-`initial-letter`:设置文本的下沉
+### `initial-letter`:设置文本的下沉
 > `params1`:行高    
 > `params2`:沉度  
 
@@ -169,34 +169,34 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 > }
 > ``` 
 
-`text-decoration`:向文本添加修饰
+### `text-decoration`:向文本添加修饰
 > `none`:（默认值）显示标准的文本    
 > `underline`:定义文本下划线    
 > `overline`:定义文本上划线   
 > `line-through`:定义穿过文本下的一条线   
 > `blink`:定义闪烁的文本
 
-`text-underline-offset`:设置文本修饰的偏移距离
+### `text-underline-offset`:设置文本修饰的偏移距离
 
-`text-underline-position`:设置下划线的位置（`text-decoration:underline`时）
+### `text-underline-position`:设置下划线的位置（`text-decoration:underline`时）
 
-`letter-spacing`:设置字符间距
+### `letter-spacing`:设置字符间距
 > `normal`:（默认值）   
 > `px`:（允许使用负值）
 
-`word-spacing`: 设置字/单词间距
+### `word-spacing`: 设置字/单词间距
 > `normal`:（默认值）就等同于设置为`0`   
 > `数字`:（允许使用负值）
 
-`text-transform`: 设置对象中的文本的大小写
+### `text-transform`: 设置对象中的文本的大小写
 > `none`:（默认值）标准的文本    
 > `capitalize`:每个单词以大写字母开头    
 > `uppercase`:转换为大写字母    
 > `lowercase`:转换为小写字母   
 
-`text-shadow`:向文本添加阴影
+### `text-shadow`:向文本添加阴影
 
-`white-space`:设置元素中空白的处理方式
+### `white-space`:设置元素中空白的处理方式
 > `none`（默认值）空白会被浏览器忽略    
 > `pre`:空白会被浏览器保留。其行为方式类似 HTML 中的 pre 标签,常用来输出带格式的`json`  
 > `nowrap`:文本不会换行，文本会在在同一行上继续，直到遇到br标签为止   
@@ -204,27 +204,27 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 > `pre-line`:合并空白符，但是正常地进行换行   
 > `inherit`:从父元素继承 white-space 属性的值
 
-`direction`:设置文本方向
+### `direction`:设置文本方向
 > `ltr`（默认值）文本方向从左到右   
 > `rtl`文本方向从右到左。
 ::: warning direction:rtl在遇到括号的时候会显示异常
 ![eventloop](/direction.png)
 :::
 
-`text-wrap`:规定文本的换行规则(目前主流浏览器都不支持)
-> `normal`:（只在允许的换行点进行换行     
+### `text-wrap`:规定文本的换行规则(目前主流浏览器都不支持)
+> `normal`:只在允许的换行点进行换行     
 > `none`:不换行。元素无法容纳的文本会溢出    
 > `unrestricted`:在任意两个字符间换行    
 > `suppress`:压缩元素中的换行。浏览器只在行中没有其他有效换行点时进行换行  
 > `balance`:平衡排版，浏览器会根据内容和宽度自动换行(<span style="color: red">*</span>CSS 2023新增) 
 
-`word-break`:规定非中日韩文本的换行规则
+### `word-break`:规定非中日韩文本的换行规则
 
-`word-wrap`:允许对长的不可分割的单词进行分割并换行到下一行
+### `word-wrap`:允许对长的不可分割的单词进行分割并换行到下一行
 
-`text-fill-color`:文本填充颜色，指定文字填充部分的颜色
+### `text-fill-color`:文本填充颜色，指定文字填充部分的颜色
 
-`text-stroke`:文本边框颜色，指定文字描边部分的颜色
+### `text-stroke`:文本边框颜色，指定文字描边部分的颜色
 
 > text-stroke-width文字的描边宽度
 > text-stroke-color文字的描边颜色
@@ -232,7 +232,7 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 > ::: danger
 >  使用该属性需要使用浏览器私有前缀
 > :::
-`text-overflow`:规定当文本溢出包含元素时发生的事情
+### `text-overflow`:规定当文本溢出包含元素时发生的事情
 >  clip（默认值）当对象内文本溢出时不显示省略标记（...），而是将 溢出的部分裁切掉   
 >  ellipsis：当对象内文本溢出时显示省略标记（...）
 >  ::: danger
@@ -254,28 +254,28 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 > -webkit-box-orient: vertical;
 > ```
 >  :::
-`text-outline`:规定文本的轮廓
+### `text-outline`:规定文本的轮廓
 
-`user-select`:规定文本是否被用户选择
+### `user-select`:规定文本是否被用户选择
 
-`text-justify`:规定当 text-align 设置为 "justify" 时所使用的对齐方法
+### `text-justify`:规定当 text-align 设置为 "justify" 时所使用的对齐方法
 
-`text-align-last`:设置如何对齐最后一行或紧挨着强制换行符之前的行
+### `text-align-last`:设置如何对齐最后一行或紧挨着强制换行符之前的行
 
-`text-emphasis`:向元素的文本应用重点标记以及重点标记的前景色
+### `text-emphasis`:向元素的文本应用重点标记以及重点标记的前景色
 
-`unicode-bidi`:用于同一个页面里存在从不同方向读进的文本显示。与`direction`属性一起使用
+### `unicode-bidi`:用于同一个页面里存在从不同方向读进的文本显示。与`direction`属性一起使用
 > `normal`:不使用附加的嵌入层面   
 > `embed`:创建一个附加的嵌入层面    
 > `bidi-override`:创建一个附加的嵌入层面。重新排序取决于 `direction` 属性
 
-`hanging-punctuation`:规定标点字符是否位于线框之外
+### `hanging-punctuation`:规定标点字符是否位于线框之外
 
-`punctuation-trim`:规定是否对标点字符进行修剪
+### `punctuation-trim`:规定是否对标点字符进行修剪
 
-`tab-size`:设定一个tab在页面中的显示长度
+### `tab-size`:设定一个tab在页面中的显示长度
 
-`vertical-align`:文本垂直居中（只对行内元素有效，对块元素需要设置`display: table-cell;`）
+### `vertical-align`:文本垂直居中（只对行内元素有效，对块元素需要设置`display: table-cell;`）
 
 ::: tip 几种实现垂直居中的方法
 1. `absolute + margin auto`
@@ -293,9 +293,9 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 ## 2.3.3边框
 元素的边框就是围绕元素内容和内边距的一条或多条线
 
-`border`:简写属性，用于把针对四个边的属性设置在一个声明
+### `border`:简写属性，用于把针对四个边的属性设置在一个声明
 
-`border-width`:简写属性，用于为元素的所有边框设置宽度，或者单独地为各边边框设置宽度：
+### `border-width`:简写属性，用于为元素的所有边框设置宽度，或者单独地为各边边框设置宽度：
 
 常用单位为像素(px)、em
 
@@ -303,7 +303,7 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 > `medium`:（默认值）    
 > `thick`:定义粗的边框
 
-`border-style`:用于设置元素所有边框的样式，或者单独地为各边设置边框样式：
+### `border-style`:用于设置元素所有边框的样式，或者单独地为各边设置边框样式：
 
 > `none`:定义无边框   
 > `dotted`:定义点状边框   
@@ -315,42 +315,43 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 > `inset`:定义 3D inset 边框    
 > `outset`:定义 3D outset 边框
 
-`border-color`:简写属性，设置元素的所有边框中可见部分的颜色，或为 4 个边分别设置颜色。
+### `border-color`:简写属性，设置元素的所有边框中可见部分的颜色，或为 4 个边分别设置颜色。
 
-`border-bottom`:简写属性，用于把下边框的所有属性设置到一个声明中
+### `border-bottom`:简写属性，用于把下边框的所有属性设置到一个声明中
 
-`border-bottom-color`:设置元素的下边框的颜色
+### `border-bottom-color`:设置元素的下边框的颜色
 
-`border-bottom-style`:设置元素的下边框的样式
+### `border-bottom-style`:设置元素的下边框的样式
 
-`border-bottom-width`:设置元素的下边框的宽度
+### `border-bottom-width`:设置元素的下边框的宽度
 
-`border-left`:简写属性，用于把左边框的所有属性设置到一个声明中
+### `border-left`:简写属性，用于把左边框的所有属性设置到一个声明中
 
-`border-left-color`:设置元素的左边框的颜色
+### `border-left-color`:设置元素的左边框的颜色
 
-`border-left-style`:设置元素的左边框的样式
+### `border-left-style`:设置元素的左边框的样式
 
-`border-left-width`:设置元素的左边框的宽度
+### `border-left-width`:设置元素的左边框的宽度
 
-`border-right`:简写属性，用于把右边框的所有属性设置到一个声明中
+### `border-right`:简写属性，用于把右边框的所有属性设置到一个声明中
 
-`border-right-color`:设置元素的右边框的颜色
+### `border-right-color`:设置元素的右边框的颜色
 
-`border-right-style`:设置元素的右边框的样式
+### `border-right-style`:设置元素的右边框的样式
 
-`border-right-width`:设置元素的右边框的宽度
+### `border-right-width`:设置元素的右边框的宽度
 
-`border-top`:简写属性，用于把上边框的所有属性设置到一个声明中
+### `border-top`:简写属性，用于把上边框的所有属性设置到一个声明中
 
-`border-top-color`:设置元素的上边框的颜色
+### `border-top-color`:设置元素的上边框的颜色
 
-`border-top-style`:设置元素的上边框的样式
+### `border-top-style`:设置元素的上边框的样式
 
-`border-top-width`:设置元素的上边框的宽度
+### `border-top-width`:设置元素的上边框的宽度
 
-### CSS3新增的边框属性：
-`border-radius`:设置所有四个`border-radius`属性的简写属性：
+### <span style="color: red">*</span> CSS3新增的边框属性：
+
+### `border-radius`:设置所有四个`border-radius`属性的简写属性：
 
 `*`:同时设定四个角的圆角
 
@@ -360,27 +361,27 @@ CSS3中新增了start和end属性值，在通常情况下，start等于left，en
 
 `****`:分别设定左上 、右上、右下、左下圆角
 
-`border-top-left-radius`:左上角圆角边框
+### `border-top-left-radius`:左上角圆角边框
 
-`border-top-right-radius`:右上角圆角边框
+### `border-top-right-radius`:右上角圆角边框
 
-`border-bottom-right-radius`:右下角圆角边框
+### `border-bottom-right-radius`:右下角圆角边框
 
-`border-bottom-left-radius`:左下角圆角边框
+### `border-bottom-left-radius`:左下角圆角边框
 
-`border-image`:设置所有`border-image`:属性的简写属性：
+### `border-image`:设置所有`border-image`:属性的简写属性：
 
-`border-image`:复合属性，设置边框使用图像来填充，可依次设置一下属性：
+### `border-image`:复合属性，设置边框使用图像来填充，可依次设置一下属性：
 
-`border-image-source`:图像来源路径
+### `border-image-source`:图像来源路径
 
-`border-image-slice`:边框背景图的分割方式
+### `border-image-slice`:边框背景图的分割方式
 
-`border-image-width`:边框的宽度
+### `border-image-width`:边框的宽度
 
-`border-image-outset`:边框背景图的扩展(边框图像区域超出边框的量)
+### `border-image-outset`:边框背景图的扩展(边框图像区域超出边框的量)
 
-`border-image-repeat`:边框图像的平铺方式:
+### `border-image-repeat`:边框图像的平铺方式:
 > `stretch`:拉伸   
 > `repeat`:重复铺满    
 > `round`:重复铺满并对图片进行调整
@@ -398,21 +399,116 @@ span
 :::
 
 
-`box-shadow`:向方框添加一个或多个阴影：
+### `box-shadow`:向方框添加一个或多个阴影
 
-none： 无阴影
+CSS `box-shadow` 属性用于在元素的框架上添加阴影效果。你可以在同一个元素上设置多个阴影效果，并用逗号将他们分隔开。
 
-阴影水平偏移值/阴影垂直偏移值/阴影模糊值/阴影外延值/阴影的颜色/inset内阴影(默认值为outset)
+#### 语法
+```css
+/* 基础语法 */
+box-shadow: none | [inset] <offset-x> <offset-y> <blur-radius> <spread-radius> <color>;
+
+/* 多个阴影 */
+box-shadow: 
+  <shadow1>,
+  <shadow2>,
+  ...;
+```
+
+#### 参数说明
+- `none`：无阴影（默认值）
+- `inset`：可选，设置内阴影（默认值为外阴影 outset）
+- `<offset-x>`：水平偏移量，正值向右，负值向左
+- `<offset-y>`：垂直偏移量，正值向下，负值向上
+- `<blur-radius>`：模糊半径，值越大越模糊，0表示不模糊
+- `<spread-radius>`：扩散半径，正值扩大阴影，负值缩小阴影
+- `<color>`：阴影颜色，可以使用任何颜色值
+
+#### 基本用法示例
+```css
+/* 1. 基础阴影 */
+box-shadow: 10px 5px 5px red;
+
+/* 2. 只有偏移和颜色 */
+box-shadow: 60px -16px teal;
+
+/* 3. 完整参数 */
+box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+
+/* 4. 内阴影 */
+box-shadow: inset 5em 1em gold;
+
+/* 5. 多个阴影 */
+box-shadow:
+  3px 3px red,
+  -1em 0 0.4em olive;
+```
+
+#### 常用效果示例
+```css
+/* 卡片阴影效果 */
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 悬浮效果 */
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 内嵌效果 */
+.inset-shadow {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 发光效果 */
+.glow {
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+/* 立体按钮效果 */
+.button-3d {
+  box-shadow: 
+    0 4px 0 #3e6b47,
+    0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 多层阴影 */
+.multi-shadow {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+}
+```
+
+#### 注意事项
+1. 如果元素同时设置了 `border-radius` 属性，那么阴影也会有圆角效果
+2. 多个阴影在 z 轴上的顺序和多个 `text-shadow` 规则相同（第一个阴影在最上面）
+3. 阴影不会影响布局，不会增加元素的实际尺寸
+4. 阴影会继承元素的 `border-radius` 属性
+5. 可以使用 `rgba()` 或 `hsla()` 来设置半透明阴影
+
+#### 浏览器兼容性
+- 现代浏览器：完全支持
+- IE 9+：支持
+- 移动端：完全支持
+
+::: tip 实用技巧
+1. **Material Design 阴影**：使用多层阴影创建符合 Material Design 的卡片效果
+2. **性能优化**：避免在动画中频繁改变 `box-shadow`，可以使用 `transform` 替代
+3. **响应式阴影**：可以根据屏幕尺寸调整阴影大小
+4. **无障碍设计**：确保阴影不会影响内容的可读性
+:::
 ## 2.3.4背景
-`background`:简写属性，作用是将背景属性设置在一个声明中：
+### `background`:简写属性，作用是将背景属性设置在一个声明中：
 
-`background-attachment`:背景图像是否固定或者随着页面的其余部分滚动。scroll 默认值。/fixed 当页面的其余部分滚动时，背景图像不会移动
+### `background-attachment`:背景图像是否固定或者随着页面的其余部分滚动。scroll 默认值。/fixed 当页面的其余部分滚动时，背景图像不会移动
 
-`background-color`:设置元素的背景颜色
+### `background-color`:设置元素的背景颜色
 
-`background-image`:把图像设置为背景
+### `background-image`:把图像设置为背景
 
-`background-position`:设置背景图像的起始位置
+### `background-position`:设置背景图像的起始位置
 > `left`    
 > `right`   
 > `center`    
@@ -425,30 +521,286 @@ none： 无阴影
 > x y （左上角是 0 0。右下角是 100 100;如果仅规定了一个值，另一个值将是 50%）
 
 
-`background-repeat`:设置背景图像是否及如何重复。repeat/repeat-x/repeat-y/no-repeat
+### `background-repeat`:设置背景图像是否及如何重复。repeat/repeat-x/repeat-y/no-repeat
 
 ### CSS3新增的背景属性： 
 
-`background-size`:规定背景图片的尺寸：
+### `background-size`:规定背景图片的尺寸：
 
 > `px`    
 > `%`   
 > `cover`:把背景图像扩展至足够大，以使背景图像完全覆盖背景区域    
 > `contain`:把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域
 
-`background-clip`:规定背景的绘制区域：
+### `background-clip`:规定背景的绘制区域：
 
-> `border-box`:背景被裁剪到边框盒   
-> `padding-box`:背景被裁剪到内边距框    
-> `content-box`:背景被裁剪到内容框
+> `border-box`:（默认值）背景被裁剪到边框盒，背景会延伸到边框下面   
+> `padding-box`:背景被裁剪到内边距框，背景不会延伸到边框下面    
+> `content-box`:背景被裁剪到内容框，背景只在内容区域显示
+> `text`:背景被裁剪到文字区域，实现文字渐变效果（需要配合 `-webkit-text-fill-color: transparent` 使用）
 
-`background-origin`:规定背景图片的定位区域：
+::: tip background-clip 实现文字渐变效果
+```css
+.gradient-text {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 48px;
+  font-weight: bold;
+}
+```
+:::
+
+### `background-origin`:规定背景图片的定位区域：
 > `padding-box`:背景图像相对于内边距框来定位    
 > `border-box`:背景图像相对于边框盒来定位   
 > `content-box`:背景图像相对于内容框来定位
 
+### `mask` 
+属性允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域。这是一个简写属性，用于设置多个遮罩相关的子属性。
+```css
+/* 关键字值 */
+mask: none;
 
-`background-blend-mode`:设置背景图片的混合模式
+/* 图像值 */
+mask: url(mask.png); /* 使用位图来做遮罩 */
+mask: url(masks.svg#star); /* 使用 SVG 图形中的形状来做遮罩 */
+
+/* 组合值 */
+mask: url(masks.svg#star) luminance; /* 使用 SVG 图形中的元素作为亮度遮罩 */
+mask: url(masks.svg#star) 40px 20px; /* 设置位置：离上边缘 40px，离左边缘 20px */
+mask: url(masks.svg#star) 0 0/50px 50px; /* 设置位置和大小：长宽都是 50px */
+mask: url(masks.svg#star) repeat-x; /* 水平重复 */
+mask: url(masks.svg#star) stroke-box; /* 遮罩延伸到边框包围的盒子 */
+mask: url(masks.svg#star) exclude; /* 使用非重叠部分与背景合成 */
+```
+
+**注意：** mask 的简写会将 mask-border 设为初始值。使用 `mask` 的简写优于使用其他简写或者各自属性的设置来覆盖。
+
+::: warning 浏览器兼容性
+- **mask** 属性在 2023 年 12 月才开始在主流浏览器中广泛支持
+- 使用时建议添加 `-webkit-` 前缀以确保兼容性
+- 某些高级功能（如复杂的合成模式）可能在某些浏览器中不完全支持
+- 建议在使用前进行充分的浏览器测试
+:::
+
+### mask-image
+设置遮罩图像：
+> `none`:（默认值）无遮罩图像
+> `url()`:遮罩图像的路径（支持位图和 SVG）
+> `linear-gradient()`:线性渐变遮罩
+> `radial-gradient()`:径向渐变遮罩
+> `repeating-linear-gradient()`:重复线性渐变遮罩
+> `repeating-radial-gradient()`:重复径向渐变遮罩
+> `conic-gradient()`:圆锥渐变遮罩
+
+### mask-mode
+设置遮罩的模式：
+> `match-source`:（默认值）根据遮罩源自动选择模式
+> `alpha`:使用遮罩的 alpha 通道
+> `luminance`:使用遮罩的亮度值
+> `auto`:浏览器自动选择最佳模式
+
+### mask-position
+设置遮罩图像的位置：
+> `left`、`right`、`center`、`top`、`bottom`
+> `x% y%`:百分比定位
+> `x y`:像素定位
+> `left top`、`right bottom` 等组合值
+
+### mask-size
+设置遮罩图像的尺寸：
+> `auto`:（默认值）保持原始尺寸
+> `cover`:覆盖整个元素
+> `contain`:适应元素尺寸
+> `px`、`%`:具体数值
+> `x y`:分别设置宽度和高度
+
+### mask-repeat
+设置遮罩图像的重复方式：
+> `no-repeat`:不重复
+> `repeat`:（默认值）重复
+> `repeat-x`:水平重复
+> `repeat-y`:垂直重复
+> `space`:两端对齐重复
+> `round`:四舍五入重复
+
+### mask-clip
+设置遮罩的裁剪区域：
+> `border-box`:（默认值）裁剪到边框盒
+> `padding-box`:裁剪到内边距框
+> `content-box`:裁剪到内容框
+> `fill-box`:裁剪到填充盒
+> `stroke-box`:裁剪到描边盒
+> `view-box`:裁剪到视图盒
+
+### mask-origin
+设置遮罩的定位区域：
+> `border-box`:（默认值）相对于边框盒定位
+> `padding-box`:相对于内边距框定位
+> `content-box`:相对于内容框定位
+> `fill-box`:相对于填充盒定位
+> `stroke-box`:相对于描边盒定位
+> `view-box`:相对于视图盒定位
+
+### mask-composite
+设置多个遮罩的合成方式：
+> `add`:（默认值）相加
+> `subtract`:相减
+> `intersect`:相交
+> `exclude`:排除
+> `multiply`:相乘
+> `screen`:滤色
+> `overlay`:叠加
+> `darken`:变暗
+> `lighten`:变亮
+> `color-dodge`:颜色减淡
+> `color-burn`:颜色加深
+> `hard-light`:强光
+> `soft-light`:柔光
+> `difference`:差值
+> `exclusion`:排除
+
+::: tip mask 属性实现各种效果
+```css
+/* 1. 基础遮罩效果 */
+.basic-mask {
+  background: url('image.jpg');
+  -webkit-mask: url('mask.png');
+  mask: url('mask.png');
+}
+
+/* 2. SVG 遮罩 */
+.svg-mask {
+  background: url('image.jpg');
+  -webkit-mask: url('masks.svg#star');
+  mask: url('masks.svg#star');
+}
+
+/* 3. 渐变遮罩 */
+.gradient-mask {
+  background: url('image.jpg');
+  -webkit-mask: linear-gradient(black, transparent);
+  mask: linear-gradient(black, transparent);
+}
+
+/* 4. 圆形遮罩 */
+.circle-mask {
+  background: url('image.jpg');
+  -webkit-mask: radial-gradient(circle, black 50%, transparent 70%);
+  mask: radial-gradient(circle, black 50%, transparent 70%);
+}
+
+/* 5. 亮度遮罩 */
+.luminance-mask {
+  background: url('image.jpg');
+  -webkit-mask: url('masks.svg#star') luminance;
+  mask: url('masks.svg#star') luminance;
+}
+
+/* 6. 动画遮罩 */
+.animated-mask {
+  background: url('image.jpg');
+  -webkit-mask: linear-gradient(45deg, transparent 30%, black 50%, transparent 70%);
+  mask: linear-gradient(45deg, transparent 30%, black 50%, transparent 70%);
+  -webkit-mask-size: 200% 200%;
+  mask-size: 200% 200%;
+  animation: maskMove 2s linear infinite;
+}
+
+@keyframes maskMove {
+  0% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; }
+  100% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; }
+}
+
+/* 7. 顶部底部渐变过渡遮罩 */
+.fade-mask {
+  mask: linear-gradient(to bottom,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%);
+}
+
+/* 8. 多遮罩合成 */
+.multi-mask {
+  background: url('image.jpg');
+  -webkit-mask: 
+    radial-gradient(circle at 20% 50%, black 20px, transparent 20px),
+    radial-gradient(circle at 80% 50%, black 20px, transparent 20px);
+  mask: 
+    radial-gradient(circle at 20% 50%, black 20px, transparent 20px),
+    radial-gradient(circle at 80% 50%, black 20px, transparent 20px);
+  -webkit-mask-composite: subtract;
+  mask-composite: subtract;
+}
+
+/* 9. 文字遮罩效果 */
+.text-mask {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-mask: url('text-mask.svg');
+  mask: url('text-mask.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* 10. 滚动列表淡出淡出效果 */
+.list{
+	mask: linear-gradient(to bottom,
+			transparent 0%,
+			black 20%,
+			black 80%,
+			transparent 100%);
+}
+```
+:::
+
+### `background-clip` 与 `mask` 的区别
+
+| 特性 | `background-clip` | `mask` |
+|------|----------------|------|
+| **作用范围** | 只作用于背景 | 作用于整个元素 |
+| **裁剪方式** | 基于盒模型边界裁剪 | 基于遮罩图像/渐变裁剪 |
+| **灵活性** | 相对简单，只能按盒模型裁剪 | 非常灵活，可以创建任意形状 |
+| **性能** | 性能较好 | 性能相对较差 |
+| **浏览器支持** | 支持较好 | 需要前缀，支持相对较新 |
+| **遮罩类型** | 仅支持盒模型区域 | 支持图像、SVG、渐变等多种类型 |
+| **合成模式** | 无 | 支持多种合成模式（add、subtract、intersect等） |
+| **动画支持** | 有限 | 完全支持，可创建复杂动画效果 |
+| **使用场景** | 简单的背景裁剪、文字渐变 | 复杂的视觉效果、图像遮罩、形状遮罩、动画效果 |
+
+#### 使用建议：
+- **background-clip**: 适用于简单的背景裁剪需求，如文字渐变效果
+- **mask**: 适用于复杂的遮罩效果，如图像遮罩、动画效果、复杂形状裁剪
+
+::: tip 实际应用对比
+```css
+/* background-clip 实现文字渐变 */
+.text-gradient {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* mask 实现复杂遮罩效果 */
+.image-mask {
+  background: url('image.jpg');
+  -webkit-mask: url('complex-mask.svg');
+  mask: url('complex-mask.svg');
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+```
+:::
+
+
+### `background-blend-mode`:设置背景图片的混合模式
 > `normal`:设置正常的混合模式
 >> 是默认的状态，其最终色和绘图色相同
 
@@ -510,7 +862,7 @@ img{
 ``` 
    
 ## 2.3.5渐变
-`linear-gradinet`:线性渐变(开始位置 角度，起始颜色，终止颜色) 
+### `linear-gradinet`:线性渐变(开始位置 角度，起始颜色，终止颜色) 
 > 开始位置：渐变开始的位置
 >> `%`   
 >> `长度`    
@@ -523,9 +875,9 @@ img{
 > `起始颜色`    
 > `终止颜色`    
 
-`repeating-linear-gradinet`:重复渐变
+### `repeating-linear-gradinet`:重复渐变
 
-`radial-gradient`:径向渐变(形状 发散方向，起始颜色，终止颜色) 
+### `radial-gradient`:径向渐变(形状 发散方向，起始颜色，终止颜色) 
 > 形状:   
 >> `ellipse`:椭圆     
 >> `circle`:圆形    
@@ -546,25 +898,25 @@ img{
 > 起始颜色    
 > 终止颜色
 
-`repeating-radial-gradinet`:重复的径向渐变
+### `repeating-radial-gradinet`:重复的径向渐变
 ## 2.3.6列表与表格
 表格有关的属性：
 
-`border-collapse`:设置是否把表格边框合并为单一的边框.属性值：separate 默认值/collapse边框合并
+### `border-collapse`:设置是否把表格边框合并为单一的边框.属性值：separate 默认值/collapse边框合并
 
-`border-spacing`:设置分隔单元格边框的距离
+### `border-spacing`:设置分隔单元格边框的距离
 
-`caption-side`:设置表格标题的位置。属性值：top 默认值,在表格之上。bottom 在表格之下
+### `caption-side`:设置表格标题的位置。属性值：top 默认值,在表格之上。bottom 在表格之下
 
-`empty-cells`:设置是否显示表格中的空单元格。属性值：hide/show默认
+### `empty-cells`:设置是否显示表格中的空单元格。属性值：hide/show默认
 
-`table-layout`:设置显示宽度是否随内容拉伸。属性值：auto默认/fixed 列宽由表格宽度和列宽度设定
+### `table-layout`:设置显示宽度是否随内容拉伸。属性值：auto默认/fixed 列宽由表格宽度和列宽度设定
 
 列表的属性：
 
-`list-style`:简写属性。用于把所有用于列表的属性设置于一个声明中
+### `list-style`:简写属性。用于把所有用于列表的属性设置于一个声明中
 
-`list-style-type`:设置列表项标志的类型：
+### `list-style-type`:设置列表项标志的类型：
 > `none`:无标记    
 > `disc`:（默认值）实心圆    
 > `circle`:空心圆    
@@ -576,18 +928,18 @@ img{
 > `lower-alpha`:小写英文字母    
 > `upper-alpha`:大写英文字母    
 
-`list-style-position`:设置列表项标志的位置。属性值：inside/outside默认值
+### `list-style-position`:设置列表项标志的位置。属性值：inside/outside默认值
 
-`list-style-image`:将图象设置为列表项标志。属性值：URL 图像的路径。/none 默认。无图形被显示   
+### `list-style-image`:将图象设置为列表项标志。属性值：URL 图像的路径。/none 默认。无图形被显示   
 ## 2.3.7其他常用属性
-`opacity`:透明度设定 
+### `opacity`:透明度设定 
 
 :::tip
 * IE9, Firefox, Chrome, Opera和Safari使用属性`opacity`来设定透明度。`opacity`属性能够设置的值从0.0到1.0。值越小，越透明
 * IE8 以及更早的版本使用滤镜`filter:alpha(opacity=x)` x能够取的值从0到100。值越小，越透明
 * `opacity`与通过`rgba()`设定透明度的区别：前者同时作用于元素的标签内容，后者只是作用于元素本身
 :::
-` cursor`鼠标的样式： 
+### `cursor`鼠标的样式： 
 > `hand`:是手型    
 > `pointer`:也是手型，推荐使用这种    
 > `crosshair`:是十字型    
@@ -604,21 +956,21 @@ img{
 > `se-resize`:是向右下的箭头     
 > `auto`:是由系统自动给出效果   
 
-`pointer-events`规定元素是否对指针事件做出反应
+### `pointer-events`规定元素是否对指针事件做出反应
 > `auto`:默认值。元素对指针事件做出反应，比如:`hover`和`click`    
 > `none`:元素不对指针事件做出反应    
 > `initial`:将此属性设置为其默认值   
 > `inherit`:从其父元素继承此属性   
 
 
-`outline`:轮廓
+### `outline`:轮廓
 是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用
 > `outline-color`:设置轮廓的颜色    
 > `outline-style`:设置轮廓的样式    
 > `outline-width`:设置轮廓的宽度    
 > `outline-offset`:设置轮廓到边框的距离。 注：css新增属性,不可以写到符合属性里    
 
-`display`:规定元素应该生成的框的类型
+### `display`:规定元素应该生成的框的类型
 > `none`此元素不会被显示    
 > `block`:此元素将显示为块级元素。特征：换行，可设置宽高尺寸   
 > `inline`:行内元素，默认。特征:大小自适应；不换行   
@@ -630,13 +982,13 @@ img{
 2. 该属性会在垂直方向上以基线对齐。解决方法是给元素加`vertical-align: top;`
 :::
 
-`visibility`:规定元素是否可见
+### `visibility`:规定元素是否可见
 > `visible`默认值。元素是可见的。     
 > `hidden`:元素是不可见的。    
 > `collapse`:当在表格元素中使用，可删除一行或一列，但是它不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上，会呈现为 "hidden"。   
 > `inherit`:规定应该从父元素继承visibility属性的值。   
 
-`filter`:滤镜
+### `filter`:滤镜
 > `blur()`:模糊   
 > `brightness()`:亮度    
 > `contrast()`:对比度    
@@ -648,7 +1000,7 @@ img{
 > `sepia()`:深褐色   
 > `drop-shadow()`:阴影  
 
-`touch-action`:设置元素允许的触控操作类型
+### `touch-action`:设置元素允许的触控操作类型
 > `auto`:浏览器来决定  
 > `none`:阻止一切操作  
 > `pan-x`:只允许单指水平移动    
@@ -658,29 +1010,29 @@ img{
 > `pinch-zoom`只允许多手指平移和缩放操作
 
 
-`overscroll-behavior`:设置滚动链行为    
+### `overscroll-behavior`:设置滚动链行为    
 是`overscroll-behavior-x`和`overscroll-behavior-y`的集合属性
 > `auto`:默认效果，元素的滚动会传播给祖先元素    
 > `contain`:阻止滚动链，滚动不会传播给祖先    
 > `none`:阻止滚动链，也会阻止元素本身的滚动   
 
-`overscroll-behavior`:控制元素在移动设备上是否使用滚动回弹效果    
+### `overscroll-behavior`:控制元素在移动设备上是否使用滚动回弹效果    
 > `touch`:当手指从触摸屏上移开，会保持一段时间的滚动     
 > `auto`:当手指从触摸屏上移开，滚动会立即停止   
 
-`text-size-adjust`:在移动端的文本溢出算法    
+### `text-size-adjust`:在移动端的文本溢出算法    
 > `none`:文本大小不会根据设备尺寸进行调整   
 > `auto`:文本大小根据设备尺寸进行调整   
 > `%`:用百分比来指定文本大小在设备尺寸不同的情况下如何调整
 
-`text-orientation`:设定行中字符的方向    
+### `text-orientation`:设定行中字符的方向    
 
-`font-size-adjust`设置当第一个字体不能使用时，第二个字体的大小
+### `font-size-adjust`设置当第一个字体不能使用时，第二个字体的大小
 > `number`:定义字体的aspect值比率   
 > `none`:默认   
 > `inherit`:继承父元素
 
-`object-fit`设置指定元素的内容应该如何去适应指定容器的高度与宽度，一般用于 img 和 video 标签
+### `object-fit`设置指定元素的内容应该如何去适应指定容器的高度与宽度，一般用于 img 和 video 标签
 > `fill`:	默认，不保证保持原有的比例，内容拉伸填充整个内容容器  
 > `contain`:保持原有尺寸比例。内容被缩放  
 > `cover`:保持原有尺寸比例。但部分内容可能被剪切  
@@ -689,20 +1041,20 @@ img{
 > `initial`:设置为默认值    
 > `inherit`:从该元素的父元素继承属性    
 
-`box-decoration-break`规定当元素框被分段时，如何应用元素的 `background`、`padding`、`border`、`border-image`、`box-shadow`、`margin`、`clip-path`
+### `box-decoration-break`规定当元素框被分段时，如何应用元素的 `background`、`padding`、`border`、`border-image`、`box-shadow`、`margin`、`clip-path`
 > `slice`:	默认，整个元素作为一个修饰元素，样式会在元素片段的边缘断裂    
 > `clone`:每个断开元素都作为一个装饰元素独立渲染，样式会在元素片段的上完整的渲染  
 > `initial`:设置为默认值    
 > `inherit`:从该元素的父元素继承属性  
 
-`will-change`告知浏览器该元素会有哪些变化的
+### `will-change`告知浏览器该元素会有哪些变化的
 > `auto`:	默认，表示没有特别指定哪些属性会变化，浏览器根据内置的方法优化   
 > `scroll-position`:不久后滚动条的位置将改变，或者使它们产生动画    
 > `contents`:不久后元素中的内容将改变，或者使它们产生动画   
 > `<custom-ident>`:指定将要变化的那些属性，如果是多个属性则使用逗号进行分隔   
 [CSS 的 will-change 属性详解](https://juejin.cn/post/6844903618982723592?searchId=20230714151805B4A163D4F69DF6294CB5)
 ## 2.3.8 @media 媒体查询
-`@media`可以针对不同的屏幕尺寸设置不同的样式
+### `@media`可以针对不同的屏幕尺寸设置不同的样式
 ```css
 @media not|only mediatype and (mediafeature and|or|not mediafeature) {
   CSS-Code;
@@ -716,13 +1068,13 @@ img{
 
 `and`：操作符用于将多个媒体查询规则组合成单条媒体查询，当每个查询规则都为真时则该条媒体查询为真，它还用于将媒体功能与媒体类型结合在一起
 
-`mediatype`：媒体类型：
+### `mediatype`：媒体类型：
 > `all`：用于所有设备   
 > `print`：用于打印机和打印预览   
 > `screen`：用于电脑屏幕，平板电脑，智能手机等    
 > `speech`
 
-`mediafeature`：媒体功能：
+### `mediafeature`：媒体功能：
 > 宽度类型：
 >> `width`：页面等于`width`时可见   
 >> `max-width`：页面小于`max-width`时可见    
