@@ -860,7 +860,7 @@ img{
 	<div class="txt">mix-blend-mode 属性</div> <!-- 文本内容 -->
 </div>
 ``` 
-   
+:::
 ## 2.3.5渐变
 ### `linear-gradinet`:线性渐变(开始位置 角度，起始颜色，终止颜色) 
 > 开始位置：渐变开始的位置
