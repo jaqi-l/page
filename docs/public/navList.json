@@ -437,7 +437,7 @@
     },
     {
       "title": "HiFiNi 音乐磁场",
-      "link": "https://www.hifini.com/",
+      "link": "https://www.hifini.net/",
       "description": "无损音乐分享平台"
     },
     {
@@ -464,6 +464,11 @@
       "title": "seedhub",
       "link": "https://seedhub.pro/",
       "description": "电影下载资源网站"
+    },
+    {
+      "title": "YouTube",
+      "link": "https://www.youtube.com/",
+      "description": "全球最大的视频分享平台"
     }
   ]
 },
