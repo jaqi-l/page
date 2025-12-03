@@ -119,6 +119,11 @@
       "description": "程序员刷题平台"
     },
     {
+      "title": "面试鸭",
+      "link": "https://www.mianshiya.com/",
+      "description": ""
+    },
+    {
       "title": "jquery之家",
       "link": "http://www.htmleaf.com/",
       "description": "jQuery插件库"
@@ -693,7 +698,13 @@
       "title": "GOOGAX",
       "link": "https://googax.com/",
       "description": "站点导航"
+    },
+    {
+      "title": "幸运的蜗牛",
+      "link": "https://luckysnail.cn/",
+      "description": ""
     }
+
   ]
 },
 {
