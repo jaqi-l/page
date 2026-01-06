@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { MermaidMarkdown, MermaidPlugin } from "vitepress-plugin-mermaid";
+import { MermaidMarkdown, MermaidPlugin } from "vitepress-plugin-mermaid2";
 import llmstxt from 'vitepress-plugin-llms'
 
 // https://vitepress.dev/reference/site-config
@@ -91,7 +91,7 @@ export default defineConfig({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @26.01.06.2 V3'
+      copyright: 'jaqi.note © jaqi.l @26.01.06.3 V3'
     },
     nav: [
       { text: '导航', link: '/' },
