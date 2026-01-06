@@ -197,6 +197,9 @@
 #### `fr`单位
 表示`Grid`布局中中残余空间的一部分，一般来说`1fr`表示`100%`的残余空间,`.25fr`表示`25%`的残余空间
 
+#### `span`：指定网格跨度
+> * `span num`：表示从当前网格开始，跨越`num`个网格
+
 #### `grid-template-columns`(用于父元素):设置每一列的列宽
 > * `none`（默认值）不指定列的大小     
 > * `auto`列的大小由容器的大小和列中网格元素内容的大小决定         
@@ -220,6 +223,21 @@
 > * `length`长度值，可以是`px`、`fr`为单位的数值或百分比`%`、`0`是默认值  
 > * `initial`将此属性设置为默认值   
 > * `inherit`	从父元素继承该属性    
+
+#### `grid-template-areas`(用于父元素):定义每个单元格的名称
+
+```css
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template:
+  'header header header header header header'
+  'menu main main main main right'
+  'menu footer footer footer footer footer';
+}
+```
+### `grid-template`(用于父元素)：设置网格布局的模板
+`grid-template-rows`、`grid-template-columns`与`grid-template-areas`的简写属性
 
 #### `repeat()`函数，批量设置重复值
 该函数可以用于 CSS Grid 属性中 `grid-template-columns` 和 `grid-template-rows`    
@@ -266,10 +284,9 @@ div {
   grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4 active];
 }
 ```
-
 #### `grid-row-gap`(用于父元素):设置行间距
 #### `grid-column-gap`(用于父元素):设置列间距
-#### `grid-gap`(用于父元素):设置行、列间距
+#### `grid-gap`(`gap`)(用于父元素):设置行、列间距
 
 ```css
 div {
@@ -280,19 +297,116 @@ div {
 }
 ```
 
-#### `grid-template-areas`(用于父元素):属性在网格布局中规定区域
+### `grid-auto-columns`(用于父元素)：设置列的默认大小
+### `grid-auto-rows`(用于父元素)：设置行的默认大小
+### `grid-auto-flow`(用于父元素)：
+* `row`:逐列填充网格，必要时增加行
+* `column`: 逐行填充网格，必要时增加列
+* `dense`: 
+> 使用一种“稠密”堆积算法，如果后面出现了稍小的元素，则会试图去填充网格中前面留下的空白。这样做会填上稍大元素留下的空白，但同时也可能导致原来出现的次序被打乱。
+> 如果省略它，使用一种「稀疏」算法，在网格中布局元素时，布局算法只会「向前」移动，永远不会倒回去填补空白。这保证了所有自动布局元素「按照次序」出现，即使可能会留下被后面元素填充的空白。
+> 分别对行列设置“稠密”堆积算法：`row dense`，`column dense`
+* `inherit`
+* `initial`
+* `unset`
+* 
+#### `grid-row`、`grid-row-start`、`grid-row-end`(用于子元素)指定网格区域的行起始与行结束
+> * `grid-row`：指定网格区域的行起始与行结束
+> * `grid-row-start`：指定网格区域的行起始
+> * `grid-row-end`：指定网格区域的行结束
+
+### `grid-column`、`grid-column-start`、`grid-column-end`(用于子元素)指定网格区域的列起始与列结束
+> * `grid-column`：指定网格区域的列起始与列结束
+> * `grid-column-start`：指定网格区域的列起始
+> * `grid-column-end`：指定网格区域的列结束
+
+```css
+/* 假设一个 5×5 的网格布局 */
+.grid-item-1 {
+  background-color: #0f0;
+  /*从第1行开始，跨越3行网格单元 */
+  grid-row: 1 / span 3;
+  /* 从第1列开始，跨越到倒数第2列 */
+  grid-column: 1 / -2;
+}
+
+.grid-item-2 {
+  background-color: #0f0;
+  /*从相对位置开始，跨越3列网格单元 */
+   grid-column: span 3;
+}
+
+```
+
+### `grid-area`(用于子元素)指定网格元素在网格布局中的大小、位置、名称
+`grid-column`和`grid-row`的简写属性
+> * `grid-area`：行开始 / 列开始 / 行结束 / 列结束 | 网格名称;
+
+```css
+/* 假设一个 5×5 的网格布局 */
+.grid-item-1 {
+  background-color: #0f0;
+  /* 从第1列第1行开始，跨越3行，跨越到倒数第2列 等同于上文的示例*/
+  grid-area: 1 / 1 / span 3 / -2;
+}
+```
+```html
+<!-- 命名所有网格，并设置网格布局 -->
+<div class="grid-container">
+  <div style="grid-area: header;" class="item">Header</div>
+  <div style="grid-area: menu;" class="item">Menu</div>
+  <div style="grid-area: main;" class="item">Main</div>
+  <div style="grid-area: right;" class="item">Right</div>
+  <div style="grid-area: footer;" class="item">Footer</div>
+</div>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr 1fr 200px;
+  grid-template-rows: 100px minmax(500px, 1fr) 100px;
+  /* "."表示留空 */
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main main right'
+    '. footer footer footer footer footer';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.item {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.main {
+  grid-row: span 5;
+  grid-column: span 5;
+}
+</style>
+```
+
 
 
 ::: tip 主轴与侧轴的概念
 
 主轴就是弹性盒子子元素沿着排列的轴；与主轴垂直的轴称为侧轴    
 
-row ,则主轴是水平方向，侧轴是垂直方向   
+`row`则主轴是水平方向，侧轴是垂直方向   
 
-column,则主轴是垂直方向，侧轴是水平方向   
+`column` 则主轴是垂直方向，侧轴是水平方向   
 
 注：基线、底线、定线、中线
 
 ![line](/line.jpg)
 
+:::
+
+::: tip `*-items` 与 `*-content`
+
+*  `*-content`:整体网格在容器中的位置，作用于 `gird` 元素（整个网格）
+*  `*-items`:网格内元素在其网格中的位置，作用于 `gird` 元素（所有网格）
+*  `*-self`:单独设置网格内某个元素在其网格中的位置，作用于 `gird` 网格内的元素（某个网格）
 :::
