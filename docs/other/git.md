@@ -117,8 +117,11 @@ git merge dev # 合并本地dev分支，并创建新的提交commit
 
 git merge origin/dev # 合并远程origin仓库的dev分支，并创建新的提交commit
 
+git merge --squash dev # 合并本地dev分支，并将所有提交commit合并为一个commit
+
 git merge --abort   # 取消本次合并
 ```
+
 
 ## `rebase` 合并分支
 ```zsh
@@ -126,8 +129,16 @@ git merge --abort   # 取消本次合并
   git rebase –abort # 取消本次合并
 ```
 :::warning
-不要在公共分支使用`rebase`,因为往后放的这些`commit`都是新的,这样其他从这个公共分支拉出去的人，都需要再`rebase`,相当于你`rebase`东西进来，就都是新的`commit`了
+1. 不要在公共分支使用`rebase`,因为往后放的这些`commit`都是新的,这样其他从这个公共分支拉出去的人，都需要再`rebase`,相当于你`rebase`东西进来，就都是新的`commit`了
 :::
+| 特性     | git merge                      | git merge --squash                 | git rebase                                   |
+| -------- | ------------------------------ | ---------------------------------- | -------------------------------------------- |
+| 历史记录 | 保留完整的历史记录和分支结构   | 将多个提交压缩成一个提交           | 重写历史，保持线性                           |
+| 合并提交 | 生成一个合并提交               | 不生成合并提交，只创建一个新的提交 | 不生成合并提交                               |
+| 冲突处理 | 解决合并点的冲突               | 解决合并时的冲突                   | 解决每个提交的冲突                           |
+| 适用场景 | 解决合并点的冲突               | 解决合并时的冲突                   | 解决每个提交的冲突                           |
+| 优点     | 清晰显示合并历史，解决冲突清晰 | 提交历史简洁，减少噪音             | 保持线性历史，日志记录简洁                   |
+| 缺点     | 可能产生多次合并提交，历史复杂 | 失去详细的提交历史                 | 需要处理每个提交的冲突，公共分支上使用有风险 |
 
 ## `pull` 拉取并合并分支
 ```zsh
@@ -324,12 +335,12 @@ git restore .                       # 撤销所有文件的修改
 
 **对比总结：**
 
-| 操作           | 旧命令（`checkout`/`reset`）         | 新命令（`switch`/`restore`）         |
-| -------------- | ------------------------- | ---------------------- |
-| 切换分支       | git checkout dev          | git switch dev         |
-| 新建并切分支   | git checkout -b feature   | git switch -c feature  |
-| 撤销工作区文件   | git checkout -- file      | git restore file       |
-| 撤销暂存区文件 | git reset HEAD file       | git restore --staged file |
+| 操作           | 旧命令（`checkout`/`reset`） | 新命令（`switch`/`restore`） |
+| -------------- | ---------------------------- | ---------------------------- |
+| 切换分支       | git checkout dev             | git switch dev               |
+| 新建并切分支   | git checkout -b feature      | git switch -c feature        |
+| 撤销工作区文件 | git checkout -- file         | git restore file             |
+| 撤销暂存区文件 | git reset HEAD file          | git restore --staged file    |
 
 ## `submodule` 子模块
 
@@ -467,14 +478,14 @@ git push
 
 #### 主要配置项说明
 
-| 配置项 | 说明 | 是否必需 |
-|--------|------|---------|
-| `submodule` 后的名称 | 子模块的唯一标识符，通常与子模块仓库名相同 | 必需 |
-| `path` | 子模块在主仓库中的相对路径 | 必需 |
-| `url` | 子模块的远程仓库地址 | 必需 |
-| `branch` | 指定跟踪的分支（默认为 `master` 或 `main`） | 可选 |
-| `ignore` | 忽略子模块状态的方式（默认为 `none`） | 可选 |
-| `update` | 更新子模块的策略（默认为 `checkout`） | 可选 |
+| 配置项               | 说明                                        | 是否必需 |
+| -------------------- | ------------------------------------------- | -------- |
+| `submodule` 后的名称 | 子模块的唯一标识符，通常与子模块仓库名相同  | 必需     |
+| `path`               | 子模块在主仓库中的相对路径                  | 必需     |
+| `url`                | 子模块的远程仓库地址                        | 必需     |
+| `branch`             | 指定跟踪的分支（默认为 `master` 或 `main`） | 可选     |
+| `ignore`             | 忽略子模块状态的方式（默认为 `none`）       | 可选     |
+| `update`             | 更新子模块的策略（默认为 `checkout`）       | 可选     |
 
 #### 手动编辑 `.gitmodules` 文件
 
@@ -600,17 +611,17 @@ touch .gitkeep
 - 当你添加这个文件时，Git 会开始跟踪这个目录。
 
 ## 与svn命令的对比
-| 作用 | git | svn |
-| ---- | ---- | ---- |
-| 版本库初始化 | `git init` | `svn create` |
-| 拉取 | `git clone` | `svn co(checkout)` |
-| 添加暂存区 | `git add` | `svn add` |
-| 本地快照 | `git commit` | `svn commit`（直接提交） |
-| 更新 | `git pull` | `svn update` |
-| 提交 | `git push` |  |
-| 查看暂存区 | `git status` | `svn status` |
-| 查看分支 | `git branch` | `svn cp` |
-| 删除分支 | `git branch -d ` | `svn rm` |
-| 合并分支 | `git merge` | `svn merge` |
-| 比较暂存区和工作区的差异 | `git diff` | `svn diff` |
-| 切换分支 | `git checkout` | `svn switch` |
+| 作用                     | git              | svn                      |
+| ------------------------ | ---------------- | ------------------------ |
+| 版本库初始化             | `git init`       | `svn create`             |
+| 拉取                     | `git clone`      | `svn co(checkout)`       |
+| 添加暂存区               | `git add`        | `svn add`                |
+| 本地快照                 | `git commit`     | `svn commit`（直接提交） |
+| 更新                     | `git pull`       | `svn update`             |
+| 提交                     | `git push`       |                          |
+| 查看暂存区               | `git status`     | `svn status`             |
+| 查看分支                 | `git branch`     | `svn cp`                 |
+| 删除分支                 | `git branch -d ` | `svn rm`                 |
+| 合并分支                 | `git merge`      | `svn merge`              |
+| 比较暂存区和工作区的差异 | `git diff`       | `svn diff`               |
+| 切换分支                 | `git checkout`   | `svn switch`             |

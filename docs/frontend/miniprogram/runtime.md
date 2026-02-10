@@ -108,3 +108,19 @@ Page({
 
 2. [原生与uni-app小程序应用、页面与组件的完整生命周期](https://blog.csdn.net/ljq547152849/article/details/130881632?spm=1001.2014.3001.5502)
 :::
+
+
+## 页面事件处理函数：
+* **onPullDownRefresh()**：监听用户下拉刷新事件。需要在 `app.json` 的 `window` 选项中开启 `enablePullDownRefresh`。
+* **onReachBottom()**：监听用户上拉触底事件。
+* **onPageScroll(Object object)**：监听用户滚动页面事件。
+* **onAddToFavorites(Object object)**：监听用户点击添加到收藏事件。
+* **onShareAppMessage(Object object)**：监听用户点击页面内分享事件。
+* **onShareTimeline()**：监听用户点击分享到朋友圈事件。
+* **onResize(Object object)**：监听用户窗口尺寸变化事件。
+* **onTabItemTap(Object object)**：监听用户点击 `tab` 事件。
+* **onSaveExitState()**：监听用户保存退出状态事件。
+## 组件事件处理函数：
+
+小程序页面除了生命周期函数外，还可以定义组件事件处理函数，用于响应用户的各种交互操作。
+

@@ -1258,9 +1258,368 @@ type A = 'HELLO';
 // "hELLO"
 type B = Uncapitalize<A>;
 ```
+## 3.47.5 装饰器
+装饰器是一种特殊类型的声明，它可以被附加到类声明、方法、访问符、属性或参数上。装饰器使用 `@expression` 形式，其中 `expression` 必须是一个函数，它会在运行时被调用。
 
-## 3.47.5 注释指令
-## 3.17.6 `tsconfig.json`配置文件详情   
+### 基本概念
+
+装饰器是 TypeScript 的一项实验性特性，需要在 `tsconfig.json` 中启用：
+
+```json
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
+```
+
+### 装饰器类型
+
+1. **类装饰器**
+2. **方法装饰器**
+3. **访问器装饰器**
+4. **属性装饰器**
+5. **参数装饰器**
+
+### 1. 类装饰器
+
+类装饰器在类声明之前声明，用于监视、修改或替换类定义。
+
+```ts
+// 类装饰器函数
+function sealed(constructor: Function) {
+  Object.seal(constructor);
+  Object.seal(constructor.prototype);
+}
+
+// 使用装饰器
+@sealed
+class Greeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+```
+
+### 2. 方法装饰器
+
+方法装饰器声明在方法声明之前，用来监视、修改或替换方法定义。
+
+```ts
+// 方法装饰器
+function enumerable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    descriptor.enumerable = value;
+  };
+}
+
+class Greeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  @enumerable(false)
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+```
+
+### 3. 访问器装饰器
+
+访问器装饰器声明在访问器之前，用来监视、修改或替换访问器定义。
+
+```ts
+// 访问器装饰器
+function configurable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    descriptor.configurable = value;
+  };
+}
+
+class Point {
+  private _x: number;
+  private _y: number;
+  constructor(x: number, y: number) {
+    this._x = x;
+    this._y = y;
+  }
+
+  @configurable(false)
+  get x() {
+    return this._x;
+  }
+
+  @configurable(false)
+  get y() {
+    return this._y;
+  }
+}
+```
+
+### 4. 属性装饰器
+
+属性装饰器声明在属性声明之前，用来监视、修改或替换属性定义。
+
+```ts
+// 属性装饰器
+function format(formatString: string) {
+  return function (target: any, propertyKey: string) {
+    // 格式化逻辑
+    let value = target[propertyKey];
+    
+    const getter = function() {
+      return `${formatString} ${value}`;
+    };
+    
+    const setter = function(newVal: string) {
+      value = newVal;
+    };
+    
+    Object.defineProperty(target, propertyKey, {
+      get: getter,
+      set: setter,
+      enumerable: true,
+      configurable: true
+    });
+  };
+}
+
+class Greeter {
+  @format("Hello,")
+  greeting: string;
+}
+```
+
+### 5. 参数装饰器
+
+参数装饰器声明在参数声明之前，用来监视、修改或替换参数定义。
+
+```ts
+// 参数装饰器
+function required(target: Object, propertyKey: string | symbol, parameterIndex: number) {
+  const existingRequiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
+  existingRequiredParameters.push(parameterIndex);
+  Reflect.defineMetadata(requiredMetadataKey, existingRequiredParameters, target, propertyKey);
+}
+
+const requiredMetadataKey = Symbol("required");
+
+class Greeter {
+  greeting: string;
+
+  constructor(@required message: string) {
+    this.greeting = message;
+  }
+}
+```
+
+### 装饰器工厂
+
+如果要自定义一个装饰器如何应用到一个声明上，我们需要写一个装饰器工厂函数。装饰器工厂就是一个简单的函数，它返回一个表达式，以供装饰器在运行时调用。
+
+```ts
+// 装饰器工厂
+function color(value: string) { // 这是一个装饰器工厂
+  return function (target: any) { //  这是装饰器
+    // 在这里做一些处理
+  };
+}
+
+@color('red') // 使用装饰器工厂
+class Greeter {
+  // ...
+}
+```
+
+<!-- ### 常见问答
+
+#### Q: 装饰器是什么？为什么要使用装饰器？
+
+A: 装饰器是一种特殊类型的声明，它可以被附加到类、方法、属性或参数上，用于修改或扩展它们的行为。装饰器提供了一种优雅的方式来添加元数据、修改行为或实现横切关注点（如日志记录、性能监控、验证等），而无需修改原始代码。
+
+#### Q: TypeScript 中的装饰器是实验性特性，这意味着什么？
+
+A: 这意味着装饰器在 TypeScript 中仍然是实验性的，可能会在未来的版本中发生变化。要在 TypeScript 中使用装饰器，必须在 `tsconfig.json` 文件中启用 `experimentalDecorators` 选项。装饰器在 JavaScript 中也处于阶段 3 提案状态，尚未成为正式标准的一部分。
+
+#### Q: 装饰器的执行顺序是怎样的？
+
+A: 装饰器的执行顺序遵循以下规则：
+1. 对于多个装饰器，从下到上评估（求值）
+2. 从上到下执行
+
+例如：
+```ts
+function first() {
+  console.log("first(): factory evaluated");
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log("first(): called");
+  };
+}
+
+function second() {
+  console.log("second(): factory evaluated");
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log("second(): called");
+  };
+}
+
+class ExampleClass {
+  @first()
+  @second()
+  method() {}
+}
+// 输出:
+// first(): factory evaluated
+// second(): factory evaluated
+// second(): called
+// first(): called
+```
+
+#### Q: 如何在装饰器中传递参数？
+
+A: 可以使用装饰器工厂来传递参数。装饰器工厂是一个返回装饰器函数的函数，可以接受参数：
+
+```ts
+function log(level: string) {
+  return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    const originalMethod = descriptor.value;
+    
+    descriptor.value = function(...args: any[]) {
+      console.log(`[${level}] ${propertyKey} called with args:`, args);
+      const result = originalMethod.apply(this, args);
+      console.log(`[${level}] ${propertyKey} returned:`, result);
+      return result;
+    };
+    
+    return descriptor;
+  };
+}
+
+class Example {
+  @log("INFO")
+  doSomething(value: number) {
+    return value * 2;
+  }
+}
+```
+
+#### Q: 装饰器元数据是什么？如何使用？
+
+A: 装饰器元数据是一种机制，允许装饰器向类、方法或属性添加额外的信息。要使用元数据，需要安装 `reflect-metadata` 包并在应用入口导入它：
+
+```ts
+import "reflect-metadata";
+
+const formatMetadataKey = Symbol("format");
+
+function format(formatString: string) {
+  return Reflect.metadata(formatMetadataKey, formatString);
+}
+
+function getFormat(target: any, propertyKey: string) {
+  return Reflect.getMetadata(formatMetadataKey, target, propertyKey);
+}
+
+class Greeter {
+  @format("Hello, %s")
+  greeting: string;
+}
+
+const formatString = getFormat(new Greeter(), "greeting"); // "Hello, %s"
+```
+
+#### Q: 装饰器在实际项目中有哪些应用场景？
+
+A: 装饰器在实际项目中有多种应用场景：
+1. **依赖注入**：如 Angular 框架中使用装饰器标记组件和注入依赖
+2. **验证**：使用装饰器验证方法参数或类属性
+3. **日志记录**：自动记录方法调用和返回值
+4. **权限控制**：检查用户是否有权限执行特定操作
+5. **缓存**：缓存方法结果以提高性能
+6. **事务管理**：自动处理数据库事务
+7. **API 路由**：在 Node.js 框架（如 NestJS）中定义路由
+
+#### Q: 装饰器和 Mixin 有什么区别？
+
+A: 装饰器和 Mixin 都是用于扩展类功能的机制，但它们有以下区别：
+1. **语法**：装饰器使用 `@expression` 语法，而 Mixin 通常通过 `Object.assign` 或类继承实现
+2. **目的**：装饰器主要用于添加元数据或修改行为，而 Mixin 用于将多个类的功能组合到一个类中
+3. **灵活性**：装饰器更灵活，可以应用于类、方法、属性等不同元素，而 Mixin 主要用于类级别的组合
+
+#### Q: 在 React 项目中如何使用装饰器？
+
+A: 在 React 项目中，装饰器常用于高阶组件（HOC）和状态管理。例如：
+
+```ts
+// 使用装饰器实现高阶组件
+function withAuth(WrappedComponent: React.ComponentType) {
+  return function(props: any) {
+    const isAuthenticated = checkAuth();
+    
+    if (!isAuthenticated) {
+      return <div>Please log in</div>;
+    }
+    
+    return <WrappedComponent {...props} />;
+  };
+}
+
+// 使用装饰器
+@withAuth
+class ProtectedComponent extends React.Component {
+  render() {
+    return <div>Protected content</div>;
+  }
+}
+
+// 在 Redux 中使用装饰器
+import { connect } from 'react-redux';
+
+interface StateProps {
+  count: number;
+}
+
+interface DispatchProps {
+  increment: () => void;
+}
+
+@connect<StateProps, DispatchProps, {}, RootState>(
+  state => ({ count: state.counter.count }),
+  { increment: incrementAction }
+)
+class Counter extends React.Component<StateProps & DispatchProps> {
+  render() {
+    return (
+      <div>
+        <p>Count: {this.props.count}</p>
+        <button onClick={this.props.increment}>Increment</button>
+      </div>
+    );
+  }
+}
+```
+
+#### Q: 装饰器对性能有什么影响？
+
+A: 装饰器对性能的影响主要取决于装饰器的实现：
+1. **编译时影响**：装饰器在编译时会被转换为 JavaScript 代码，这个过程会增加编译时间
+2. **运行时影响**：装饰器在运行时执行，可能会增加初始化时间和内存使用
+3. **方法调用影响**：如果装饰器包装了原始方法，每次调用都会增加额外的函数调用开销
+
+为了最小化性能影响，应该：
+- 避免在装饰器中执行耗时操作
+- 考虑使用缓存机制
+- 在性能敏感的代码中谨慎使用装饰器 -->
+
+## 3.47.6 注释指令
+## 3.17.7 `tsconfig.json`配置文件详情   
 
 
 * `compilerOptions`: 编译器的选项，如语言版本、目标 `JavaScript` 版本、生成的 `sourcemap` 等    

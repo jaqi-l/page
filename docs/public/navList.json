@@ -69,6 +69,16 @@
       "description": "使用Vue开发所有前端应用的框架"
     },
     {
+      "title": "unibest",
+      "link": "https://unibest.tech/",
+      "description": "开箱即用的uni-app开发框架"
+    },
+    {
+      "title": "uni-helper",
+      "link": "https://uni-helper.js.org/",
+      "description": "uni-help扩展社区"
+    },
+    {
       "title": "Element-ui",
       "link": "https://element.eleme.cn/#/zh-CN",
       "description": "基于Vue2.0的桌面端组件库"
@@ -651,6 +661,11 @@
       "title": "Circuit JS",
       "link": "https://www.eetree.cn/circuitjs/circuitjs.html",
       "description": "模拟电路"
+    },
+    {
+      "title": "FMHY",
+      "link": "https://fmhy.net/",
+      "description": "互联网上最大的免费资源集合！"
     }
   ]
 },

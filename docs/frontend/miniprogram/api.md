@@ -39,8 +39,9 @@
 ### 小程序生命周期
 * `wx.onApiCategoryChange` - 监听 API 类别变化事件
 * `wx.offApiCategoryChange` - 移除 API 类别变化事件的监听函数
-* `wx.getLaunchOptionsSync` - 获取小程序启动时的参数。与 App.onLaunch 的回调参数一致。
-* `wx.getEnterOptionsSync` - 获取本次小程序启动时的参数。如果当前是冷启动，则返回值与 App.onLaunch 的回调参数一致；如果当前是热启动，则返回值与 App.
+* `wx.getLaunchOptionsSync` - 获取小程序启动时的参数。与 App.onLaunch 的回调参数一致
+* `wx.getEnterOptionsSync` - 获取本次小程序启动时的参数。如果当前是冷启动，则返回值与 App.onLaunch 的回调参数一致；如果当前是热启动，则返回值与 App.onShow 的回调参数一致
+* `wx.getApiCategory` - 获取当前 API 类别
 
 
 ### 应用级事件
@@ -135,6 +136,8 @@
 * `wx.preloadSkylineView` - 预加载 Skyline 视图
 * `wx.preloadAssets` - 为视图层预加载媒体资源文件, 目前支持：font，image
 * `wx.getPerformance` - 获取性能管理器
+* `requestIdleCallback` - 注册一个函数，将在空闲时期被调用
+* `cancelIdleCallback` - 取消之前注册的空闲回调函数
 
 ### 分包加载
 * `wx.preDownloadSubpackage` - 预下载分包，目前只开放了下载 worker 分包的能力
@@ -232,9 +235,14 @@
 * `wx.getMenuButtonBoundingClientRect` - 获取菜单按钮（右上角胶囊按钮）的布局位置信息。坐标信息以屏幕左上角为原点
 ### 窗口
 * `wx.onWindowStateChange` - 监听小程序窗口状态变化事件。仅适用于 PC 平台
-* `wx.offWindowResize` - 移除小程序窗口状态变化事件的监听函数
+* `wx.offWindowStateChange` - 取消监听小程序窗口状态变化事件
+
 * `wx.onWindowResize` - 监听窗口尺寸变化事件
-* `wx.offWindowResize` - 移除窗口尺寸变化事件的监听函数
+* `wx.offWindowResize` - 移除小程序窗口状态变化事件的监听函数
+
+* `wx.onOnParallelStateChange` - 监听并行状态变化事件
+* `wx.offOnParallelStateChange` - 取消监听并行状态变化事件
+* 
 * `wx.checkIsPictureInPictureActive` - 返回当前是否存在小窗播放（小窗在 video/live-player/live-pusher 下可用）
 ### worklet动画
 
@@ -269,7 +277,15 @@
 :::
 ### 缓存管理器
 ## 8.9.9 数据分析
+* `wx.reportEvent` - 上报事件
+* `wx.getExptInfoSync`、`wx.getExptInfo` - 同步、异步获取实验信息
+* `wx.getCommonConfig` - 获取公共配置
 ## 8.9.10 画布
+* `wx.createOffscreenCanvas` - 创建离屏画布实例
+* `wx.canvasToTempFilePath` - 将画布内容绘制到临时文件路径
+* `wx.canvasPutImageData` - 将图片数据绘制到画布上
+* `wx.canvasGetImageData` - 从画布中提取图片数据
+
 ## 8.9.11 媒体
 ## 8.9.12 位置
 
