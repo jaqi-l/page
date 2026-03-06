@@ -11,11 +11,11 @@ git init [projectName] # 新建一个目录，将其初始化为Git代码库
 ```zsh
 git config --list # 显示当前仓库的Git配置
 
-git config -e [--global] # 编辑全局的Git配置
+git config -e [--global] # 编辑全局的Git配置 
 
 git config [--global] user.name "[name]" # 设置用户名
 
-git config [--global] user.email "[email address]" # 设置邮箱
+git config [--global] user.email "[email address]" # 设置邮箱7
 ```
 
 * `SSH Key`
@@ -24,6 +24,30 @@ ssh-keygen -t rsa -C "[email address]" # 创建 SSH Key
 
 vi  ~/.ssh/id_rsa.pub # 查看 SSH Key
 ``` 
+
+## 多密钥情况
+* .ssh/config文件中配置多个密钥
+```
+# 个人账户
+Host jaqi
+  HostName gitee.com
+  IdentityFile ~/.ssh/id_rsa_jaqi
+  User git
+
+# 工作账户
+Host work
+  HostName codeup.com
+  Port 22
+  IdentityFile ~/.ssh/id_rsa_work
+  User git
+```
+* 使用
+```zsh
+git@jaqi:xxx.git
+
+git@work:xxx.git
+```
+
 ## `clone` 克隆代码       
 从当前地址的`master`分支克隆的到本地`ProjectName`文件夹
 ```zsh
