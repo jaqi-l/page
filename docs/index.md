@@ -36,6 +36,7 @@ footer: true
             effect="dark"
             :content="child.description"
             placement="bottom-end"
+            trigger="contextmenu"
           >
             <a :href="child.link" target="_blank">{{ child.title }}</a> 
           </el-tooltip>

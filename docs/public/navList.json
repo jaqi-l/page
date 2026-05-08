@@ -493,9 +493,24 @@
   "description": "素材抓取、站长工具、其他",
   "children": [
     {
-      "title": "浏览器兼容性查询",
-      "link": "https://caniuse.com/#",
-      "description": "Web特性兼容性查询工具"
+      "title": "豆包",
+      "link": "https://www.doubao.com/",
+      "description": "字节跳动AI助手"
+    },
+    {
+      "title": "扣子",
+      "link": "https://www.coze.cn/home",
+      "description": "字节跳动AI开发平台"
+    },
+    {
+      "title": "DeepSeek",
+      "link": "https://www.deepseek.com/",
+      "description": "AI搜索和对话平台"
+    },
+    {
+      "title": "liblib",
+      "link": "https://www.liblib.art/",
+      "description": "AI图像生成平台"
     },
     {
       "title": "ChatGPT",
@@ -508,24 +523,9 @@
       "description": "多模型AI对话平台"
     },
     {
-      "title": "DeepSeek",
-      "link": "https://www.deepseek.com/",
-      "description": "AI搜索和对话平台"
-    },
-    {
-      "title": "豆包",
-      "link": "https://www.doubao.com/",
-      "description": "字节跳动AI助手"
-    },
-    {
-      "title": "扣子",
-      "link": "https://www.coze.cn/home",
-      "description": "字节跳动AI开发平台"
-    },
-    {
-      "title": "liblib",
-      "link": "https://www.liblib.art/",
-      "description": "AI图像生成平台"
+      "title": "浏览器兼容性查询",
+      "link": "https://caniuse.com/#",
+      "description": "Web特性兼容性查询工具"
     },
     {
       "title": "奇迹秀工具箱",
