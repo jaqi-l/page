@@ -366,7 +366,86 @@ git restore .                       # 撤销所有文件的修改
 | 撤销工作区文件 | git checkout -- file         | git restore file             |
 | 撤销暂存区文件 | git reset HEAD file          | git restore --staged file    |
 
-## `submodule` 子模块
+## `subtree` 子树合并
+
+`git subtree` 是一种将一个仓库作为另一个仓库的子目录进行管理的方法，相比 `submodule`，它更简单，不需要额外的配置文件，子项目的代码直接集成到主仓库中。
+
+### 核心参数说明
+
+| 参数 | 说明 | 是否必需 |
+|------|------|----------|
+| `--prefix=<path>` | 指定子项目在主仓库中的存放路径，如 `library` | **是** |
+| `--squash` | 将所有提交压缩为一个单独的提交 | 否 |
+
+### 1. 添加子树
+```bash
+# master 是要拉取的分支名
+git subtree add --prefix=library git@gitee.com:jaqi/submodules-1.git master
+
+# 如果需要指定特定的提交
+git subtree add --prefix=library git@gitee.com:jaqi/submodules-1.git <commit-hash>
+```
+
+**参数说明**：
+- `--prefix=library`：将远程仓库内容克隆到主仓库的 `library` 目录下
+- 如果目录不存在，Git 会自动创建
+
+### 2. 从远程更新子树
+```bash
+# 从远程仓库拉取最新更改并合并到子树
+git subtree pull --prefix=library git@gitee.com:jaqi/submodules-1.git master
+
+# 使用 --squash 将所有提交压缩为一个
+git subtree pull --prefix=library git@gitee.com:jaqi/submodules-1.git master --squash
+```
+
+::: warning **注意事项**：
+- 如果是从主应用拆分子树，需要删除子树并提交，再重新添加子树才能更新
+:::
+
+### 3. 向远程推送子树更改
+```bash
+# 将子树的更改推送到远程仓库
+git subtree push --prefix=library git@gitee.com:jaqi/submodules-1.git master
+```
+
+::: warning **注意事项**：
+- `library` 有变更，且已经的待提交状态（已执行`-am`）
+:::
+
+### 4. 查看子树信息
+```bash
+# 查看子树的提交历史
+git log --oneline --all -- library
+
+# 查看子树的远程配置
+git config --get-regexp subtree
+```
+
+### 5. 拆分子树（将子目录分离为独立仓库）
+
+```bash
+# 步骤1：将子目录拆分为独立分支（这会创建一个新的本地分支）
+git subtree split --prefix=submodules-new --branch=submodules-new-branch
+
+# 步骤2：从独立分支推送到新的远程仓库master分支上
+git push git@gitee.com:jaqi/submodules-new.git submodules-new-branch:master
+```
+
+::: warning **注意事项**：
+1. 被拆分的目录内容已经提交到本地仓库
+:::
+
+**参数说明**：
+- `--prefix=submodules-new`：指定要拆分的子目录路径
+- `--branch=submodules-new-branch`：将拆分出的内容创建为本地新分支（分支名可自定义，避免与主分支冲突）
+- `submodules-new-branch:master`：将本地 `submodules-new-branch` 分支推送到远程仓库的 `master` 分支
+
+**重要提示**：
+- `git subtree split` 只是创建一个**新的本地分支**，不会自动切换过去
+- 如果直接使用 `master` 作为分支名，可能会与主仓库的 master 分支冲突，建议使用不同的分支名
+
+## `submodule` 子模块管理
 
 `git submodule` 命令用于管理包含其他 Git 仓库的项目，适用于大型项目或需要集成外部库的场景。通过子模块，你可以将外部库作为项目的一部分管理，而不必直接合并到主仓库中
 
@@ -566,6 +645,22 @@ git submodule update --init --recursive
 - 子模块的 `.gitmodules` 文件会被版本控制，包含子模块的 URL 和路径映射
 - 子模块在主仓库中被视为一个特定的提交，而不是跟踪其内容变化
 - 推送主仓库时不会自动推送子模块的更改，需要单独推送
+
+### `subtree` 与 `submodule` 的区别
+
+
+| 特性 | `git subtree` | `git submodule` |
+|------|--------------|----------------|
+| **存储方式** | 子项目代码直接合并到主仓库 | 子项目作为独立仓库引用 |
+| **配置文件** | 不需要额外配置文件 | 需要 `.gitmodules` 配置文件 |
+| **克隆复杂度** | 直接克隆，无需额外步骤 | 需要 `git submodule init/update` |
+| **提交历史** | 子项目提交融入主仓库历史 | 子项目有独立的提交历史 |
+| **更新方式** | `git subtree pull` | `git submodule update --remote` |
+| **推送方式** | `git subtree push` | 需要进入子模块单独推送 |
+| **学习曲线** | 相对简单 | 相对复杂 |
+| **适用场景** | 简单集成、不需要频繁同步 | 需要保持子项目独立性、复杂依赖 |
+| **克隆速度** | 较慢（包含所有历史） | 较快（只包含引用） |
+| **磁盘空间** | 较大（完整历史） | 较小（只有引用） |
 
 ## `.gitignore`
 > ##### 常用的规则
