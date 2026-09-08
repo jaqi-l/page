@@ -463,11 +463,6 @@
       "description": "OpenAI开发的AI对话模型"
     },
     {
-      "title": "ChatGPT-Poe",
-      "link": "https://poe.com/",
-      "description": "多模型AI对话平台"
-    },
-    {
       "title": "浏览器兼容性查询",
       "link": "https://caniuse.com/#",
       "description": "Web特性兼容性查询工具"
@@ -491,16 +486,6 @@
       "title": "创客贴",
       "link": "https://www.chuangkit.com/",
       "description": "在线平面设计工具"
-    },
-    {
-      "title": "网盘小站",
-      "link": "https://wpxz.top/",
-      "description": "网盘资源搜索"
-    },
-    {
-      "title": "网盘搜索",
-      "link": "http://wp.soshoulu.com/",
-      "description": "网盘资源导航"
     },
     {
       "title": "违禁词检测",
@@ -558,11 +543,6 @@
       "description": "NPM包镜像站"
     },
     {
-      "title": "aconvert在线版格式工厂",
-      "link": "https://www.aconvert.com/",
-      "description": "在线文件格式转换工具"
-    },
-    {
       "title": "websocket在线测试",
       "link": "http://coolaf.com/tool/chattest",
       "description": "WebSocket协议测试工具"
@@ -611,6 +591,21 @@
       "title": "FMHY",
       "link": "https://fmhy.net/",
       "description": "互联网上最大的免费资源集合！"
+    },
+    {
+      "title": "工具哇!",
+      "link": "https://toolwa.com/",
+      "description": "在线工具集合"
+    },
+    {
+      "title": "天气地图",
+      "link": "https://map.qweather.com/",
+      "description": "天气地图查询"
+    },
+    {
+      "title": "元素周期表",
+      "link": "https://ptable.com",
+      "description": "元素周期表查询"
     }
   ]
 },
@@ -680,11 +675,6 @@
   "description": "个人网站、优秀案例",
   "children": [
     {
-      "title": "太阳神在打瞌睡",
-      "link": "https://www.apollozz.com/",
-      "description": ""
-    },
-    {
       "title": "后盾人",
       "link": "https://doc.houdunren.com/",
       "description": ""
@@ -727,16 +717,6 @@
   "title": "软件",
   "description": "软件、注册工具、插件",
   "children": [
-    {
-      "title": "AdobeZii",
-      "link": "https://tntzii.com/adobe-zii-news/",
-      "description": "Adobe软件激活工具(Mac)"
-    },
-    {
-      "title": "AMTEmu",
-      "link": "https://amtemu-official.com/",
-      "description": "Adobe软件激活工具(Win)"
-    },
     {
       "title": "gfxcamp",
       "link": "http://www.gfxcamp.com/",
