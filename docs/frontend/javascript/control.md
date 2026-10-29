@@ -73,7 +73,20 @@ var data = {
 };
 ```
 
-## 3.4.4 for循环语句
+## 3.4.4 模式匹配`match`（<span style="color: red">*</span>ES2025提案）
+用于替代笨重的`switch`和`if/else`链，基于数据结构的形状进行声明式分支，支持嵌套解构和守卫条件（`if`），没有`switch`的fallthrough问题。适用于处理API响应、状态机、reducer等复杂分支逻辑。目前仍处于TC39提案阶段，语法可能变化。
+```js
+const handleResponse = (response) => match (response) {
+  when({ status: 200, data: { items: [] } }) -> "数据为空",
+  when({ status: 200, data: { items } }) if (items.length > 10) -> "数据量很大",
+  when({ status: 200, data }) -> `成功: ${data.message}`,
+  when({ status: 404 }) -> "资源未找到",
+  when({ status }) if (status >= 500) -> `服务器错误: ${status}`,
+  default -> "未知状态"
+};
+```
+
+## 3.4.5 for循环语句
 在编程中有些指令需要执行很多遍，这时候就要用到循环语句。
 
 #### 语法：
@@ -100,7 +113,7 @@ for(var i=0 ; i<arr;i++){
 }
 ```
 
-## 3.4.5 while循环
+## 3.4.6 while循环
 while循环在执行前测试一个条件，如果条件成立进入循环。
 
 #### 写法：
@@ -110,7 +123,7 @@ while(condition)
 // 要执行的代码;
 }
 ```
-## 3.4.6 do-while循环
+## 3.4.7 do-while循环
 while循环在执行前测试一个条件，而do-while循环先执行循环，然后再测试条件成立与否。
 
 #### 写法：
@@ -127,7 +140,7 @@ while (condition)
 差别：for:已知循环次数，while:已知循环条件，do-while:希望至少循环一次
 :::
 
-## 3.4.7 其他控制语句
+## 3.4.8 其他控制语句
 ### for/in 
 循环遍历对象
 ```js
@@ -201,7 +214,7 @@ with(obj) {
 :::
 
 
-## 3.4.8 跳出 
+## 3.4.9 跳出 
 
 `break`用来终止循环，让循环不再往下继续，可以用在循环或`switch`中,不能用在`for/each`中。
 

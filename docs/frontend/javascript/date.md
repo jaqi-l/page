@@ -90,4 +90,25 @@ var time = Date.UTC(2012,02,30)
 ::: warning
 * 格式不正确会返回NaN
 * 注意UTC时间和时区的换算，如东八区和标准时间是八小时时差
-::: 
+:::
+
+## 3.7.5 Temporal API日期时间处理
+设计目标：完全替代设计陈旧、问题颇多的原生`Date`对象，提供现代化、功能完备、行为可预测的日期时间处理方案。API设计直观、功能强大（支持时区、不可变对象、精确运算），解决了`Date`对象的诸多痛点。已在Firefox等部分浏览器实现，正式纳入标准前语法可能变化。
+```js
+// 创建日期和时间对象
+const meetingDate = Temporal.PlainDate.from('2025-12-25');
+const meetingTime = Temporal.PlainTime.from('14:30');
+const meeting = Temporal.PlainDateTime.from('2025-12-25T14:30:00');
+
+console.log(meetingDate.day); // 25
+console.log(meetingDate.daysInYear); // 365（2025年不是闰年）
+
+// 直观的日期运算
+const deadline = meeting.add({ hours: 2, minutes: 30 });
+console.log(deadline.toString()); // 2025-12-25T17:00:00
+
+// 时区处理
+const meetingInTokyo = meeting.toZonedDateTime('Asia/Tokyo');
+const meetingInNY = meetingInTokyo.withTimeZone('America/New_York');
+console.log(meetingInNY.toString()); // 显示纽约时间
+``` 

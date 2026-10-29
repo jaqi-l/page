@@ -710,6 +710,26 @@ var b = new Set([4, 3, 2]);
 var difference = new Set([...a].filter(x => !b.has(x))); // {1}
 ```
 
+### Set集合运算方法<span style="color: red">*</span>ES2025新增
+为`Set`增加数学集合运算，无需手动实现或依赖工具库。声明式API语义清晰，操作返回新`Set`，不污染原集合，处理超大集合时需注意新集合创建带来的内存开销。适用于标签系统、权限管理、用户兴趣对比等场景。   
+`union`并集、`intersection`交集、`difference`差集、`symmetricDifference`对称差集、`isSubsetOf`是否为子集、`isSupersetOf`是否为超集、`isDisjointFrom`是否无交集。
+```js
+const userTags = new Set(['js', 'node', 'web']);
+const hotTags = new Set(['web', 'react', 'ts']);
+
+// 交集：共同拥有的标签
+const common = userTags.intersection(hotTags); // Set {'web'}
+// 差集：用户没有的热门标签
+const toRecommend = hotTags.difference(userTags); // Set {'react', 'ts'}
+// 并集：所有标签
+const allTags = userTags.union(hotTags); // Set {'js', 'node', 'web', 'react', 'ts'}
+// 是否为子集
+console.log(common.isSubsetOf(userTags)); // true
+```
+::: tip
+上面第2~4条并集、交集、差集的示例，都可以改用以上方法实现，不再需要手动`filter`。
+:::
+
 ### Map
 Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应
 1. `size`返回总成员数
@@ -1272,6 +1292,24 @@ console.log(B); // 3
 ```
 
 
+## 3.16.21 管道操作符`|>`
+设计目标：改善深层嵌套的函数调用，使数据转换流程从左到右线性呈现，提升可读性。
+
+优点：极大地提升了链式数据转换的可读性和可维护性，接近"流水线"的直观思维。缺点：社区有不同语法提案（如Hack风格和F#风格），最终标准尚未完全确定。
+
+适用场景：数据清洗、连续的纯函数变换、函数式编程风格较强的代码。
+```js
+// 传统的嵌套调用，可读性差
+const result = encodeURIComponent(trim(toUpperCase(" hello world ")));
+
+// 使用管道操作符（提案语法，以Hack风格为例）
+const result = " hello world "
+  |> %.trim()          // 占位符%代表上一步的结果
+  |> %.toUpperCase()
+  |> encodeURIComponent(%);
+
+console.log(result); // "HELLO%20WORLD"
+```
 ::: tip 参考文档
 [阮一峰 ECMAScript](https://es6.ruanyifeng.com/)
 :::

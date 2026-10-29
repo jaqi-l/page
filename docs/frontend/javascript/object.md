@@ -415,3 +415,17 @@ obj2.name=”lily”; //地址内容变成lily
 
 obj1.name→lily
 :::
+
+### JSON模块原生支持<span style="color: red">*</span>ES2025新增
+通过`with`导入属性（Import Attributes）原生支持在ES模块中导入JSON文件，无需`fetch`或构建工具的特殊处理。语法简洁直观，利于静态分析和工具优化；运行时会校验模块的MIME类型，防止JSON文件被伪装成JS执行。适用于导入配置文件、静态的mock数据、国际化语言包等。早期提案使用的关键字是`assert`，最终标准确定为`with`。
+```js
+// 静态导入，config为解析后的JSON对象
+import config from './config.json' with { type: 'json' };
+console.log(config.appName);
+
+// 动态导入
+const loadData = async () => {
+  const dataModule = await import('./data.json', { with: { type: 'json' } });
+  console.log(dataModule.default);
+}
+```

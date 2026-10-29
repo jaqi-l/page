@@ -206,8 +206,19 @@ p.then(function(req){
 1. 有一个p完成，就把值传递给p的回调函数。如果都是失败，则返回失败
 :::
 
-* `Promise.try`对无论是同步还是异步的操作都进行同步操作。
+* `Promise.try`接收一个函数（同步或异步均可）并立即调用，将其返回值/抛出的错误统一包装为`Promise`。同步代码抛出的错误也会进入`.catch()`，不再需要`try/catch`包裹，为同步和异步操作提供统一的Promise起点。
+<span style="color: red">*</span>ES2025新增
+```js
+function mightThrowSync(id) {
+  if (!id) throw new Error('Invalid ID');
+  return fetchData(id); // 假设返回一个Promise
+}
 
+Promise.try(() => mightThrowSync(someId))
+  .then(data => console.log('成功:', data))
+  .catch(error => console.error('捕获所有错误:', error))
+// 无论是同步的 Invalid ID 错误，还是fetchData的异步拒绝，都会被catch捕获
+```
 
 * `Promise.resolve `将现有对象转为`Promise`对象
   

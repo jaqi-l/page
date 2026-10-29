@@ -319,3 +319,31 @@ var reg = /^[\w-]+@(\w+\.)+\w+/;
 1. 中括号里面的字符绝大多数是普通的字符
 2. 中括号出现的两位数 不是数学的两位数：[18-65]表示1或者8到6或者5
 :::
+
+## 3.13.5 ES2025新增特性
+
+### 1. `RegExp.escape`安全转义<span style="color: red">*</span>ES2025新增
+将字符串中的正则特殊字符转义，用于安全地把用户输入等动态内容拼接成正则，防止正则注入。
+```js
+const userInput = "test.(js)";
+const safePattern = RegExp.escape(userInput); // "test\\.\\(js\\)"
+const regex = new RegExp(safePattern);
+console.log(regex.test("test.(js)")); // true
+```
+
+### 2. 行内修饰符（Pattern Modifiers）<span style="color: red">*</span>ES2025新增
+`i`（忽略大小写）、`m`（多行模式）、`s`（dotAll）三个修饰符可以通过`(?修饰符:模式)`只作用于正则的指定部分，`-`表示关闭对应修饰符。以前修饰符只能作用于整个正则。
+```js
+// 仅对"world"部分忽略大小写
+const re = /hello (?i:world)/;
+console.log(re.test("hello WORLD")); // true，world部分不区分大小写
+console.log(re.test("HELLO world")); // false，hello部分仍区分大小写
+```
+
+### 3. 重复命名捕获组<span style="color: red">*</span>ES2025新增
+允许命名捕获组在不同分支（`|`）中重复使用，用于匹配多种格式但提取结构一致的数据（如不同格式的日期），捕获结果仍通过`groups`读取。注意同一个分支内仍然不能重名。
+```js
+const dateRe = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})|(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{4})/;
+const match = "2025-12-30".match(dateRe);
+console.log(match.groups); // {year: '2025', month: '12', day: '30'}
+```
