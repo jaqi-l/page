@@ -5,6 +5,9 @@ import llmstxt from 'vitepress-plugin-llms'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   markdown: {
+    image: {
+      lazyLoading: true,
+    },
     config(md) {
       md.use(MermaidMarkdown); // add this
     },
@@ -91,7 +94,7 @@ export default defineConfig({
       }
     },
     footer: {
-      copyright: 'jaqi.note © jaqi.l @26.11.18.1 V3'
+      copyright: 'jaqi.note © jaqi.l @26.11.19.1 V3'
     },
     nav: [
       { text: '导航', link: '/' },
